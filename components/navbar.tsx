@@ -9,8 +9,7 @@ import {
   Newspaper,
   FileText,
   Wrench,
-  LogIn,
-  User,
+  Users,
   Menu,
   X,
   ChevronDown,
@@ -18,8 +17,7 @@ import {
 import { principalWebsiteUtm } from '@/lib/tools';
 import { ThemeToggle } from '@/components/theme-toggle';
 
-const signInUrl = `https://app.divisioncero.com/auth/sign-in?${principalWebsiteUtm}`;
-const signUpUrl = `https://app.divisioncero.com/auth/sign-up?${principalWebsiteUtm}`;
+const coCreemosUrl = `https://app.divisioncero.com/auth/sign-up?${principalWebsiteUtm}`;
 
 const primaryLinks = [
   {
@@ -163,18 +161,11 @@ export function Navbar() {
             </svg>
           </a>
           <a
-            href={signInUrl}
-            className="flex items-center gap-1.5 px-3 py-2 rounded-md text-sm text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
+            href={coCreemosUrl}
+            className="flex items-center gap-1.5 border border-primary text-primary hover:bg-primary/10 rounded-md px-3 py-1.5 text-sm font-bold transition-colors"
           >
-            <LogIn className="h-4 w-4" />
-            Login
-          </a>
-          <a
-            href={signUpUrl}
-            className="flex items-center gap-1.5 bg-primary hover:bg-primary/90 text-primary-foreground rounded-md px-3 py-1.5 text-sm font-bold transition-colors"
-          >
-            <User className="h-4 w-4" />
-            Regístrate
+            <Users className="h-4 w-4" />
+            Co-Creemos
           </a>
         </div>
 
@@ -216,16 +207,10 @@ export function Navbar() {
             GitHub
           </a>
           <a
-            href={signInUrl}
-            className="flex items-center gap-2 px-2 py-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
+            href={coCreemosUrl}
+            className="flex items-center justify-center gap-2 border border-primary text-primary hover:bg-primary/10 rounded-md px-3 py-2 font-bold transition-colors"
           >
-            Login
-          </a>
-          <a
-            href={signUpUrl}
-            className="flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground rounded-md px-3 py-2 font-bold transition-colors"
-          >
-            Regístrate
+            Co-Creemos
           </a>
         </div>
       )}
