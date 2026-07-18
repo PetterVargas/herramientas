@@ -53,6 +53,34 @@ export const metadata: Metadata = {
   },
 };
 
+// next-themes inyecta su propio script anti-parpadeo, pero en producción
+// (render dinámico vía OpenNext/Cloudflare) ese script llega envuelto en una
+// llamada a una función de deduplicación (`e(...)`) que nunca se define,
+// lo que lanza un ReferenceError y aborta el script antes de aplicar la
+// clase `dark`. El resultado: la página siempre pinta primero en modo claro
+// y solo pasa a oscuro cuando React hidrata (parpadeo visible).
+//
+// Este script replica esa misma lógica, pero como elemento `<script>` literal
+// renderizado directamente por este Server Component (no por next-themes ni
+// por next/script, ambos afectados por el mismo envoltorio roto). Al no pasar
+// por esa instrumentación, se sirve como script síncrono normal: se ejecuta
+// primero y deja la clase correcta puesta aunque el script de next-themes
+// falle justo después (silenciosamente, sin efecto visual).
+const THEME_INIT_SCRIPT = `
+(function () {
+  try {
+    var root = document.documentElement;
+    var stored = localStorage.getItem('theme') || 'system';
+    var theme = stored === 'system'
+      ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+      : stored;
+    root.classList.remove('light', 'dark');
+    root.classList.add(theme);
+    root.style.colorScheme = theme;
+  } catch (e) {}
+})();
+`;
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -65,6 +93,11 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <script
+          id="theme-init"
+          suppressHydrationWarning
+          dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }}
+        />
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Toaster position="top-center" />
           <Navbar />
