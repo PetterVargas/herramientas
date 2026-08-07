@@ -3,8 +3,9 @@ import { ToolPageHeader } from '@/components/tool-page-header';
 import { SPFValidatorComponent } from './spf-validator-component';
 
 export const metadata: Metadata = {
-  title: 'Validador SPF · Herramientas · DivisionCero',
+  title: 'Validador SPF',
   description: 'Verifica y valida los registros SPF de tu dominio para mejorar la seguridad del email',
+  alternates: { canonical: '/validador-spf' },
 };
 
 export default function SpfValidatorPage() {

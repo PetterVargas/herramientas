@@ -3,9 +3,10 @@ import { ToolPageHeader } from '@/components/tool-page-header';
 import { WorkflowDiagram } from './_components/workflow-diagram';
 
 export const metadata: Metadata = {
-  title: 'Workflow de Ciberseguridad · Herramientas · DivisionCero',
+  title: 'Workflow de Ciberseguridad',
   description:
     'Un overview de cómo funciona, capacitar, optimizar y automatizar tus procesos de Ciberseguridad.',
+  alternates: { canonical: '/workflow-ciberseguridad' },
 };
 
 export default function WorkflowPage() {

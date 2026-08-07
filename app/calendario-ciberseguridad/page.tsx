@@ -3,8 +3,9 @@ import { ToolPageHeader } from '@/components/tool-page-header';
 import { CybersecurityCalendarComponent } from './cybersecurity-calendar-component';
 
 export const metadata: Metadata = {
-  title: 'Calendario de Ciberseguridad · Herramientas · DivisionCero',
+  title: 'Calendario de Ciberseguridad',
   description: 'Descubre temas de ciberseguridad para cada día del año. Constancia.',
+  alternates: { canonical: '/calendario-ciberseguridad' },
 };
 
 export default function CalendarPage() {

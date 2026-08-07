@@ -39,6 +39,8 @@ export function UuidGeneratorComponent() {
 
   useEffect(() => {
     if (!uuid) {
+      // Genera el UUID inicial solo en cliente para evitar mismatch de hidratación.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       generateUuid();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -37,7 +37,7 @@ export function UrlEncoderComponent() {
       const validationResult = UrlInputSchema.safeParse(inputText);
 
       if (!validationResult.success) {
-        setError(validationResult.error.errors[0]?.message || 'Entrada inválida');
+        setError(validationResult.error.issues[0]?.message || 'Entrada inválida');
         setOutputText('');
         return;
       }

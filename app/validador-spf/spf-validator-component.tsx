@@ -57,7 +57,7 @@ export function SPFValidatorComponent() {
       const validationResult = DomainSchema.safeParse(domain.trim());
 
       if (!validationResult.success) {
-        setError(validationResult.error.errors[0]?.message || 'Dominio inválido');
+        setError(validationResult.error.issues[0]?.message || 'Dominio inválido');
         return;
       }
 

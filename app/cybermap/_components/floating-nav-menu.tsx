@@ -3,55 +3,54 @@
 import { useState } from 'react';
 
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { principalWebsiteUtm } from '@/lib/tools';
 
 export function FloatingNavMenu() {
   const navItems = [
     {
       label: 'COR',
-      href: `https://kudo.divisioncero.com/framework/cor?${principalWebsiteUtm}`,
+      href: `https://kudo.divisioncero.com/framework/cor`,
       color: '#1d4ed8',
       title: 'Coherencia Organizacional',
     },
     {
       label: 'CAP',
-      href: `https://kudo.divisioncero.com/framework/cap?${principalWebsiteUtm}`,
+      href: `https://kudo.divisioncero.com/framework/cap`,
       color: '#7e22ce',
       title: 'Ciberseguridad en Aplicaciones',
     },
     {
       label: 'CCN',
-      href: `https://kudo.divisioncero.com/framework/ccn?${principalWebsiteUtm}`,
+      href: `https://kudo.divisioncero.com/framework/ccn`,
       color: '#15803d',
       title: 'Continuidad y Cambios del Negocio',
     },
     {
       label: 'CIF',
-      href: `https://kudo.divisioncero.com/framework/cif?${principalWebsiteUtm}`,
+      href: `https://kudo.divisioncero.com/framework/cif`,
       color: '#c2410c',
       title: 'Ciberseguridad en Infrastructura',
     },
     {
       label: 'THP',
-      href: `https://kudo.divisioncero.com/framework/thp?${principalWebsiteUtm}`,
+      href: `https://kudo.divisioncero.com/framework/thp`,
       color: '#be185d',
       title: 'Ciberseguridad en Talento Humano y Proveedores',
     },
     {
       label: 'CIP',
-      href: `https://kudo.divisioncero.com/framework/cip?${principalWebsiteUtm}`,
+      href: `https://kudo.divisioncero.com/framework/cip`,
       color: '#4338ca',
       title: 'Ciberseguridad en Identidad y Puntos Finales',
     },
     {
       label: 'ADR',
-      href: `https://kudo.divisioncero.com/framework/adr?${principalWebsiteUtm}`,
+      href: `https://kudo.divisioncero.com/framework/adr`,
       color: '#b91c1c',
       title: 'Análisis, Detección y Respuesta de Ciberseguridad',
     },
     {
       label: 'DIA',
-      href: `https://kudo.divisioncero.com/framework/dia?${principalWebsiteUtm}`,
+      href: `https://kudo.divisioncero.com/framework/dia`,
       color: '#0e7490',
       title: 'Ciberseguridad en Datos e Inteligencia Artificial',
     },

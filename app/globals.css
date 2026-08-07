@@ -99,3 +99,33 @@ input::placeholder,
 textarea::placeholder {
   color: var(--color-muted-foreground);
 }
+
+@keyframes marquee-rtl {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee-rtl {
+  animation: marquee-rtl var(--marquee-duration, 45s) linear infinite;
+}
+
+.animate-marquee-ltr {
+  animation: marquee-rtl var(--marquee-duration, 45s) linear infinite reverse;
+}
+
+.full-bleed {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee-rtl,
+  .animate-marquee-ltr {
+    animation: none;
+  }
+}

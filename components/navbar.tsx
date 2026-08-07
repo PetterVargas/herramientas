@@ -5,7 +5,7 @@ import Link from 'next/link';
 import {
   GraduationCap,
   BookOpen,
-  BookOpenText,
+  LayoutDashboard,
   Newspaper,
   FileText,
   Wrench,
@@ -14,26 +14,25 @@ import {
   X,
   ChevronDown,
 } from 'lucide-react';
-import { principalWebsiteUtm } from '@/lib/tools';
 import { ThemeToggle } from '@/components/theme-toggle';
 
-const coCreemosUrl = `https://app.divisioncero.com/auth/sign-up?${principalWebsiteUtm}`;
+const coCreemosUrl = `https://app.divisioncero.com/auth/sign-up?`;
 
 const primaryLinks = [
   {
     icon: GraduationCap,
     text: 'CyberAcademy',
-    url: `https://cyberacademy.divisioncero.com/?${principalWebsiteUtm}`,
+    url: `https://cyberacademy.divisioncero.com/?`,
   },
   {
     icon: BookOpen,
     text: 'Kudo',
-    url: `https://kudo.divisioncero.com?${principalWebsiteUtm}`,
+    url: `https://kudo.divisioncero.com?`,
   },
   {
-    icon: BookOpenText,
-    text: 'Documentación',
-    url: `https://divisioncero.com/docs?${principalWebsiteUtm}`,
+    icon: LayoutDashboard,
+    text: 'Plataforma',
+    url: `https://app.divisioncero.com/home`,
   },
 ];
 
@@ -42,13 +41,13 @@ const resourceLinks = [
     icon: Newspaper,
     text: 'Blog',
     description: 'Artículos y actualizaciones sobre ciberseguridad',
-    url: `https://divisioncero.com/blog?${principalWebsiteUtm}`,
+    url: `https://divisioncero.com/blog?`,
   },
   {
     icon: FileText,
     text: 'Open Sources',
     description: 'Proyectos y contribuciones abiertos',
-    url: `https://divisioncero.com/open-source?${principalWebsiteUtm}`,
+    url: `https://divisioncero.com/open-source?`,
   },
   {
     icon: Wrench,
@@ -60,7 +59,7 @@ const resourceLinks = [
     icon: BookOpen,
     text: 'Releases',
     description: 'Actualizaciones sobre la plataforma',
-    url: `https://divisioncero.com/releases?${principalWebsiteUtm}`,
+    url: `https://divisioncero.com/releases?`,
   },
 ];
 
