@@ -1,6 +1,3 @@
-export const principalWebsiteUtm =
-  'utm_source=herramientas.divisioncero.com&utm_medium=text_link&utm_campaign=principal_website';
-
 export interface Tool {
   slug: string;
   title: string;
@@ -21,7 +18,12 @@ export interface Tool {
     | 'Mail'
     | 'Binary'
     | 'Link2'
-    | 'Fingerprint';
+    | 'Fingerprint'
+    | 'ShieldCheck'
+    | 'Gauge'
+    | 'Fish'
+    | 'Inbox'
+    | 'MonitorCheck';
 }
 
 export const tools: Tool[] = [
@@ -29,7 +31,7 @@ export const tools: Tool[] = [
     slug: 'conan',
     title: 'Conan Rastreo Informático',
     description: 'Tracking basado en direcciones IP para la detección de amenazas.',
-    href: `https://app.divisioncero.com/home/conan?${principalWebsiteUtm}`,
+    href: `https://app.divisioncero.com/home/conan?`,
     external: true,
     iconName: 'Radar',
   },
@@ -37,7 +39,7 @@ export const tools: Tool[] = [
     slug: 'framework-kudo',
     title: 'Framework Kudo',
     description: 'Framework de Ciberseguridad open-source para el cumplimiento de tu empresa.',
-    href: 'https://kudo.divisioncero.com/sgsi/?utm_source=divisioncero.com&utm_medium=text_link&utm_campaign=principal_website',
+    href: 'https://kudo.divisioncero.com/sgx',
     external: true,
     iconName: 'BookOpen',
   },
@@ -124,5 +126,40 @@ export const tools: Tool[] = [
     description: 'Genera identificadores únicos universales (UUID).',
     href: '/generador-uuid',
     iconName: 'Fingerprint',
+  },
+  {
+    slug: 'triada-cia',
+    title: 'Tríada CIA',
+    description: 'Aprende e identifica Confidencialidad, Integridad y Disponibilidad.',
+    href: '/triada-cia',
+    iconName: 'ShieldCheck',
+  },
+  {
+    slug: 'analizador-contrasenas',
+    title: 'Analizador de Contraseñas',
+    description: 'Calcula cuánto tardaría un atacante en descifrar tu contraseña.',
+    href: '/analizador-contrasenas',
+    iconName: 'Gauge',
+  },
+  {
+    slug: 'deteccion-phishing',
+    title: 'Práctica: Detección de Phishing',
+    description: 'Practica identificando mensajes de phishing en correos y SMS.',
+    href: '/deteccion-phishing',
+    iconName: 'Fish',
+  },
+  {
+    slug: 'identificador-correos-seguros',
+    title: 'Correos Seguros vs. No Seguros',
+    description: 'Revisa una bandeja simulada y distingue correos seguros de maliciosos.',
+    href: '/identificador-correos-seguros',
+    iconName: 'Inbox',
+  },
+  {
+    slug: 'verificar-sitio-seguro',
+    title: '¿Es Seguro Este Sitio?',
+    description: 'Animación paso a paso de las señales que confirman un sitio seguro.',
+    href: '/verificar-sitio-seguro',
+    iconName: 'MonitorCheck',
   },
 ];

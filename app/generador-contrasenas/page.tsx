@@ -3,8 +3,9 @@ import { ToolPageHeader } from '@/components/tool-page-header';
 import { PasswordGeneratorComponent } from './password-generator-component';
 
 export const metadata: Metadata = {
-  title: 'Generador de contraseñas · Herramientas · DivisionCero',
+  title: 'Generador de Contraseñas',
   description: 'Genera contraseñas fuertes y seguras para tus cuentas',
+  alternates: { canonical: '/generador-contrasenas' },
 };
 
 export default function PasswordGeneratorPage() {

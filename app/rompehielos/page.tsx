@@ -3,8 +3,9 @@ import { ToolPageHeader } from '@/components/tool-page-header';
 import { IcebreakerGrid } from './_components/icebreaker-grid';
 
 export const metadata: Metadata = {
-  title: 'Rompehielos para equipos de Ciberseguridad · Herramientas · DivisionCero',
+  title: 'Rompehielos para equipos de Ciberseguridad',
   description: 'Co-Creando Ciberseguridad, conocernos mejor y divertirnos juntos.',
+  alternates: { canonical: '/rompehielos' },
 };
 
 export default function RompehielosPage() {

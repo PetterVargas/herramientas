@@ -90,6 +90,8 @@ export function PasswordGeneratorComponent() {
   };
 
   useEffect(() => {
+    // Genera la contraseña inicial solo en cliente para evitar mismatch de hidratación.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     generatePassword();
   }, [generatePassword]);
 

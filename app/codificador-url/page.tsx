@@ -3,8 +3,9 @@ import { ToolPageHeader } from '@/components/tool-page-header';
 import { UrlEncoderComponent } from './url-encoder-component';
 
 export const metadata: Metadata = {
-  title: 'Codificador/Decodificador URL · Herramientas · DivisionCero',
+  title: 'Codificador/Decodificador URL',
   description: 'Convierte caracteres especiales en URLs de forma segura',
+  alternates: { canonical: '/codificador-url' },
 };
 
 export default function UrlEncoderPage() {

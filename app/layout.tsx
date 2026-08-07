@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/navbar";
@@ -16,10 +16,59 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const siteName = "Herramientas · DivisionCero";
+const siteDescription =
+  "Herramientas gratuitas de Ciberseguridad para el día a día: generador de contraseñas, hash, QR, UUID, validador SPF, codificadores Base64/URL y más, por DivisionCero.";
+const siteUrl = "https://herramientas.divisioncero.com";
+
 export const metadata: Metadata = {
-  title: "Herramientas · DivisionCero",
-  description: "Herramientas de Ciberseguridad para el día a día, por DivisionCero.",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: siteName,
+    template: "%s · Herramientas · DivisionCero",
+  },
+  description: siteDescription,
+  keywords: [
+    "herramientas de ciberseguridad",
+    "generador de contraseñas",
+    "generador de hash",
+    "generador de QR",
+    "generador de UUID",
+    "validador SPF",
+    "codificador Base64",
+    "codificador URL",
+    "DivisionCero",
+  ],
+  authors: [{ name: "DivisionCero", url: "https://divisioncero.com" }],
+  creator: "DivisionCero",
+  publisher: "DivisionCero",
+  applicationName: siteName,
   manifest: "/site.webmanifest",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    locale: "es_ES",
+    url: siteUrl,
+    siteName,
+    title: siteName,
+    description: siteDescription,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteName,
+    description: siteDescription,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+    },
+  },
   icons: {
     icon: [
       { url: "/favicon.ico" },
@@ -49,8 +98,24 @@ export const metadata: Metadata = {
         sizes: "150x150",
         type: "image/png",
       },
+      {
+        rel: "mask-icon",
+        url: "/safari-pinned-tab.svg",
+        color: "#4dae84",
+      },
     ],
   },
+  other: {
+    "msapplication-TileColor": "#4dae84",
+    "msapplication-config": "/browserconfig.xml",
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
+  ],
 };
 
 // next-themes inyecta su propio script anti-parpadeo, pero en producción

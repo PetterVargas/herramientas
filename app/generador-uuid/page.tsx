@@ -3,8 +3,9 @@ import { ToolPageHeader } from '@/components/tool-page-header';
 import { UuidGeneratorComponent } from './uuid-generator-component';
 
 export const metadata: Metadata = {
-  title: 'Generador de UUID · Herramientas · DivisionCero',
+  title: 'Generador de UUID',
   description: 'Genera identificadores únicos universales (UUID v4) aleatorios',
+  alternates: { canonical: '/generador-uuid' },
 };
 
 export default function UuidGeneratorPage() {

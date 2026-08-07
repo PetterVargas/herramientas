@@ -3,9 +3,10 @@ import { ToolPageHeader } from '@/components/tool-page-header';
 import { PeriodicTable } from './_components/periodic-table';
 
 export const metadata: Metadata = {
-  title: 'Tabla Periódica de Ciberseguridad - Framework KUDO | Herramientas',
+  title: 'Tabla Periódica de Ciberseguridad - Framework KUDO',
   description:
     'Explora la Tabla Periódica de Ciberseguridad basada en el Framework KUDO. Descubre 36 controles organizados en 8 dominios: Coherencia Organizacional, Aplicaciones, Continuidad, Infraestructura, Talento Humano, Identidad, Análisis y Respuesta, y Datos e IA.',
+  alternates: { canonical: '/tabla-periodica-ciberseguridad' },
 };
 
 export default function TablaPeriodicaPage() {

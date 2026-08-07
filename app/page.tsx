@@ -2,9 +2,42 @@ import { HeroBackground } from '@/components/hero-background';
 import { ToolsSearch } from '@/components/tools-search';
 import { tools } from '@/lib/tools';
 
+const siteUrl = 'https://herramientas.divisioncero.com';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      name: 'Herramientas · DivisionCero',
+      url: siteUrl,
+      description: 'Herramientas gratuitas de Ciberseguridad para el día a día, por DivisionCero.',
+      publisher: {
+        '@type': 'Organization',
+        name: 'DivisionCero',
+        url: 'https://divisioncero.com',
+      },
+    },
+    {
+      '@type': 'ItemList',
+      itemListElement: tools.map((tool, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: tool.title,
+        description: tool.description,
+        url: tool.external ? tool.href : `${siteUrl}${tool.href}`,
+      })),
+    },
+  ],
+};
+
 export default function Home() {
   return (
     <main className="relative flex flex-1 flex-col overflow-hidden font-sans">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <div className="fixed inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/5 pointer-events-none" />
       <HeroBackground className="fixed inset-0 w-full h-full pointer-events-none opacity-90" />
 

@@ -16,6 +16,7 @@ export function ThemeToggle({
 
   // Evita el mismatch de hidratación: resolvedTheme no se conoce en el
   // primer render del servidor (depende de la preferencia del sistema).
+  // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(() => setMounted(true), []);
 
   const isDark = mounted && resolvedTheme === 'dark';

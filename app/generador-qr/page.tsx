@@ -3,8 +3,9 @@ import { ToolPageHeader } from '@/components/tool-page-header';
 import { QRGeneratorComponent } from './qr-generator-component';
 
 export const metadata: Metadata = {
-  title: 'Generador de Códigos QR · Herramientas · DivisionCero',
+  title: 'Generador de Códigos QR',
   description: 'Crea códigos QR personalizados para URLs, Whatsapp, emails y más',
+  alternates: { canonical: '/generador-qr' },
 };
 
 export default function QrGeneratorPage() {

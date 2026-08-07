@@ -1,5 +1,6 @@
+import Link from 'next/link';
+
 import { Globe, MessageCircle } from 'lucide-react';
-import { principalWebsiteUtm } from '@/lib/tools';
 
 export function Footer() {
   return (
@@ -86,10 +87,10 @@ export function Footer() {
             <div className="flex flex-col gap-y-2.5">
               <h3 className="font-medium mb-4">Productos</h3>
               <ul className="space-y-2">
-                <li><a href={`https://cyberacademy.divisioncero.com/?${principalWebsiteUtm}`} className="text-sm hover:underline" target="_blank" rel="noopener noreferrer">CyberAcademy</a></li>
-                <li><a href={`https://kudo.divisioncero.com/?${principalWebsiteUtm}`} className="text-sm hover:underline" target="_blank" rel="noopener noreferrer">Framework Kudo</a></li>
-                <li><a href={`https://divisioncero.com/home/empresas?${principalWebsiteUtm}`} className="text-sm hover:underline" target="_blank" rel="noopener noreferrer">Ciberseguridad Empresarial</a></li>
-                <li><a href="/" className="text-sm hover:underline">Herramientas</a></li>
+                <li><a href={`https://cyberacademy.divisioncero.com/?`} className="text-sm hover:underline" target="_blank" rel="noopener noreferrer">CyberAcademy</a></li>
+                <li><a href={`https://kudo.divisioncero.com/?`} className="text-sm hover:underline" target="_blank" rel="noopener noreferrer">Framework Kudo</a></li>
+                <li><a href={`https://divisioncero.com/home/empresas?`} className="text-sm hover:underline" target="_blank" rel="noopener noreferrer">Ciberseguridad Empresarial</a></li>
+                <li><Link href="/" className="text-sm hover:underline">Herramientas</Link></li>
               </ul>
             </div>
 
@@ -97,11 +98,11 @@ export function Footer() {
             <div className="flex flex-col gap-y-2.5">
               <h3 className="font-medium mb-4">Acerca de</h3>
               <ul className="space-y-2">
-                <li><a href={`https://divisioncero.com/docs?${principalWebsiteUtm}`} className="text-sm hover:underline" target="_blank" rel="noopener noreferrer">Documentación</a></li>
-                <li><a href={`https://kudo.divisioncero.com/sgx/?${principalWebsiteUtm}`} className="text-sm hover:underline" target="_blank" rel="noopener noreferrer">SGX</a></li>
-                <li><a href={`https://cyberacademy.divisioncero.com/cyberusuario?${principalWebsiteUtm}`} className="text-sm hover:underline" target="_blank" rel="noopener noreferrer">CyberUsuario</a></li>
-                <li><a href={`https://cyberacademy.divisioncero.com/cyberguardian?${principalWebsiteUtm}`} className="text-sm hover:underline" target="_blank" rel="noopener noreferrer">CyberGuardián</a></li>
-                <li><a href={`https://divisioncero.com/blog/filosofia-divisioncero?${principalWebsiteUtm}`} className="text-sm hover:underline" target="_blank" rel="noopener noreferrer">Filosofía</a></li>
+                <li><a href={`https://divisioncero.com/docs?`} className="text-sm hover:underline" target="_blank" rel="noopener noreferrer">Documentación</a></li>
+                <li><a href={`https://kudo.divisioncero.com/sgx/?`} className="text-sm hover:underline" target="_blank" rel="noopener noreferrer">SGX</a></li>
+                <li><a href={`https://cyberacademy.divisioncero.com/cyberusuario?`} className="text-sm hover:underline" target="_blank" rel="noopener noreferrer">CyberUsuario</a></li>
+                <li><a href={`https://cyberacademy.divisioncero.com/cyberguardian?`} className="text-sm hover:underline" target="_blank" rel="noopener noreferrer">CyberGuardián</a></li>
+                <li><a href={`https://divisioncero.com/blog/filosofia-divisioncero?`} className="text-sm hover:underline" target="_blank" rel="noopener noreferrer">Filosofía</a></li>
               </ul>
             </div>
 

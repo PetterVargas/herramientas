@@ -186,7 +186,7 @@ export function HashGeneratorComponent() {
       const validationResult = HashInputSchema.safeParse(inputText);
 
       if (!validationResult.success) {
-        setError(validationResult.error.errors[0]?.message || 'Entrada inválida');
+        setError(validationResult.error.issues[0]?.message || 'Entrada inválida');
         setHashes({ MD5: '', SHA1: '', SHA256: '', SHA512: '' });
         return;
       }

@@ -3,8 +3,9 @@ import { ToolPageHeader } from '@/components/tool-page-header';
 import { Base64EncoderComponent } from './base64-encoder-component';
 
 export const metadata: Metadata = {
-  title: 'Codificador/Decodificador Base64 · Herramientas · DivisionCero',
+  title: 'Codificador/Decodificador Base64',
   description: 'Convierte texto plano a Base64 y viceversa de forma segura',
+  alternates: { canonical: '/codificador-base64' },
 };
 
 export default function Base64Page() {
