@@ -1,16 +1,18 @@
-import type { Metadata } from 'next';
 import { ToolPageHeader } from '@/components/tool-page-header';
+import { ToolJsonLd } from '@/components/tool-json-ld';
+import { buildMetadata } from '@/lib/seo';
 import { UrlEncoderComponent } from './url-encoder-component';
 
-export const metadata: Metadata = {
-  title: 'Codificador/Decodificador URL',
-  description: 'Convierte caracteres especiales en URLs de forma segura',
-  alternates: { canonical: '/codificador-url' },
-};
+const title = 'Codificador/Decodificador URL';
+const description = 'Convierte caracteres especiales en URLs de forma segura';
+const path = '/codificador-url';
+
+export const metadata = buildMetadata({ title, description, path });
 
 export default function UrlEncoderPage() {
   return (
     <div>
+      <ToolJsonLd title={title} description={description} path={path} />
       <ToolPageHeader
         title="Codificador/Decodificador URL"
         subtitle="Convierte caracteres especiales en URLs de forma segura"

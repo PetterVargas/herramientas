@@ -4,13 +4,16 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "opennextjs-cloudflare build",
+    "build": "pnpm run museo:update && opennextjs-cloudflare build",
     "next-build": "next build",
     "start": "next start",
     "lint": "eslint",
     "preview": "pnpm run build && opennextjs-cloudflare preview",
     "deploy": "pnpm run build && opennextjs-cloudflare deploy",
-    "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts"
+    "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts",
+    "museo:fetch": "tsx scripts/museo-fetch.ts",
+    "museo:process": "tsx scripts/museo-process.ts",
+    "museo:update": "pnpm run museo:fetch && pnpm run museo:process"
   },
   "dependencies": {
     "@xyflow/react": "^12.11.2",
@@ -37,9 +40,12 @@
     "@types/qrcode": "^1.5.6",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "dotenv": "^17.4.2",
     "eslint": "^9",
     "eslint-config-next": "16.3.0",
+    "sharp": "^0.35.3",
     "tailwindcss": "^4",
+    "tsx": "^4.23.11",
     "typescript": "^5",
     "wrangler": "^4.119.0"
   }

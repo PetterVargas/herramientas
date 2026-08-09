@@ -1,17 +1,19 @@
-import type { Metadata } from 'next';
 import { ToolPageHeader } from '@/components/tool-page-header';
+import { ToolJsonLd } from '@/components/tool-json-ld';
+import { buildMetadata } from '@/lib/seo';
 import { InboxSimulator } from './_components/inbox-simulator';
 
-export const metadata: Metadata = {
-  title: 'Práctica: Correos Seguros vs. No Seguros',
-  description:
-    'Revisa una bandeja de entrada simulada y aprende a distinguir correos seguros de correos maliciosos.',
-  alternates: { canonical: '/identificador-correos-seguros' },
-};
+const title = 'Práctica: Correos Seguros vs. No Seguros';
+const description =
+  'Revisa una bandeja de entrada simulada y aprende a distinguir correos seguros de correos maliciosos.';
+const path = '/identificador-correos-seguros';
+
+export const metadata = buildMetadata({ title, description, path });
 
 export default function IdentificadorCorreosSegurosPage() {
   return (
     <div className="flex flex-col space-y-8">
+      <ToolJsonLd title={title} description={description} path={path} />
       <ToolPageHeader
         title="Correos Seguros vs. No Seguros"
         subtitle="Revisa la bandeja de entrada simulada y marca cada correo como seguro o no seguro."
