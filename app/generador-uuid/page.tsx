@@ -1,16 +1,18 @@
-import type { Metadata } from 'next';
 import { ToolPageHeader } from '@/components/tool-page-header';
+import { ToolJsonLd } from '@/components/tool-json-ld';
+import { buildMetadata } from '@/lib/seo';
 import { UuidGeneratorComponent } from './uuid-generator-component';
 
-export const metadata: Metadata = {
-  title: 'Generador de UUID',
-  description: 'Genera identificadores únicos universales (UUID v4) aleatorios',
-  alternates: { canonical: '/generador-uuid' },
-};
+const title = 'Generador de UUID';
+const description = 'Genera identificadores únicos universales (UUID v4) aleatorios';
+const path = '/generador-uuid';
+
+export const metadata = buildMetadata({ title, description, path });
 
 export default function UuidGeneratorPage() {
   return (
     <div>
+      <ToolJsonLd title={title} description={description} path={path} />
       <ToolPageHeader
         title="Generador de UUID"
         subtitle="Genera identificadores únicos universales (UUID v4) aleatorios"

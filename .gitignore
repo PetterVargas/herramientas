@@ -33,6 +33,11 @@ yarn-error.log*
 # env files (can opt-in for committing if needed)
 .env*
 
+# museo del cibercrimen: fotos generadas desde la colección de Unsplash
+# (se regeneran en cada build vía `pnpm run museo:update`, no se commitean)
+/downloads/
+/public/museo-cibercrimen/
+
 # vercel
 .vercel
 

@@ -23,7 +23,8 @@ export interface Tool {
     | 'Gauge'
     | 'Fish'
     | 'Inbox'
-    | 'MonitorCheck';
+    | 'MonitorCheck'
+    | 'Landmark';
 }
 
 export const tools: Tool[] = [
@@ -77,6 +78,13 @@ export const tools: Tool[] = [
     description: 'Fechas clave y eventos relevantes de Ciberseguridad.',
     href: '/calendario-ciberseguridad',
     iconName: 'Calendar',
+  },
+  {
+    slug: 'museo-cibercrimen',
+    title: 'Museo del Cibercrimen',
+    description: 'Una galería visual con hitos, personajes y momentos icónicos del cibercrimen.',
+    href: '/museo-cibercrimen',
+    iconName: 'Landmark',
   },
   {
     slug: 'generador-contrasenas',

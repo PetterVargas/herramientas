@@ -1,17 +1,19 @@
-import type { Metadata } from 'next';
 import { ToolPageHeader } from '@/components/tool-page-header';
+import { ToolJsonLd } from '@/components/tool-json-ld';
+import { buildMetadata } from '@/lib/seo';
 import { SecureSiteAnimation } from './_components/secure-site-animation';
 
-export const metadata: Metadata = {
-  title: '¿Es Seguro Este Sitio?',
-  description:
-    'Animación paso a paso que muestra cómo verificar que un sitio web es seguro: HTTPS, dominio, certificado y más.',
-  alternates: { canonical: '/verificar-sitio-seguro' },
-};
+const title = '¿Es Seguro Este Sitio?';
+const description =
+  'Animación paso a paso que muestra cómo verificar que un sitio web es seguro: HTTPS, dominio, certificado y más.';
+const path = '/verificar-sitio-seguro';
+
+export const metadata = buildMetadata({ title, description, path });
 
 export default function VerificarSitioSeguroPage() {
   return (
     <div className="flex flex-col space-y-8">
+      <ToolJsonLd title={title} description={description} path={path} />
       <ToolPageHeader
         title="¿Es Seguro Este Sitio?"
         subtitle="Una animación paso a paso de las señales que confirman que un sitio web es seguro."

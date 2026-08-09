@@ -1,16 +1,18 @@
-import type { Metadata } from 'next';
 import { ToolPageHeader } from '@/components/tool-page-header';
+import { ToolJsonLd } from '@/components/tool-json-ld';
+import { buildMetadata } from '@/lib/seo';
 import { SPFValidatorComponent } from './spf-validator-component';
 
-export const metadata: Metadata = {
-  title: 'Validador SPF',
-  description: 'Verifica y valida los registros SPF de tu dominio para mejorar la seguridad del email',
-  alternates: { canonical: '/validador-spf' },
-};
+const title = 'Validador SPF';
+const description = 'Verifica y valida los registros SPF de tu dominio para mejorar la seguridad del email';
+const path = '/validador-spf';
+
+export const metadata = buildMetadata({ title, description, path });
 
 export default function SpfValidatorPage() {
   return (
     <div>
+      <ToolJsonLd title={title} description={description} path={path} />
       <ToolPageHeader
         title="Validador SPF"
         subtitle="Verifica y valida los registros SPF de tu dominio para mejorar la seguridad del email"

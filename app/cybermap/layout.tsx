@@ -1,11 +1,17 @@
-import type { Metadata } from 'next';
+import { ToolJsonLd } from '@/components/tool-json-ld';
+import { buildMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'CyberMap',
-  description: 'Visualiza el panorama de amenazas y ciberataques en tiempo real.',
-  alternates: { canonical: '/cybermap' },
-};
+const title = 'CyberMap';
+const description = 'Visualiza el panorama de amenazas y ciberataques en tiempo real.';
+const path = '/cybermap';
+
+export const metadata = buildMetadata({ title, description, path });
 
 export default function CyberMapLayout({ children }: { children: React.ReactNode }) {
-  return children;
+  return (
+    <>
+      <ToolJsonLd title={title} description={description} path={path} />
+      {children}
+    </>
+  );
 }

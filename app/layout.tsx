@@ -4,6 +4,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { Toaster } from "@/components/ui/sonner";
+import { GoogleAnalytics } from "@/components/google-analytics";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -158,6 +159,7 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <GoogleAnalytics />
         <script
           id="theme-init"
           suppressHydrationWarning

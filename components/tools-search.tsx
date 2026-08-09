@@ -25,6 +25,7 @@ import {
   Fish,
   Inbox,
   MonitorCheck,
+  Landmark,
   type LucideIcon,
 } from 'lucide-react';
 import type { Tool } from '@/lib/tools';
@@ -49,6 +50,7 @@ const icons: Record<Tool['iconName'], LucideIcon> = {
   Fish,
   Inbox,
   MonitorCheck,
+  Landmark,
 };
 
 const MARQUEE_ROWS = 5;

@@ -57,6 +57,7 @@ export default function CyberMapPage() {
 
   return (
     <div className="bg-background relative flex h-[calc(100vh-160px)] min-h-[700px] w-full items-center justify-center overflow-hidden">
+      <h1 className="sr-only">CyberMap: mapa mundial interactivo de amenazas y ciberataques</h1>
       <TransformWrapper
         initialScale={1.15}
         minScale={0.5}

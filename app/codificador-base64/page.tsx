@@ -1,16 +1,18 @@
-import type { Metadata } from 'next';
 import { ToolPageHeader } from '@/components/tool-page-header';
+import { ToolJsonLd } from '@/components/tool-json-ld';
+import { buildMetadata } from '@/lib/seo';
 import { Base64EncoderComponent } from './base64-encoder-component';
 
-export const metadata: Metadata = {
-  title: 'Codificador/Decodificador Base64',
-  description: 'Convierte texto plano a Base64 y viceversa de forma segura',
-  alternates: { canonical: '/codificador-base64' },
-};
+const title = 'Codificador/Decodificador Base64';
+const description = 'Convierte texto plano a Base64 y viceversa de forma segura';
+const path = '/codificador-base64';
+
+export const metadata = buildMetadata({ title, description, path });
 
 export default function Base64Page() {
   return (
     <div>
+      <ToolJsonLd title={title} description={description} path={path} />
       <ToolPageHeader
         title="Codificador/Decodificador Base64"
         subtitle="Convierte texto plano a Base64 y viceversa de forma segura"
