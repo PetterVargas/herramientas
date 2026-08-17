@@ -44,22 +44,35 @@ export function MuseumGallery() {
     <>
       <div className="columns-2 gap-4 sm:columns-3 lg:columns-4">
         {photos.map((photo) => (
-          <button
-            key={photo.id}
-            type="button"
-            onClick={() => setSelected(photo)}
-            className="focus-visible:ring-ring group mb-4 block w-full break-inside-avoid overflow-hidden rounded-lg focus-visible:ring-2 focus-visible:outline-none"
-          >
-            <img
-              src={`/museo-cibercrimen/${photo.id}-thumb.webp`}
-              alt={photo.alt}
-              width={photo.width}
-              height={photo.height}
-              loading="lazy"
-              decoding="async"
-              className="w-full object-cover transition-transform duration-300 group-hover:scale-105"
-            />
-          </button>
+          <div key={photo.id} className="mb-4 break-inside-avoid overflow-hidden rounded-lg border border-border">
+            <button
+              type="button"
+              onClick={() => setSelected(photo)}
+              className="focus-visible:ring-ring group block w-full overflow-hidden focus-visible:ring-2 focus-visible:outline-none"
+            >
+              <img
+                src={`/museo-cibercrimen/${photo.id}-thumb.webp`}
+                alt={photo.alt}
+                width={photo.width}
+                height={photo.height}
+                loading="lazy"
+                decoding="async"
+                className="w-full object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+            </button>
+            <p className="bg-card px-2 py-1.5 text-xs text-muted-foreground">
+              Foto de{' '}
+              <a
+                href={photo.credit.profileUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="text-foreground font-medium underline underline-offset-2"
+              >
+                {photo.credit.name}
+              </a>
+            </p>
+          </div>
         ))}
       </div>
 

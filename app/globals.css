@@ -15,7 +15,6 @@
 
   --primary: #4dae84;
   --primary-foreground: var(--color-white);
-  --primary-rgb: 77, 174, 132;
 
   --secondary: var(--color-neutral-100);
   --secondary-foreground: var(--color-neutral-900);
@@ -46,7 +45,6 @@
 
   --primary: #4dae84;
   --primary-foreground: var(--color-white);
-  --primary-rgb: 77, 174, 132;
 
   --secondary: var(--color-neutral-800);
   --secondary-foreground: var(--color-neutral-50);
