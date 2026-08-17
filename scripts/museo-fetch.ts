@@ -55,9 +55,16 @@ async function main() {
   const cachePath = join(DIR_DOWNLOADS, 'raw.json');
   const photos: Photo[] = [];
 
-  if (USE_CACHE && existsSync(cachePath)) {
+  const cached: Photo[] = USE_CACHE && existsSync(cachePath)
+    ? JSON.parse(await fs.readFile(cachePath, 'utf8'))
+    : [];
+
+  // Una caché vacía (colección sin fotos en el momento del fetch anterior) no
+  // cuenta como válida: si confiáramos en ella, una foto agregada después a
+  // la colección nunca se volvería a detectar en builds futuros.
+  if (cached.length > 0) {
     console.log('[museo-fetch] Usando caché local...');
-    photos.push(...JSON.parse(await fs.readFile(cachePath, 'utf8')));
+    photos.push(...cached);
   } else {
     for (let page = 1; ; page++) {
       console.log('[museo-fetch] Página:', page);

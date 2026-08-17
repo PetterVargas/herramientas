@@ -32,7 +32,7 @@ export const tools: Tool[] = [
     slug: 'conan',
     title: 'Conan Rastreo Informático',
     description: 'Tracking basado en direcciones IP para la detección de amenazas.',
-    href: `https://app.divisioncero.com/home/conan?`,
+    href: 'https://app.divisioncero.com/home/conan',
     external: true,
     iconName: 'Radar',
   },

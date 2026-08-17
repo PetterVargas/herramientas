@@ -16,23 +16,23 @@ import {
 } from 'lucide-react';
 import { ThemeToggle } from '@/components/theme-toggle';
 
-const coCreemosUrl = `https://app.divisioncero.com/auth/sign-up?`;
+const coCreemosUrl = 'https://app.divisioncero.com/auth/sign-up';
 
 const primaryLinks = [
   {
     icon: GraduationCap,
     text: 'CyberAcademy',
-    url: `https://cyberacademy.divisioncero.com/?`,
+    url: 'https://cyberacademy.divisioncero.com/',
   },
   {
     icon: BookOpen,
     text: 'Kudo',
-    url: `https://kudo.divisioncero.com?`,
+    url: 'https://kudo.divisioncero.com',
   },
   {
     icon: LayoutDashboard,
     text: 'Plataforma',
-    url: `https://app.divisioncero.com/home`,
+    url: 'https://app.divisioncero.com/home',
   },
 ];
 
@@ -41,13 +41,13 @@ const resourceLinks = [
     icon: Newspaper,
     text: 'Blog',
     description: 'Artículos y actualizaciones sobre ciberseguridad',
-    url: `https://divisioncero.com/blog?`,
+    url: 'https://divisioncero.com/blog',
   },
   {
     icon: FileText,
     text: 'Open Sources',
     description: 'Proyectos y contribuciones abiertos',
-    url: `https://divisioncero.com/open-source?`,
+    url: 'https://divisioncero.com/open-source',
   },
   {
     icon: Wrench,
@@ -59,7 +59,7 @@ const resourceLinks = [
     icon: BookOpen,
     text: 'Releases',
     description: 'Actualizaciones sobre la plataforma',
-    url: `https://divisioncero.com/releases?`,
+    url: 'https://divisioncero.com/releases',
   },
 ];
 

@@ -12,11 +12,6 @@ import {
 
 import type { GalleryPhoto } from '../_lib/types';
 
-// Requerido por las guidelines de la Unsplash API: atribuir al fotógrafo y a
-// Unsplash con utm_source/utm_medium en cualquier link de vuelta.
-// https://help.unsplash.com/en/articles/2511315
-const UTM = 'utm_source=herramientas-divisioncero&utm_medium=referral';
-
 export function PhotoDialog({
   photo,
   onClose,
@@ -46,7 +41,7 @@ export function PhotoDialog({
               <p>
                 Foto de{' '}
                 <a
-                  href={`${photo.credit.profileUrl}?${UTM}`}
+                  href={photo.credit.profileUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-foreground font-medium underline underline-offset-2"
@@ -55,7 +50,7 @@ export function PhotoDialog({
                 </a>{' '}
                 en{' '}
                 <a
-                  href={`https://unsplash.com/?${UTM}`}
+                  href="https://unsplash.com/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-foreground font-medium underline underline-offset-2"
@@ -65,7 +60,7 @@ export function PhotoDialog({
               </p>
 
               <a
-                href={`${photo.unsplashUrl}?${UTM}`}
+                href={photo.unsplashUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-foreground inline-flex items-center gap-1"

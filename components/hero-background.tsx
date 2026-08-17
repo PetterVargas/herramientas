@@ -49,13 +49,30 @@ export function HeroBackground({ className }: { className?: string }) {
     let particles: Particle[] = [];
     let pulses: Pulse[] = [];
     let lastPulseAt = 0;
-    let primaryColor = '77, 174, 132';
+    let primaryColor = '10, 10, 10';
 
     const readPrimaryColor = () => {
-      const resolved = getComputedStyle(document.documentElement)
-        .getPropertyValue('--primary-rgb')
-        .trim();
-      if (resolved) primaryColor = resolved;
+      // Resolve the CSS variable (may be hsl()/oklch()/lab()/etc.) to an
+      // "r, g, b" triple by painting it onto a 1x1 canvas and reading the
+      // pixel back — this normalizes any CSS color space to sRGB, unlike
+      // getComputedStyle().color which can return non-rgb() functional
+      // notation (e.g. lab(...)) that a regex won't match.
+      const probe = document.createElement('div');
+      probe.style.color = 'var(--color-foreground)';
+      probe.style.display = 'none';
+      document.body.appendChild(probe);
+      const resolved = getComputedStyle(probe).color;
+      document.body.removeChild(probe);
+
+      const swatch = document.createElement('canvas');
+      swatch.width = 1;
+      swatch.height = 1;
+      const swatchCtx = swatch.getContext('2d');
+      if (!swatchCtx) return;
+      swatchCtx.fillStyle = resolved;
+      swatchCtx.fillRect(0, 0, 1, 1);
+      const [r, g, b] = swatchCtx.getImageData(0, 0, 1, 1).data;
+      primaryColor = `${r}, ${g}, ${b}`;
     };
 
     const createParticles = () => {
