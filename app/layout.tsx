@@ -19,7 +19,7 @@ const geistMono = Geist_Mono({
 
 const siteName = "Herramientas · DivisionCero";
 const siteDescription =
-  "Herramientas gratuitas de Ciberseguridad para el día a día: generador de contraseñas, hash, QR, UUID, validador SPF, codificadores Base64/URL y más, por DivisionCero.";
+  "Herramientas gratuitas de Ciberseguridad para el día a día: generador de contraseñas, hash, QR, UUID, validador SPF, codificadores Base64/URL, cuál es mi IP y más, por DivisionCero.";
 const siteUrl = "https://herramientas.divisioncero.com";
 
 export const metadata: Metadata = {
@@ -38,6 +38,9 @@ export const metadata: Metadata = {
     "validador SPF",
     "codificador Base64",
     "codificador URL",
+    "cuál es mi IP",
+    "checklist de ciberseguridad",
+    "buenas prácticas de ciberseguridad",
     "DivisionCero",
   ],
   authors: [{ name: "DivisionCero", url: "https://divisioncero.com" }],

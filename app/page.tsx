@@ -1,5 +1,6 @@
 import { HeroBackground } from '@/components/hero-background';
 import { ToolsSearch } from '@/components/tools-search';
+import { ToolsByCategory } from '@/components/tools-by-category';
 import { tools } from '@/lib/tools';
 
 const siteUrl = 'https://herramientas.divisioncero.com';
@@ -51,6 +52,8 @@ export default function Home() {
 
         <ToolsSearch tools={tools} />
       </div>
+
+      <ToolsByCategory tools={tools} />
     </main>
   );
 }
