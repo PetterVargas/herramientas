@@ -28,6 +28,16 @@ import {
   ClipboardCheck,
   ShieldAlert,
   Users,
+  Bug,
+  Lock,
+  IdCard,
+  FileDigit,
+  FileSearch,
+  FileCode2,
+  Code2,
+  UserRoundSearch,
+  MessageCircleWarning,
+  BadgeAlert,
   type LucideIcon,
 } from 'lucide-react';
 import type { Tool } from '@/lib/tools';
@@ -59,6 +69,16 @@ export const toolIcons: Record<Tool['iconName'], LucideIcon> = {
   ClipboardCheck,
   ShieldAlert,
   Users,
+  Bug,
+  Lock,
+  IdCard,
+  FileDigit,
+  FileSearch,
+  FileCode2,
+  Code2,
+  UserRoundSearch,
+  MessageCircleWarning,
+  BadgeAlert,
 };
 
 export function ToolCard({ tool }: { tool: Tool }) {

@@ -1,4 +1,5 @@
 import { ToolPageHeader } from '@/components/tool-page-header';
+import { ToolFullscreen } from '@/components/tool-fullscreen';
 import { ToolJsonLd } from '@/components/tool-json-ld';
 import { buildMetadata } from '@/lib/seo';
 
@@ -23,7 +24,7 @@ export default function FlujoAutenticacionAutorizacionPage() {
         subtitle="Entiende paso a paso cómo se valida una identidad, se resuelve su rol y se autorizan sus acciones — en accesos por API y por MCP."
       />
 
-      <div className="container mx-auto max-w-5xl space-y-12 px-4 py-8">
+      <ToolFullscreen className="container mx-auto max-w-5xl space-y-12 px-4 py-8">
         <ConceptGlossary />
 
         <div className="flex flex-col items-center">
@@ -34,7 +35,7 @@ export default function FlujoAutenticacionAutorizacionPage() {
           <ComparisonCards title="Roles fijos vs. roles personalizados" items={roleComparison} />
           <ComparisonCards title="Autenticación por API vs. por MCP" items={authComparison} />
         </div>
-      </div>
+      </ToolFullscreen>
     </div>
   );
 }

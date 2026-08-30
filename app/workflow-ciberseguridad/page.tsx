@@ -1,4 +1,5 @@
 import { ToolPageHeader } from '@/components/tool-page-header';
+import { ToolFullscreen } from '@/components/tool-fullscreen';
 import { ToolJsonLd } from '@/components/tool-json-ld';
 import { buildMetadata } from '@/lib/seo';
 import { WorkflowDiagram } from './_components/workflow-diagram';
@@ -19,9 +20,9 @@ export default function WorkflowPage() {
         subtitle="Un overview de cómo funciona, capacitar, optimizar y automatizar tus procesos de Ciberseguridad."
       />
 
-      <div className="w-full">
+      <ToolFullscreen className="w-full">
         <WorkflowDiagram />
-      </div>
+      </ToolFullscreen>
     </div>
   );
 }

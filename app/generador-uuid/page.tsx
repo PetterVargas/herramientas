@@ -1,4 +1,5 @@
 import { ToolPageHeader } from '@/components/tool-page-header';
+import { ToolFullscreen } from '@/components/tool-fullscreen';
 import { ToolJsonLd } from '@/components/tool-json-ld';
 import { buildMetadata } from '@/lib/seo';
 import { UuidGeneratorComponent } from './uuid-generator-component';
@@ -18,11 +19,11 @@ export default function UuidGeneratorPage() {
         subtitle="Genera identificadores únicos universales (UUID v4) aleatorios"
       />
 
-      <div className="container mx-auto">
+      <ToolFullscreen className="container mx-auto">
         <div className="flex flex-1 flex-col items-center justify-center py-12">
           <UuidGeneratorComponent />
         </div>
-      </div>
+      </ToolFullscreen>
     </div>
   );
 }

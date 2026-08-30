@@ -1,4 +1,5 @@
 import { ToolPageHeader } from '@/components/tool-page-header';
+import { ToolFullscreen } from '@/components/tool-fullscreen';
 import { ToolJsonLd } from '@/components/tool-json-ld';
 import { buildMetadata } from '@/lib/seo';
 import { InboxSimulator } from './_components/inbox-simulator';
@@ -19,9 +20,9 @@ export default function IdentificadorCorreosSegurosPage() {
         subtitle="Revisa la bandeja de entrada simulada y marca cada correo como seguro o no seguro."
       />
 
-      <div className="container mx-auto max-w-5xl px-4 py-8">
+      <ToolFullscreen className="container mx-auto max-w-5xl px-4 py-8">
         <InboxSimulator />
-      </div>
+      </ToolFullscreen>
     </div>
   );
 }

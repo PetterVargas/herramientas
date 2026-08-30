@@ -1,4 +1,5 @@
 import { ToolPageHeader } from '@/components/tool-page-header';
+import { ToolFullscreen } from '@/components/tool-fullscreen';
 import { ToolJsonLd } from '@/components/tool-json-ld';
 import { buildMetadata } from '@/lib/seo';
 import { IcebreakerGrid } from './_components/icebreaker-grid';
@@ -18,9 +19,9 @@ export default function RompehielosPage() {
         subtitle="Co-Creando Ciberseguridad, conocernos mejor y divertirnos juntos."
       />
 
-      <div className="container mx-auto max-w-7xl py-8">
+      <ToolFullscreen className="container mx-auto max-w-7xl py-8">
         <IcebreakerGrid />
-      </div>
+      </ToolFullscreen>
     </div>
   );
 }

@@ -45,7 +45,17 @@ export interface Tool {
     | 'Scale'
     | 'ClipboardCheck'
     | 'ShieldAlert'
-    | 'Users';
+    | 'Users'
+    | 'Bug'
+    | 'Lock'
+    | 'IdCard'
+    | 'FileDigit'
+    | 'FileSearch'
+    | 'FileCode2'
+    | 'Code2'
+    | 'UserRoundSearch'
+    | 'MessageCircleWarning'
+    | 'BadgeAlert';
 }
 
 export const tools: Tool[] = [
@@ -164,6 +174,14 @@ export const tools: Tool[] = [
     iconName: 'Link2',
   },
   {
+    slug: 'codificador-hexadecimal',
+    title: 'Codif/Decod Hexadecimal',
+    description: 'Codifica y decodifica texto en hexadecimal.',
+    href: '/codificador-hexadecimal',
+    categories: ['Utilidades'],
+    iconName: 'Code2',
+  },
+  {
     slug: 'generador-uuid',
     title: 'Generador de UUID',
     description: 'Genera identificadores únicos universales (UUID).',
@@ -194,6 +212,15 @@ export const tools: Tool[] = [
     href: '/deteccion-phishing',
     categories: ['Correo y Phishing', 'Aprendizaje y Concientización'],
     iconName: 'Fish',
+  },
+  {
+    slug: 'suplantacion-marcas',
+    title: '10 ejemplos de suplantación de marcas',
+    description:
+      'Ejemplos ilustrados de suplantación de marcas en Instagram, Facebook, WhatsApp, sitios web y más, con señales de alerta y cómo verificar cuentas oficiales.',
+    href: '/suplantacion-marcas',
+    categories: ['Correo y Phishing', 'Aprendizaje y Concientización'],
+    iconName: 'BadgeAlert',
   },
   {
     slug: 'identificador-correos-seguros',
@@ -262,5 +289,86 @@ export const tools: Tool[] = [
     href: '/flujo-autenticacion-autorizacion',
     categories: ['Aprendizaje y Concientización', 'Cumplimiento y Gestión'],
     iconName: 'Users',
+  },
+  {
+    slug: 'detector-codigo-vulnerable',
+    title: 'Detector de Código Vulnerable',
+    description:
+      'Practica identificando código vulnerable vs. seguro: OWASP Top 10, Top 10 de IA/LLM, secretos hardcodeados, SCA, SAST, DAST y pentesting.',
+    href: '/detector-codigo-vulnerable',
+    categories: ['Aprendizaje y Concientización', 'Cumplimiento y Gestión'],
+    iconName: 'Bug',
+  },
+  {
+    slug: 'cifrado-pgp',
+    title: 'Cifrado PGP Explicado',
+    description:
+      'Cómo funciona el cifrado PGP paso a paso: claves públicas y privadas, cifrado híbrido y firma digital.',
+    href: '/cifrado-pgp',
+    categories: ['Criptografía', 'Aprendizaje y Concientización'],
+    iconName: 'Lock',
+  },
+  {
+    slug: 'que-es-pii',
+    title: '¿Qué es un dato PII?',
+    description:
+      'Aprende qué es información de identificación personal (PII), sus categorías y cómo protegerla, con un quiz para practicar.',
+    href: '/que-es-pii',
+    categories: ['Aprendizaje y Concientización', 'Cumplimiento y Gestión'],
+    iconName: 'IdCard',
+  },
+  {
+    slug: 'que-es-grooming',
+    title: '¿Qué es el grooming?',
+    description:
+      'Herramienta didáctica para padres, niños, niñas y adolescentes: fases del grooming, señales de alerta y qué hacer, con un quiz para practicar.',
+    href: '/que-es-grooming',
+    categories: ['Aprendizaje y Concientización'],
+    iconName: 'UserRoundSearch',
+  },
+  {
+    slug: 'que-es-sexting',
+    title: '¿Qué es el sexting?',
+    description:
+      'Herramienta didáctica sobre los riesgos del sexting: pérdida de control, permanencia digital, consecuencias legales y presión, con un quiz para practicar.',
+    href: '/que-es-sexting',
+    categories: ['Aprendizaje y Concientización'],
+    iconName: 'MessageCircleWarning',
+  },
+  {
+    slug: 'que-es-sextorsion',
+    title: '¿Qué es la sextorsión?',
+    description:
+      'Herramienta didáctica sobre cómo opera la sextorsión, sus fases, señales de alerta y qué hacer si ocurre, con un quiz para practicar.',
+    href: '/que-es-sextorsion',
+    categories: ['Aprendizaje y Concientización'],
+    iconName: 'ShieldAlert',
+  },
+  {
+    slug: 'hash-archivo',
+    title: 'Hash de Archivo',
+    description:
+      'Calcula el MD5, SHA-1, SHA-256 y SHA-512 de un archivo (PDF, ZIP, RAR, imágenes u ofimática) sin subirlo a ningún servidor.',
+    href: '/hash-archivo',
+    categories: ['Utilidades', 'Criptografía'],
+    iconName: 'FileDigit',
+  },
+  {
+    slug: 'analizador-metadatos',
+    title: 'Analizador de Metadatos',
+    description:
+      'Descubre los metadatos ocultos de una imagen o documento ofimático (autor, fechas, GPS) y descarga un reporte en PDF.',
+    href: '/analizador-metadatos',
+    categories: ['Utilidades', 'Rastreo'],
+    iconName: 'FileSearch',
+  },
+  {
+    slug: 'visor-hexadecimal',
+    title: 'Visor Hexadecimal',
+    description:
+      'Visualiza el contenido byte a byte de cualquier archivo en hexadecimal y ASCII, con búsqueda de texto o bytes.',
+    href: '/visor-hexadecimal',
+    categories: ['Utilidades'],
+    iconName: 'FileCode2',
   },
 ];

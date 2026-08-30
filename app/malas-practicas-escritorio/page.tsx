@@ -1,4 +1,5 @@
 import { ToolPageHeader } from '@/components/tool-page-header';
+import { ToolFullscreen } from '@/components/tool-fullscreen';
 import { ToolJsonLd } from '@/components/tool-json-ld';
 import { buildMetadata } from '@/lib/seo';
 import { DeskScene } from './_components/desk-scene';
@@ -19,9 +20,9 @@ export default function MalasPracticasEscritorioPage() {
         subtitle="Haz clic en cada mala práctica de seguridad que encuentres en el escritorio."
       />
 
-      <div className="container mx-auto max-w-5xl px-4 py-8">
+      <ToolFullscreen className="container mx-auto max-w-5xl px-4 py-8">
         <DeskScene />
-      </div>
+      </ToolFullscreen>
     </div>
   );
 }

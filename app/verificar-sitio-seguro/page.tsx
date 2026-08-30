@@ -1,4 +1,5 @@
 import { ToolPageHeader } from '@/components/tool-page-header';
+import { ToolFullscreen } from '@/components/tool-fullscreen';
 import { ToolJsonLd } from '@/components/tool-json-ld';
 import { buildMetadata } from '@/lib/seo';
 import { SecureSiteAnimation } from './_components/secure-site-animation';
@@ -19,9 +20,9 @@ export default function VerificarSitioSeguroPage() {
         subtitle="Una animación paso a paso de las señales que confirman que un sitio web es seguro."
       />
 
-      <div className="container mx-auto flex flex-col items-center px-4 py-8">
+      <ToolFullscreen className="container mx-auto flex flex-col items-center px-4 py-8">
         <SecureSiteAnimation />
-      </div>
+      </ToolFullscreen>
     </div>
   );
 }

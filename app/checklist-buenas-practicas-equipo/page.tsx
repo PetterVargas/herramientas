@@ -1,4 +1,5 @@
 import { ToolPageHeader } from '@/components/tool-page-header';
+import { ToolFullscreen } from '@/components/tool-fullscreen';
 import { ToolJsonLd } from '@/components/tool-json-ld';
 import { ChecklistGroup } from '@/components/checklist-group';
 import { buildMetadata } from '@/lib/seo';
@@ -20,12 +21,12 @@ export default function ChecklistBuenasPracticasEquipoPage() {
         subtitle="Verifica que tu equipo y sus colaboradores cumplan con las protecciones básicas de ciberseguridad. Tu progreso se guarda en este navegador."
       />
 
-      <div className="container mx-auto max-w-3xl px-4 py-8">
+      <ToolFullscreen className="container mx-auto max-w-3xl px-4 py-8">
         <ChecklistGroup
           storageKey="herramientas:checklist-buenas-practicas-equipo"
           sections={teamChecklistSections}
         />
-      </div>
+      </ToolFullscreen>
     </div>
   );
 }

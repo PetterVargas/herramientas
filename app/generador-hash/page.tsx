@@ -1,4 +1,5 @@
 import { ToolPageHeader } from '@/components/tool-page-header';
+import { ToolFullscreen } from '@/components/tool-fullscreen';
 import { ToolJsonLd } from '@/components/tool-json-ld';
 import { buildMetadata } from '@/lib/seo';
 import { HashGeneratorComponent } from './hash-generator-component';
@@ -18,11 +19,11 @@ export default function HashGeneratorPage() {
         subtitle="Genera hashes MD5, SHA-1, SHA-256 y SHA-512 para verificación de integridad"
       />
 
-      <div className="container mx-auto">
+      <ToolFullscreen className="container mx-auto">
         <div className="flex flex-1 flex-col items-center justify-center py-12">
           <HashGeneratorComponent />
         </div>
-      </div>
+      </ToolFullscreen>
     </div>
   );
 }

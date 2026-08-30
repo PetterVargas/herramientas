@@ -1,4 +1,5 @@
 import { ToolPageHeader } from '@/components/tool-page-header';
+import { ToolFullscreen } from '@/components/tool-fullscreen';
 import { ToolJsonLd } from '@/components/tool-json-ld';
 import { buildMetadata } from '@/lib/seo';
 import { IpInfoComponent } from './ip-info-component';
@@ -19,11 +20,11 @@ export default function CualEsMiIpPage() {
         subtitle="Consulta la información pública que expone tu conexión al visitar esta página."
       />
 
-      <div className="container mx-auto">
+      <ToolFullscreen className="container mx-auto">
         <div className="flex flex-1 flex-col items-center justify-center py-12">
           <IpInfoComponent />
         </div>
-      </div>
+      </ToolFullscreen>
     </div>
   );
 }

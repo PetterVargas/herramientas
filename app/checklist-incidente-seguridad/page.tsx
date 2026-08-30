@@ -1,4 +1,5 @@
 import { ToolPageHeader } from '@/components/tool-page-header';
+import { ToolFullscreen } from '@/components/tool-fullscreen';
 import { ToolJsonLd } from '@/components/tool-json-ld';
 import { buildMetadata } from '@/lib/seo';
 import { IncidentChecklist } from './_components/incident-checklist';
@@ -19,9 +20,9 @@ export default function ChecklistIncidenteSeguridadPage() {
         subtitle="Qué hacer de inmediato ante un incidente de seguridad, como colaborador o como líder del equipo. Tu progreso se guarda en este navegador."
       />
 
-      <div className="container mx-auto max-w-3xl px-4 py-8">
+      <ToolFullscreen className="container mx-auto max-w-3xl px-4 py-8">
         <IncidentChecklist />
-      </div>
+      </ToolFullscreen>
     </div>
   );
 }

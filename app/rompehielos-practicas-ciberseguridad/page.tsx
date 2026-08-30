@@ -1,4 +1,5 @@
 import { ToolPageHeader } from '@/components/tool-page-header';
+import { ToolFullscreen } from '@/components/tool-fullscreen';
 import { ToolJsonLd } from '@/components/tool-json-ld';
 import { buildMetadata } from '@/lib/seo';
 import { PracticeGrid } from './_components/practice-grid';
@@ -19,9 +20,9 @@ export default function RompehielosPracticasCiberseguridadPage() {
         subtitle="Discutan en equipo si cada práctica de ciberseguridad es buena o mala, y descubran por qué."
       />
 
-      <div className="container mx-auto max-w-7xl py-8">
+      <ToolFullscreen className="container mx-auto max-w-7xl py-8">
         <PracticeGrid />
-      </div>
+      </ToolFullscreen>
     </div>
   );
 }

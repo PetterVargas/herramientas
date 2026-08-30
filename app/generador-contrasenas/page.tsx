@@ -1,4 +1,5 @@
 import { ToolPageHeader } from '@/components/tool-page-header';
+import { ToolFullscreen } from '@/components/tool-fullscreen';
 import { ToolJsonLd } from '@/components/tool-json-ld';
 import { buildMetadata } from '@/lib/seo';
 import { PasswordGeneratorComponent } from './password-generator-component';
@@ -18,11 +19,11 @@ export default function PasswordGeneratorPage() {
         subtitle="Genera contraseñas fuertes y seguras para tus cuentas"
       />
 
-      <div className="container mx-auto">
+      <ToolFullscreen className="container mx-auto">
         <div className="flex flex-1 flex-col items-center justify-center py-12">
           <PasswordGeneratorComponent />
         </div>
-      </div>
+      </ToolFullscreen>
     </div>
   );
 }
