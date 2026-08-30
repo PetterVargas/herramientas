@@ -4,6 +4,8 @@ import { useState } from 'react';
 
 import { TransformComponent, TransformWrapper } from 'react-zoom-pan-pinch';
 
+import { ToolFullscreen } from '@/components/tool-fullscreen';
+
 import { CountryDialog } from './_components/country-dialog';
 import { FloatingNavMenu } from './_components/floating-nav-menu';
 import type { CountryDetails } from './_lib/types';
@@ -56,7 +58,7 @@ export default function CyberMapPage() {
   }
 
   return (
-    <div className="bg-background relative flex h-[calc(100vh-160px)] min-h-[700px] w-full items-center justify-center overflow-hidden">
+    <ToolFullscreen className="bg-background flex h-[calc(100vh-160px)] min-h-[700px] w-full items-center justify-center overflow-hidden">
       <h1 className="sr-only">CyberMap: mapa mundial interactivo de amenazas y ciberataques</h1>
       <TransformWrapper
         initialScale={1.15}
@@ -102,7 +104,7 @@ export default function CyberMapPage() {
                   fill: #262626;
                   stroke: #ffffff;
                   stroke-width: 0.5;
-                  transition: fill 0.3s ease;
+                  transition: fill 0.3s ease, stroke 0.3s ease;
                 }
                 .landxx:hover {
                   fill:rgb(116, 116, 116);
@@ -117,6 +119,23 @@ export default function CyberMapPage() {
                     fill: #262626;
                     fill-opacity:1;
                   }
+                .labelsxx {
+                  fill: #ffffff;
+                  transition: fill 0.3s ease;
+                }
+                :root:not(.dark) .landxx {
+                  fill: #d4d4d4;
+                  stroke: #262626;
+                }
+                :root:not(.dark) .landxx:hover {
+                  fill: #a3a3a3;
+                }
+                :root:not(.dark) .antxx {
+                  fill: #d4d4d4;
+                }
+                :root:not(.dark) .labelsxx {
+                  fill: #171717;
+                }
                 .noxx
                   {
                     opacity: 0;
@@ -11032,11 +11051,11 @@ export default function CyberMapPage() {
               />
             </g>
 
-            <g id="labels" fill="white">
+            <g id="labels" className="labelsxx" textAnchor="middle">
               <text
                 y="718.91302"
                 fontSize="10px"
-                x="2204.7449"
+                x="2215.9949"
                 id="txt-id"
                 className="id"
               >
@@ -11045,7 +11064,7 @@ export default function CyberMapPage() {
               <text
                 y="563.49451"
                 fontSize="10px"
-                x="1653.0315"
+                x="1659.2815"
                 id="txt-ye"
                 className="ye"
               >
@@ -11054,7 +11073,7 @@ export default function CyberMapPage() {
               <text
                 y="426.23184"
                 fontSize="8px"
-                x="1562.9727"
+                x="1568.9727"
                 id="txt-jo"
                 className="jo"
               >
@@ -11063,7 +11082,7 @@ export default function CyberMapPage() {
               <text
                 y="496.68536"
                 fontSize="8px"
-                x="1689.6088"
+                x="1692.6088"
                 id="txt-ae"
                 className="ae"
               >
@@ -11072,7 +11091,7 @@ export default function CyberMapPage() {
               <text
                 y="480.24515"
                 fontSize="5px"
-                x="1672.6198"
+                x="1675.7448"
                 id="txt-qa"
                 className="qa"
               >
@@ -11081,7 +11100,7 @@ export default function CyberMapPage() {
               <text
                 y="471.52017"
                 fontSize="5px"
-                x="1671.162"
+                x="1675.5370"
                 id="txt-bh"
                 className="bh"
               >
@@ -11090,7 +11109,7 @@ export default function CyberMapPage() {
               <text
                 y="445.75217"
                 fontSize="5px"
-                x="1643.0693"
+                x="1646.8193"
                 id="txt-kw"
                 className="kw"
               >
@@ -11099,7 +11118,7 @@ export default function CyberMapPage() {
               <text
                 y="405.78354"
                 fontSize="10px"
-                x="1764.6956"
+                x="1778.4456"
                 id="txt-af"
                 className="af"
               >
@@ -11108,7 +11127,7 @@ export default function CyberMapPage() {
               <text
                 y="441.45355"
                 fontSize="10px"
-                x="1800.5222"
+                x="1810.5222"
                 id="txt-pk"
                 className="pk"
               >
@@ -11117,7 +11136,7 @@ export default function CyberMapPage() {
               <text
                 y="491.64124"
                 fontSize="8px"
-                x="1958.4435"
+                x="1968.4435"
                 id="txt-bd"
                 className="bd"
               >
@@ -11126,7 +11145,7 @@ export default function CyberMapPage() {
               <text
                 y="388.75128"
                 fontSize="10px"
-                x="2281.5994"
+                x="2287.8494"
                 id="txt-jp"
                 className="jp"
               >
@@ -11135,7 +11154,7 @@ export default function CyberMapPage() {
               <text
                 y="570.96667"
                 fontSize="10px"
-                x="2056.332"
+                x="2066.3320"
                 id="txt-th"
                 className="th"
               >
@@ -11144,7 +11163,7 @@ export default function CyberMapPage() {
               <text
                 y="754.63202"
                 fontSize="8px"
-                x="2402.1165"
+                x="2418.1165"
                 id="txt-pg"
                 className="pg"
               >
@@ -11153,7 +11172,7 @@ export default function CyberMapPage() {
               <text
                 y="415.19803"
                 fontSize="10px"
-                x="1600.7949"
+                x="1605.7949"
                 id="txt-iq"
                 className="iq"
               >
@@ -11162,7 +11181,7 @@ export default function CyberMapPage() {
               <text
                 y="519.06909"
                 fontSize="10px"
-                x="2008.7035"
+                x="2017.4535"
                 id="txt-mm"
                 className="mm"
               >
@@ -11171,7 +11190,7 @@ export default function CyberMapPage() {
               <text
                 y="397.2218"
                 fontSize="10px"
-                x="1569.1798"
+                x="1575.4298"
                 id="txt-sy"
                 className="sy"
               >
@@ -11180,7 +11199,7 @@ export default function CyberMapPage() {
               <text
                 y="339.78799"
                 fontSize="8px"
-                x="1816.6521"
+                x="1826.6521"
                 id="txt-kg"
                 className="kg"
               >
@@ -11189,7 +11208,7 @@ export default function CyberMapPage() {
               <text
                 y="778.375"
                 fontSize="8px"
-                x="2505.9033"
+                x="2520.9033"
                 id="txt-sb"
                 className="sb"
               >
@@ -11198,7 +11217,7 @@ export default function CyberMapPage() {
               <text
                 y="849.11292"
                 fontSize="8px"
-                x="2555.5002"
+                x="2562.5002"
                 id="txt-vu"
                 className="vu"
               >
@@ -11207,31 +11226,43 @@ export default function CyberMapPage() {
               <text
                 y="850.37616"
                 fontSize="5px"
-                x="2637.0676"
+                x="2639.5676"
                 id="txt-fj"
                 className="fj"
               >
                 Fiji
               </text>
-              <text y="884" fontSize="5px" x="2679" id="txt-to" className="to">
+              <text
+                y="884"
+                fontSize="5px"
+                x="2682.1250"
+                id="txt-to"
+                className="to"
+              >
                 Tonga
               </text>
               <text
                 y="817.42334"
                 fontSize="5px"
-                x="2718.1204"
+                x="2721.2454"
                 id="txt-ws"
                 className="ws"
               >
                 Samoa
               </text>
-              <text y="772" fontSize="5px" x="2652" id="txt-tv" className="tv">
+              <text
+                y="772"
+                fontSize="5px"
+                x="2655.7500"
+                id="txt-tv"
+                className="tv"
+              >
                 Tuvalu
               </text>
               <text
                 y="640.78497"
                 fontSize="5px"
-                x="2611"
+                x="2621.0000"
                 id="txt-mh"
                 className="mh"
               >
@@ -11240,7 +11271,7 @@ export default function CyberMapPage() {
               <text
                 y="639.91803"
                 fontSize="5px"
-                x="2505"
+                x="2511.2500"
                 id="txt-fm"
                 className="fm"
               >
@@ -11249,7 +11280,7 @@ export default function CyberMapPage() {
               <text
                 y="682.146"
                 fontSize="5px"
-                x="2553"
+                x="2556.1250"
                 id="txt-nr"
                 className="nr"
               >
@@ -11258,7 +11289,7 @@ export default function CyberMapPage() {
               <text
                 y="511.08319"
                 fontSize="10px"
-                x="1722.2465"
+                x="1727.2465"
                 id="txt-om"
                 className="om"
               >
@@ -11267,7 +11298,7 @@ export default function CyberMapPage() {
               <text
                 y="489.68729"
                 fontSize="10px"
-                x="1618.4956"
+                x="1633.4956"
                 id="txt-sa"
                 className="sa"
               >
@@ -11276,7 +11307,7 @@ export default function CyberMapPage() {
               <text
                 y="581.89429"
                 fontSize="8px"
-                x="2118.79"
+                x="2125.7900"
                 id="txt-vn"
                 className="vn"
               >
@@ -11285,7 +11316,7 @@ export default function CyberMapPage() {
               <text
                 y="513.91119"
                 fontSize="10px"
-                x="1874.1437"
+                x="1880.3937"
                 id="txt-in"
                 className="in"
               >
@@ -11294,7 +11325,7 @@ export default function CyberMapPage() {
               <text
                 y="663.06677"
                 fontSize="10px"
-                x="2064.6731"
+                x="2074.6731"
                 id="txt-my"
                 className="my"
               >
@@ -11303,7 +11334,7 @@ export default function CyberMapPage() {
               <text
                 y="689.21808"
                 fontSize="5px"
-                x="2089.0349"
+                x="2094.6599"
                 id="txt-sg"
                 className="sg"
               >
@@ -11312,7 +11343,7 @@ export default function CyberMapPage() {
               <text
                 y="660.15814"
                 fontSize="5px"
-                x="2158.1248"
+                x="2161.8748"
                 id="txt-bn"
                 className="bn"
               >
@@ -11321,7 +11352,7 @@ export default function CyberMapPage() {
               <text
                 y="635.40137"
                 fontSize="5px"
-                x="2318.3247"
+                x="2321.4497"
                 id="txt-pw"
                 className="pw"
               >
@@ -11330,7 +11361,7 @@ export default function CyberMapPage() {
               <text
                 y="588.14905"
                 fontSize="10px"
-                x="2212.7905"
+                x="2226.5405"
                 id="txt-ph"
                 className="ph"
               >
@@ -11339,7 +11370,7 @@ export default function CyberMapPage() {
               <text
                 y="365.98386"
                 fontSize="8px"
-                x="1796.0209"
+                x="1806.0209"
                 id="txt-tj"
                 className="tj"
               >
@@ -11348,7 +11379,7 @@ export default function CyberMapPage() {
               <text
                 y="590.63562"
                 fontSize="8px"
-                x="2081.2822"
+                x="2089.2822"
                 id="txt-kh"
                 className="kh"
               >
@@ -11357,7 +11388,7 @@ export default function CyberMapPage() {
               <text
                 y="385.42383"
                 fontSize="8px"
-                x="2206.3567"
+                x="2217.3567"
                 id="txt-kr"
                 className="kr"
               >
@@ -11366,7 +11397,7 @@ export default function CyberMapPage() {
               <text
                 y="640.64661"
                 fontSize="8px"
-                x="1900.8529"
+                x="1909.8529"
                 id="txt-lk"
                 className="lk"
               >
@@ -11375,7 +11406,7 @@ export default function CyberMapPage() {
               <text
                 y="675.35901"
                 fontSize="8px"
-                x="1846"
+                x="1854.0000"
                 id="txt-mv"
                 className="mv"
               >
@@ -11384,7 +11415,7 @@ export default function CyberMapPage() {
               <text
                 y="529.09528"
                 fontSize="10px"
-                x="2056.1438"
+                x="2061.1438"
                 id="txt-la"
                 className="la"
               >
@@ -11393,7 +11424,7 @@ export default function CyberMapPage() {
               <text
                 y="357.47052"
                 fontSize="8px"
-                x="2183.9438"
+                x="2194.9438"
                 id="txt-kp"
                 className="kp"
               >
@@ -11402,7 +11433,7 @@ export default function CyberMapPage() {
               <text
                 y="364.84726"
                 fontSize="8px"
-                x="1709.6024"
+                x="1721.6024"
                 id="txt-tm"
                 className="tm"
               >
@@ -11411,7 +11442,7 @@ export default function CyberMapPage() {
               <text
                 y="458.16107"
                 fontSize="8px"
-                x="1907.4584"
+                x="1912.4584"
                 id="txt-np"
                 className="np"
               >
@@ -11420,7 +11451,7 @@ export default function CyberMapPage() {
               <text
                 y="331.55136"
                 fontSize="8px"
-                x="1725.6998"
+                x="1735.6998"
                 id="txt-uz"
                 className="uz"
               >
@@ -11429,7 +11460,7 @@ export default function CyberMapPage() {
               <text
                 y="465.04547"
                 fontSize="5px"
-                x="1956.3185"
+                x="1960.0685"
                 id="txt-bt"
                 className="bt"
               >
@@ -11438,7 +11469,7 @@ export default function CyberMapPage() {
               <text
                 y="294.19049"
                 fontSize="10px"
-                x="1992.8169"
+                x="2002.8169"
                 id="txt-mn"
                 className="mn"
               >
@@ -11447,7 +11478,7 @@ export default function CyberMapPage() {
               <text
                 y="285.02301"
                 fontSize="10px"
-                x="1741.4412"
+                x="1753.9412"
                 id="txt-kz"
                 className="kz"
               >
@@ -11456,7 +11487,7 @@ export default function CyberMapPage() {
               <text
                 y="389.49921"
                 fontSize="10px"
-                x="2006.9918"
+                x="2013.2418"
                 id="txt-cn"
                 className="cn"
               >
@@ -11465,7 +11496,7 @@ export default function CyberMapPage() {
               <text
                 y="418.03491"
                 fontSize="10px"
-                x="1678.3555"
+                x="1683.3555"
                 id="txt-ir"
                 className="ir"
               >
@@ -11474,7 +11505,7 @@ export default function CyberMapPage() {
               <text
                 y="396.99872"
                 fontSize="5px"
-                x="1528.3647"
+                x="1532.1147"
                 id="txt-cy"
                 className="cy"
               >
@@ -11483,7 +11514,7 @@ export default function CyberMapPage() {
               <text
                 y="405.00769"
                 fontSize="5px"
-                x="1540.5747"
+                x="1544.9497"
                 id="txt-lb"
                 className="lb"
               >
@@ -11492,7 +11523,7 @@ export default function CyberMapPage() {
               <text
                 y="777.00464"
                 fontSize="5px"
-                x="2254.6658"
+                x="2261.5408"
                 id="txt-tl"
                 className="tl"
               >
@@ -11501,7 +11532,7 @@ export default function CyberMapPage() {
               <text
                 y="778.0509"
                 fontSize="10px"
-                x="708.11377"
+                x="713.1138"
                 id="txt-pe"
                 className="pe"
               >
@@ -11510,7 +11541,7 @@ export default function CyberMapPage() {
               <text
                 y="849.52332"
                 fontSize="10px"
-                x="800.17609"
+                x="808.9261"
                 id="txt-bo"
                 className="bo"
               >
@@ -11519,7 +11550,7 @@ export default function CyberMapPage() {
               <text
                 y="552.12366"
                 fontSize="5px"
-                x="621.64191"
+                x="625.3919"
                 id="txt-bz"
                 className="bz"
               >
@@ -11528,7 +11559,7 @@ export default function CyberMapPage() {
               <text
                 y="533.06512"
                 fontSize="5px"
-                x="775.87482"
+                x="787.1248"
                 id="txt-do"
                 className="do"
               >
@@ -11537,7 +11568,7 @@ export default function CyberMapPage() {
               <text
                 y="566.99115"
                 fontSize="5px"
-                x="834.44904"
+                x="839.4490"
                 id="txt-dm"
                 className="dm"
               >
@@ -11546,7 +11577,7 @@ export default function CyberMapPage() {
               <text
                 y="580.31586"
                 fontSize="5px"
-                x="834.42523"
+                x="839.4252"
                 id="txt-lc"
                 className="lc"
               >
@@ -11555,7 +11586,7 @@ export default function CyberMapPage() {
               <text
                 y="587.60699"
                 fontSize="5px"
-                x="846.15143"
+                x="851.1514"
                 id="txt-bb"
                 className="bb"
               >
@@ -11564,7 +11595,7 @@ export default function CyberMapPage() {
               <text
                 y="596.5636"
                 fontSize="5px"
-                x="828.83459"
+                x="833.2096"
                 id="txt-gd"
                 className="gd"
               >
@@ -11573,7 +11604,7 @@ export default function CyberMapPage() {
               <text
                 y="585.43109"
                 fontSize="5px"
-                x="779.13501"
+                x="797.2600"
                 id="txt-vc"
                 className="vc"
               >
@@ -11582,7 +11613,7 @@ export default function CyberMapPage() {
               <text
                 y="510.70587"
                 fontSize="10px"
-                x="691.77985"
+                x="696.7799"
                 id="txt-cu"
                 className="cu"
               >
@@ -11591,7 +11622,7 @@ export default function CyberMapPage() {
               <text
                 y="632.95349"
                 fontSize="10px"
-                x="781.60266"
+                x="792.8527"
                 id="txt-ve"
                 className="ve"
               >
@@ -11600,7 +11631,7 @@ export default function CyberMapPage() {
               <text
                 y="669.18433"
                 fontSize="10px"
-                x="731.0658"
+                x="741.0658"
                 id="txt-co"
                 className="co"
               >
@@ -11609,7 +11640,7 @@ export default function CyberMapPage() {
               <text
                 y="565.87341"
                 fontSize="5px"
-                x="603.409"
+                x="609.0340"
                 id="txt-gt"
                 className="gt"
               >
@@ -11618,7 +11649,7 @@ export default function CyberMapPage() {
               <text
                 y="668.89185"
                 fontSize="5px"
-                x="857.13361"
+                x="862.1336"
                 id="txt-sr"
                 className="sr"
               >
@@ -11627,7 +11658,7 @@ export default function CyberMapPage() {
               <text
                 y="626.82092"
                 fontSize="5px"
-                x="669.75873"
+                x="673.5087"
                 id="txt-pa"
                 className="pa"
               >
@@ -11636,7 +11667,7 @@ export default function CyberMapPage() {
               <text
                 y="1017.0184"
                 fontSize="10px"
-                x="830.73413"
+                x="841.9841"
                 id="txt-ar"
                 className="ar"
               >
@@ -11645,7 +11676,7 @@ export default function CyberMapPage() {
               <text
                 y="612.19818"
                 fontSize="5px"
-                x="651.69922"
+                x="657.9492"
                 id="txt-cr"
                 className="cr"
               >
@@ -11654,7 +11685,7 @@ export default function CyberMapPage() {
               <text
                 y="901.29456"
                 fontSize="10px"
-                x="850.00464"
+                x="860.0046"
                 id="txt-py"
                 className="py"
               >
@@ -11663,7 +11694,7 @@ export default function CyberMapPage() {
               <text
                 y="541.47424"
                 fontSize="5px"
-                x="735.91406"
+                x="739.0391"
                 id="txt-ht"
                 className="ht"
               >
@@ -11672,7 +11703,7 @@ export default function CyberMapPage() {
               <text
                 y="545.17487"
                 fontSize="5px"
-                x="703.3476"
+                x="707.7226"
                 id="txt-jm"
                 className="jm"
               >
@@ -11681,7 +11712,7 @@ export default function CyberMapPage() {
               <text
                 y="609.93365"
                 fontSize="5px"
-                x="845.53656"
+                x="857.4116"
                 id="txt-tt"
                 className="tt"
               >
@@ -11690,7 +11721,7 @@ export default function CyberMapPage() {
               <text
                 y="488.08926"
                 fontSize="5px"
-                x="705.40259"
+                x="709.7776"
                 id="txt-bs"
                 className="bs"
               >
@@ -11699,7 +11730,7 @@ export default function CyberMapPage() {
               <text
                 y="583.64948"
                 fontSize="5px"
-                x="603.94543"
+                x="610.8204"
                 id="txt-sv"
                 className="sv"
               >
@@ -11708,7 +11739,7 @@ export default function CyberMapPage() {
               <text
                 y="648.91272"
                 fontSize="8px"
-                x="834.4295"
+                x="840.4295"
                 id="txt-gy"
                 className="gy"
               >
@@ -11717,7 +11748,7 @@ export default function CyberMapPage() {
               <text
                 y="987.78137"
                 fontSize="10px"
-                x="896.73846"
+                x="905.4885"
                 id="txt-uy"
                 className="uy"
               >
@@ -11726,7 +11757,7 @@ export default function CyberMapPage() {
               <text
                 y="571.30505"
                 fontSize="5px"
-                x="632.42804"
+                x="637.4280"
                 id="txt-hn"
                 className="hn"
               >
@@ -11735,7 +11766,7 @@ export default function CyberMapPage() {
               <text
                 y="590.81769"
                 fontSize="5px"
-                x="636.99615"
+                x="642.6211"
                 id="txt-ni"
                 className="ni"
               >
@@ -11744,7 +11775,7 @@ export default function CyberMapPage() {
               <text
                 y="906.1745"
                 fontSize="10px"
-                x="764.60474"
+                x="770.8547"
                 id="txt-cl"
                 className="cl"
               >
@@ -11753,31 +11784,43 @@ export default function CyberMapPage() {
               <text
                 y="711.83704"
                 fontSize="10px"
-                x="680.93115"
+                x="689.6812"
                 id="txt-ec"
                 className="ec"
               >
                 Ecuador
               </text>
-              <text y="684" fontSize="10px" x="99" id="txt-ki" className="ki">
+              <text
+                y="684"
+                fontSize="10px"
+                x="109.0000"
+                id="txt-ki"
+                className="ki"
+              >
                 Kiribati
               </text>
               <text
                 y="494.10706"
                 fontSize="10px"
-                x="526.16974"
+                x="533.6697"
                 id="txt-mx"
                 className="mx"
               >
                 Mexico
               </text>
-              <text y="800" fontSize="10px" x="899" id="txt-br" className="br">
+              <text
+                y="800"
+                fontSize="10px"
+                x="906.5000"
+                id="txt-br"
+                className="br"
+              >
                 Brazil
               </text>
               <text
                 y="549.69513"
                 fontSize="5px"
-                x="848.49451"
+                x="860.3695"
                 id="txt-ag"
                 className="ag"
               >
@@ -11786,7 +11829,7 @@ export default function CyberMapPage() {
               <text
                 y="552.67902"
                 fontSize="5px"
-                x="790.84888"
+                x="802.0989"
                 id="txt-kn"
                 className="kn"
               >
@@ -11795,7 +11838,7 @@ export default function CyberMapPage() {
               <text
                 y="297.11588"
                 fontSize="5px"
-                x="1348.3613"
+                x="1355.2363"
                 id="txt-ch"
                 className="ch"
               >
@@ -11804,7 +11847,7 @@ export default function CyberMapPage() {
               <text
                 y="333.94336"
                 fontSize="8px"
-                x="1381.6395"
+                x="1386.6395"
                 id="txt-it"
                 className="it"
               >
@@ -11813,7 +11856,7 @@ export default function CyberMapPage() {
               <text
                 y="289.08755"
                 fontSize="6px"
-                x="1393.4379"
+                x="1398.6879"
                 id="txt-at"
                 className="at"
               >
@@ -11822,7 +11865,7 @@ export default function CyberMapPage() {
               <text
                 y="193.24135"
                 fontSize="8px"
-                x="1393.8434"
+                x="1399.8434"
                 id="txt-se"
                 className="se"
               >
@@ -11831,19 +11874,25 @@ export default function CyberMapPage() {
               <text
                 y="1071.3976"
                 fontSize="10px"
-                x="2487.4934"
+                x="2501.2434"
                 id="txt-nz"
                 className="nz"
               >
                 New Zealand
               </text>
-              <text y="920" fontSize="10px" x="2284" id="txt-au" className="au">
+              <text
+                y="920"
+                fontSize="10px"
+                x="2295.2500"
+                id="txt-au"
+                className="au"
+              >
                 Australia
               </text>
               <text
                 y="363.57135"
                 fontSize="8px"
-                x="1221.3737"
+                x="1229.3737"
                 id="txt-pt"
                 className="pt"
               >
@@ -11852,7 +11901,7 @@ export default function CyberMapPage() {
               <text
                 y="257.3385"
                 fontSize="8px"
-                x="1365.1938"
+                x="1372.1938"
                 id="txt-de"
                 className="de"
               >
@@ -11861,7 +11910,7 @@ export default function CyberMapPage() {
               <text
                 y="297.9642"
                 fontSize="8px"
-                x="1311.9114"
+                x="1317.9114"
                 id="txt-fr"
                 className="fr"
               >
@@ -11870,7 +11919,7 @@ export default function CyberMapPage() {
               <text
                 y="222.44363"
                 fontSize="7px"
-                x="1355.4584"
+                x="1361.5834"
                 id="txt-dk"
                 className="dk"
               >
@@ -11879,7 +11928,7 @@ export default function CyberMapPage() {
               <text
                 y="169.45424"
                 fontSize="8px"
-                x="1457.5879"
+                x="1464.5879"
                 id="txt-fi"
                 className="fi"
               >
@@ -11888,7 +11937,7 @@ export default function CyberMapPage() {
               <text
                 y="219.99158"
                 fontSize="9px"
-                x="1275.798"
+                x="1291.5480"
                 id="txt-gb"
                 className="gb"
               >
@@ -11897,7 +11946,7 @@ export default function CyberMapPage() {
               <text
                 y="246.57124"
                 fontSize="8px"
-                x="1241.9865"
+                x="1248.9865"
                 id="txt-ie"
                 className="ie"
               >
@@ -11906,7 +11955,7 @@ export default function CyberMapPage() {
               <text
                 y="261.82797"
                 fontSize="5px"
-                x="1320.8248"
+                x="1325.1998"
                 id="txt-be"
                 className="be"
               >
@@ -11915,7 +11964,7 @@ export default function CyberMapPage() {
               <text
                 y="271.18405"
                 fontSize="5px"
-                x="1334.8973"
+                x="1341.1473"
                 id="txt-lu"
                 className="lu"
               >
@@ -11924,7 +11973,7 @@ export default function CyberMapPage() {
               <text
                 y="248.09087"
                 fontSize="5px"
-                x="1327.9731"
+                x="1334.8481"
                 id="txt-nl"
                 className="nl"
               >
@@ -11933,7 +11982,7 @@ export default function CyberMapPage() {
               <text
                 y="352.88065"
                 fontSize="8px"
-                x="1267.2715"
+                x="1272.2715"
                 id="txt-es"
                 className="es"
               >
@@ -11942,7 +11991,7 @@ export default function CyberMapPage() {
               <text
                 y="151.34531"
                 fontSize="8px"
-                x="1197.105"
+                x="1204.1050"
                 id="txt-is"
                 className="is"
               >
@@ -11951,7 +12000,7 @@ export default function CyberMapPage() {
               <text
                 y="358.68756"
                 fontSize="8px"
-                x="1448.7212"
+                x="1454.7212"
                 id="txt-gr"
                 className="gr"
               >
@@ -11960,7 +12009,7 @@ export default function CyberMapPage() {
               <text
                 y="428.69461"
                 fontSize="5px"
-                x="1541.3093"
+                x="1545.0593"
                 id="txt-il"
                 className="il"
               >
@@ -11969,22 +12018,22 @@ export default function CyberMapPage() {
               <text
                 y="180.42693"
                 fontSize="8px"
-                x="1355.4775"
+                x="1361.4775"
                 id="txt-no"
                 className="no"
               >
                 Norway
               </text>
-              <text x="574" fontSize="10px" y="360" id="txt-us" className="us">
+              <text x="604.0000" fontSize="10px" y="360" id="txt-us" className="us">
                 United States of America
               </text>
-              <text x="584" fontSize="10px" y="220" id="txt-ca" className="ca">
+              <text x="591.5000" fontSize="10px" y="220" id="txt-ca" className="ca">
                 Canada
               </text>
               <text
                 y="363.40494"
                 fontSize="10px"
-                x="1540.1891"
+                x="1548.9391"
                 id="txt-tr"
                 className="tr"
               >
@@ -11993,7 +12042,7 @@ export default function CyberMapPage() {
               <text
                 y="332.15707"
                 fontSize="5px"
-                x="1302.512"
+                x="1306.8870"
                 id="txt-ad"
                 className="ad"
               >
@@ -12002,7 +12051,7 @@ export default function CyberMapPage() {
               <text
                 y="320"
                 fontSize="4px"
-                x="1342.89"
+                x="1345.8900"
                 id="txt-mc"
                 className="mc"
               >
@@ -12011,7 +12060,7 @@ export default function CyberMapPage() {
               <text
                 y="391.47391"
                 fontSize="5px"
-                x="1392.9003"
+                x="1396.0253"
                 id="txt-mt"
                 className="mt"
               >
@@ -12020,7 +12069,7 @@ export default function CyberMapPage() {
               <text
                 y="291.06625"
                 fontSize="4px"
-                x="1357.5931"
+                x="1364.0931"
                 id="txt-li"
                 className="li"
               >
@@ -12029,7 +12078,7 @@ export default function CyberMapPage() {
               <text
                 y="336.25546"
                 fontSize="8px"
-                x="1593.5278"
+                x="1600.5278"
                 id="txt-ge"
                 className="ge"
               >
@@ -12038,7 +12087,7 @@ export default function CyberMapPage() {
               <text
                 y="351.51373"
                 fontSize="8px"
-                x="1636.6022"
+                x="1646.6022"
                 id="txt-az"
                 className="az"
               >
@@ -12047,7 +12096,7 @@ export default function CyberMapPage() {
               <text
                 y="241.0155"
                 fontSize="8px"
-                x="1477.6199"
+                x="1484.6199"
                 id="txt-by"
                 className="by"
               >
@@ -12056,7 +12105,7 @@ export default function CyberMapPage() {
               <text
                 y="211.06946"
                 fontSize="8px"
-                x="1453.2612"
+                x="1459.2612"
                 id="txt-lv"
                 className="lv"
               >
@@ -12065,7 +12114,7 @@ export default function CyberMapPage() {
               <text
                 y="305.54291"
                 fontSize="8px"
-                x="1461.6476"
+                x="1468.6476"
                 id="txt-ro"
                 className="ro"
               >
@@ -12074,7 +12123,7 @@ export default function CyberMapPage() {
               <text
                 y="270.759"
                 fontSize="5px"
-                x="1396.5178"
+                x="1400.8928"
                 id="txt-cz"
                 className="cz"
               >
@@ -12083,7 +12132,7 @@ export default function CyberMapPage() {
               <text
                 y="251.81299"
                 fontSize="10px"
-                x="1421.0449"
+                x="1428.5449"
                 id="txt-pl"
                 className="pl"
               >
@@ -12092,7 +12141,7 @@ export default function CyberMapPage() {
               <text
                 y="278.60742"
                 fontSize="10px"
-                x="1508.8511"
+                x="1517.6011"
                 id="txt-ua"
                 className="ua"
               >
@@ -12101,7 +12150,7 @@ export default function CyberMapPage() {
               <text
                 y="331.05615"
                 fontSize="5px"
-                x="1467.8081"
+                x="1472.8081"
                 id="txt-bg"
                 className="bg"
               >
@@ -12110,7 +12159,7 @@ export default function CyberMapPage() {
               <text
                 y="197.34299"
                 fontSize="8px"
-                x="1453.585"
+                x="1460.5850"
                 id="txt-ee"
                 className="ee"
               >
@@ -12119,7 +12168,7 @@ export default function CyberMapPage() {
               <text
                 y="349.94122"
                 fontSize="5px"
-                x="1601.3099"
+                x="1605.6849"
                 id="txt-am"
                 className="am"
               >
@@ -12128,7 +12177,7 @@ export default function CyberMapPage() {
               <text
                 y="278.73535"
                 fontSize="5px"
-                x="1426.677"
+                x="1431.6770"
                 id="txt-sk"
                 className="sk"
               >
@@ -12137,7 +12186,7 @@ export default function CyberMapPage() {
               <text
                 y="294.95929"
                 fontSize="5px"
-                x="1485.9216"
+                x="1490.2966"
                 id="txt-md"
                 className="md"
               >
@@ -12146,7 +12195,7 @@ export default function CyberMapPage() {
               <text
                 y="331.24686"
                 fontSize="5px"
-                x="1420.8795"
+                x="1427.1295"
                 id="txt-me"
                 className="me"
               >
@@ -12155,7 +12204,7 @@ export default function CyberMapPage() {
               <text
                 y="224.97029"
                 fontSize="8px"
-                x="1449.3401"
+                x="1458.3401"
                 id="txt-lt"
                 className="lt"
               >
@@ -12164,19 +12213,19 @@ export default function CyberMapPage() {
               <text
                 y="301.7666"
                 fontSize="5px"
-                x="1388.0433"
+                x="1393.0433"
                 id="txt-si"
                 className="si"
               >
                 Slovenia
               </text>
-              <text x="1884" fontSize="10px" y="175" id="txt-ru" className="ru">
+              <text x="1906.5000" fontSize="10px" y="175" id="txt-ru" className="ru">
                 Russian Federation
               </text>
               <text
                 y="594.9671"
                 fontSize="8px"
-                x="1273.6969"
+                x="1285.6969"
                 id="txt-bf"
                 className="bf"
               >
@@ -12185,22 +12234,33 @@ export default function CyberMapPage() {
               <text
                 y="863.07324"
                 fontSize="10px"
-                x="1638.1272"
+                x="1650.6272"
                 id="txt-mg"
                 className="mg"
               >
                 Madagascar
               </text>
-              <text y="740" fontSize="5px" x="1722" id="txt-sc" className="sc">
+              <text
+                y="740"
+                fontSize="5px"
+                x="1728.2500"
+                id="txt-sc"
+                className="sc"
+              >
                 Seychelles
               </text>
-              <text y="631.63824" fontSize="8px" x="1242.7903" id="text1">
+              <text
+                y="631.63824"
+                fontSize="8px"
+                x="1255.7903"
+                id="text1"
+              >
                 Côte d&apos;Ivoire
               </text>
               <text
                 y="457.92175"
                 fontSize="10px"
-                x="1307.2173"
+                x="1315.9673"
                 id="txt-dz"
                 className="dz"
               >
@@ -12209,7 +12269,7 @@ export default function CyberMapPage() {
               <text
                 y="659.35638"
                 fontSize="8px"
-                x="1374.751"
+                x="1382.7510"
                 id="txt-cm"
                 className="cm"
               >
@@ -12218,7 +12278,7 @@ export default function CyberMapPage() {
               <text
                 y="899.40717"
                 fontSize="10px"
-                x="1467.2522"
+                x="1477.2522"
                 id="txt-bw"
                 className="bw"
               >
@@ -12227,7 +12287,7 @@ export default function CyberMapPage() {
               <text
                 y="698.75867"
                 fontSize="10px"
-                x="1574.3281"
+                x="1580.5781"
                 id="txt-ke"
                 className="ke"
               >
@@ -12236,7 +12296,7 @@ export default function CyberMapPage() {
               <text
                 y="628.7439"
                 fontSize="8px"
-                x="1175.1814"
+                x="1187.1814"
                 id="txt-sl"
                 className="sl"
               >
@@ -12245,7 +12305,7 @@ export default function CyberMapPage() {
               <text
                 y="542.70844"
                 fontSize="10px"
-                x="1273.7748"
+                x="1278.7748"
                 id="txt-ml"
                 className="ml"
               >
@@ -12254,7 +12314,7 @@ export default function CyberMapPage() {
               <text
                 y="726.14374"
                 fontSize="10px"
-                x="1464.7742"
+                x="1468.5242"
                 id="txt-cd"
                 className="cd"
               >
@@ -12263,7 +12323,7 @@ export default function CyberMapPage() {
               <text
                 y="596.77954"
                 fontSize="5px"
-                x="1158.0468"
+                x="1166.1718"
                 id="txt-gw"
                 className="gw"
               >
@@ -12272,7 +12332,7 @@ export default function CyberMapPage() {
               <text
                 y="584.12494"
                 fontSize="5px"
-                x="1152.8392"
+                x="1156.5892"
                 id="txt-gm"
                 className="gm"
               >
@@ -12281,7 +12341,7 @@ export default function CyberMapPage() {
               <text
                 y="642.77148"
                 fontSize="8px"
-                x="1274.2545"
+                x="1279.2545"
                 id="txt-gh"
                 className="gh"
               >
@@ -12290,7 +12350,7 @@ export default function CyberMapPage() {
               <text
                 y="686.17926"
                 fontSize="8px"
-                x="1535.2091"
+                x="1541.2091"
                 id="txt-ug"
                 className="ug"
               >
@@ -12299,7 +12359,7 @@ export default function CyberMapPage() {
               <text
                 y="898.91803"
                 fontSize="10px"
-                x="1561.576"
+                x="1574.0760"
                 id="txt-mz"
                 className="mz"
               >
@@ -12308,7 +12368,7 @@ export default function CyberMapPage() {
               <text
                 y="537.98151"
                 fontSize="10px"
-                x="1201.6534"
+                x="1214.1534"
                 id="txt-mr"
                 className="mr"
               >
@@ -12317,7 +12377,7 @@ export default function CyberMapPage() {
               <text
                 y="809.46924"
                 fontSize="10px"
-                x="1420.9891"
+                x="1428.4891"
                 id="txt-ao"
                 className="ao"
               >
@@ -12326,7 +12386,7 @@ export default function CyberMapPage() {
               <text
                 y="548.38153"
                 fontSize="10px"
-                x="1362.0632"
+                x="1368.3132"
                 id="txt-ne"
                 className="ne"
               >
@@ -12335,7 +12395,7 @@ export default function CyberMapPage() {
               <text
                 y="830.42432"
                 fontSize="10px"
-                x="1482.728"
+                x="1490.2280"
                 id="txt-zm"
                 className="zm"
               >
@@ -12344,7 +12404,7 @@ export default function CyberMapPage() {
               <text
                 y="631.90381"
                 fontSize="10px"
-                x="1586.5502"
+                x="1596.5502"
                 id="txt-et"
                 className="et"
               >
@@ -12353,7 +12413,7 @@ export default function CyberMapPage() {
               <text
                 y="675.08722"
                 fontSize="10px"
-                x="1634.7721"
+                x="1643.5221"
                 id="txt-so"
                 className="so"
               >
@@ -12362,7 +12422,7 @@ export default function CyberMapPage() {
               <text
                 y="564.73346"
                 fontSize="10px"
-                x="1426.9248"
+                x="1431.9248"
                 id="txt-td"
                 className="td"
               >
@@ -12371,7 +12431,7 @@ export default function CyberMapPage() {
               <text
                 y="606.36633"
                 fontSize="8px"
-                x="1200.8378"
+                x="1206.8378"
                 id="txt-gn"
                 className="gn"
               >
@@ -12380,7 +12440,7 @@ export default function CyberMapPage() {
               <text
                 y="619.96619"
                 fontSize="10px"
-                x="1350.7664"
+                x="1359.5164"
                 id="txt-ng"
                 className="ng"
               >
@@ -12389,7 +12449,7 @@ export default function CyberMapPage() {
               <text
                 y="406.26553"
                 fontSize="10px"
-                x="1369.4893"
+                x="1378.2393"
                 id="txt-tn"
                 className="tn"
               >
@@ -12398,7 +12458,7 @@ export default function CyberMapPage() {
               <text
                 y="872.64642"
                 fontSize="10px"
-                x="1413.3054"
+                x="1422.0554"
                 id="txt-na"
                 className="na"
               >
@@ -12407,7 +12467,7 @@ export default function CyberMapPage() {
               <text
                 y="941.47339"
                 fontSize="10px"
-                x="1478.1621"
+                x="1493.1621"
                 id="txt-za"
                 className="za"
               >
@@ -12416,7 +12476,7 @@ export default function CyberMapPage() {
               <text
                 y="471.67999"
                 fontSize="10px"
-                x="1509.1575"
+                x="1515.4075"
                 id="txt-eg"
                 className="eg"
               >
@@ -12425,7 +12485,7 @@ export default function CyberMapPage() {
               <text
                 y="753.586"
                 fontSize="10px"
-                x="1551.364"
+                x="1561.3640"
                 id="txt-tz"
                 className="tz"
               >
@@ -12434,7 +12494,7 @@ export default function CyberMapPage() {
               <text
                 y="687.32825"
                 fontSize="8px"
-                x="1333.7682"
+                x="1350.7682"
                 id="txt-gq"
                 className="gq"
               >
@@ -12443,7 +12503,7 @@ export default function CyberMapPage() {
               <text
                 y="956.88422"
                 fontSize="5px"
-                x="1494.8945"
+                x="1499.2695"
                 id="txt-ls"
                 className="ls"
               >
@@ -12452,7 +12512,7 @@ export default function CyberMapPage() {
               <text
                 y="929.97034"
                 fontSize="5px"
-                x="1520.2305"
+                x="1525.2305"
                 id="txt-sz"
                 className="sz"
               >
@@ -12461,7 +12521,7 @@ export default function CyberMapPage() {
               <text
                 y="727.74951"
                 fontSize="5px"
-                x="1513.2256"
+                x="1517.6006"
                 id="txt-bi"
                 className="bi"
               >
@@ -12470,7 +12530,7 @@ export default function CyberMapPage() {
               <text
                 y="599.32764"
                 fontSize="5px"
-                x="1612.8387"
+                x="1617.8387"
                 id="txt-dj"
                 className="dj"
               >
@@ -12479,7 +12539,7 @@ export default function CyberMapPage() {
               <text
                 y="695.21625"
                 fontSize="5px"
-                x="1413.5509"
+                x="1416.6759"
                 id="txt-cg"
                 className="cg"
               >
@@ -12488,7 +12548,7 @@ export default function CyberMapPage() {
               <text
                 y="717.27234"
                 fontSize="5px"
-                x="1512.7638"
+                x="1516.5138"
                 id="txt-rw"
                 className="rw"
               >
@@ -12497,7 +12557,7 @@ export default function CyberMapPage() {
               <text
                 y="573.07379"
                 fontSize="8px"
-                x="1175.8333"
+                x="1182.8333"
                 id="txt-sn"
                 className="sn"
               >
@@ -12506,7 +12566,7 @@ export default function CyberMapPage() {
               <text
                 y="629.42578"
                 fontSize="5px"
-                x="1293.0535"
+                x="1295.5535"
                 id="txt-tg"
                 className="tg"
               >
@@ -12515,7 +12575,7 @@ export default function CyberMapPage() {
               <text
                 y="699.52203"
                 fontSize="5px"
-                x="1316.5596"
+                x="1329.6846"
                 id="txt-st"
                 className="st"
               >
@@ -12524,7 +12584,7 @@ export default function CyberMapPage() {
               <text
                 y="705.44208"
                 fontSize="10px"
-                x="1373.4691"
+                x="1379.7191"
                 id="txt-ga"
                 className="ga"
               >
@@ -12533,7 +12593,7 @@ export default function CyberMapPage() {
               <text
                 y="817.90936"
                 fontSize="8px"
-                x="1543.9877"
+                x="1549.9877"
                 id="txt-mw"
                 className="mw"
               >
@@ -12542,7 +12602,7 @@ export default function CyberMapPage() {
               <text
                 y="802.87885"
                 fontSize="5px"
-                x="1621.2527"
+                x="1625.6277"
                 id="txt-km"
                 className="km"
               >
@@ -12551,7 +12611,7 @@ export default function CyberMapPage() {
               <text
                 y="878.42297"
                 fontSize="5px"
-                x="1723.7469"
+                x="1729.3719"
                 id="txt-mu"
                 className="mu"
               >
@@ -12560,7 +12620,7 @@ export default function CyberMapPage() {
               <text
                 y="423.63742"
                 fontSize="10px"
-                x="1235.0673"
+                x="1243.8173"
                 id="txt-ma"
                 className="ma"
               >
@@ -12569,7 +12629,7 @@ export default function CyberMapPage() {
               <text
                 y="642.68323"
                 fontSize="8px"
-                x="1212.6833"
+                x="1219.6833"
                 id="txt-lr"
                 className="lr"
               >
@@ -12578,7 +12638,7 @@ export default function CyberMapPage() {
               <text
                 y="646.77502"
                 fontSize="8px"
-                x="1442.3704"
+                x="1466.3704"
                 id="txt-cf"
                 className="cf"
               >
@@ -12587,7 +12647,7 @@ export default function CyberMapPage() {
               <text
                 y="867.0235"
                 fontSize="10px"
-                x="1511.1334"
+                x="1521.1334"
                 id="txt-zw"
                 className="zw"
               >
@@ -12596,7 +12656,7 @@ export default function CyberMapPage() {
               <text
                 y="609.84711"
                 fontSize="8px"
-                x="1302.2048"
+                x="1307.2048"
                 id="txt-bj"
                 className="bj"
               >
@@ -12605,7 +12665,7 @@ export default function CyberMapPage() {
               <text
                 y="567.19128"
                 fontSize="10px"
-                x="1586.6462"
+                x="1595.3962"
                 id="txt-er"
                 className="er"
               >
@@ -12614,7 +12674,7 @@ export default function CyberMapPage() {
               <text
                 y="470.68152"
                 fontSize="10px"
-                x="1414.8293"
+                x="1421.0793"
                 id="txt-ly"
                 className="ly"
               >
@@ -12623,7 +12683,7 @@ export default function CyberMapPage() {
               <text
                 y="564.01099"
                 fontSize="8px"
-                x="1087.2395"
+                x="1097.2395"
                 id="txt-cv"
                 className="cv"
               >
@@ -12632,7 +12692,7 @@ export default function CyberMapPage() {
               <text
                 y="307.02469"
                 fontSize="5px"
-                x="1408.2291"
+                x="1412.6041"
                 id="txt-hr"
                 className="hr"
               >
@@ -12641,7 +12701,7 @@ export default function CyberMapPage() {
               <text
                 y="320"
                 fontSize="4px"
-                x="1377.24"
+                x="1382.2400"
                 id="txt-sm"
                 className="sm"
               >
@@ -12650,7 +12710,7 @@ export default function CyberMapPage() {
               <text
                 y="325.03946"
                 fontSize="5px"
-                x="1437.5372"
+                x="1441.2872"
                 id="txt-rs"
                 className="rs"
               >
@@ -12659,7 +12719,7 @@ export default function CyberMapPage() {
               <text
                 y="349.48129"
                 fontSize="5px"
-                x="1426.2161"
+                x="1430.5911"
                 id="txt-al"
                 className="al"
               >
@@ -12668,7 +12728,7 @@ export default function CyberMapPage() {
               <text
                 y="294.2002"
                 fontSize="5px"
-                x="1423.0527"
+                x="1427.4277"
                 id="txt-hu"
                 className="hu"
               >
@@ -12677,7 +12737,7 @@ export default function CyberMapPage() {
               <text
                 y="558.1062"
                 fontSize="10px"
-                x="1513.4604"
+                x="1519.7104"
                 id="txt-sd"
                 className="sd"
               >
@@ -12686,42 +12746,42 @@ export default function CyberMapPage() {
               <text
                 y="315.7666"
                 fontSize="5px"
-                x="1407.9773"
+                x="1414.2273"
                 id="txt-ba"
                 className="ba"
               >
-                <tspan x="1407.9773" y="315.7666" id="tspan1">
+                <tspan x="1414.2273" y="315.7666" id="tspan1">
                   Bosnia and
                 </tspan>
-                <tspan x="1407.9773" y="322.43326" id="tspan2">
+                <tspan x="1414.8523" y="322.43326" id="tspan2">
                   Herzegovina
                 </tspan>
               </text>
               <text
                 y="635.17072"
                 fontSize="10px"
-                x="1514.708"
+                x="1520.958"
                 id="txt-ss"
                 className="ss"
               >
-                <tspan x="1514.708" y="635.17072" id="tspan3">
+                <tspan x="1520.958" y="635.17072" id="tspan3">
                   South
                 </tspan>
-                <tspan x="1514.708" y="648.50409" id="tspan4">
+                <tspan x="1520.958" y="648.50409" id="tspan4">
                   Sudan
                 </tspan>
               </text>
               <text
                 y="336.86984"
                 fontSize="5px"
-                x="1443.1793"
+                x="1446.3043"
                 id="txt-mk"
                 className="mk"
               >
-                <tspan x="1443.1793" y="336.86984" id="tspan5">
+                <tspan x="1446.3043" y="336.86984" id="tspan5">
                   North
                 </tspan>
-                <tspan x="1443.1793" y="343.5365" id="tspan6">
+                <tspan x="1448.8043" y="343.5365" id="tspan6">
                   Macedonia
                 </tspan>
               </text>
@@ -12742,6 +12802,6 @@ export default function CyberMapPage() {
           countryDetails={selectedCountry.details}
         />
       )}
-    </div>
+    </ToolFullscreen>
   );
 }

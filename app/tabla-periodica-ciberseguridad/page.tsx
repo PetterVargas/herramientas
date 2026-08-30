@@ -1,4 +1,5 @@
 import { ToolPageHeader } from '@/components/tool-page-header';
+import { ToolFullscreen } from '@/components/tool-fullscreen';
 import { ToolJsonLd } from '@/components/tool-json-ld';
 import { buildMetadata } from '@/lib/seo';
 import { PeriodicTable } from './_components/periodic-table';
@@ -19,9 +20,9 @@ export default function TablaPeriodicaPage() {
         subtitle="Basado en el Framework Kudo aplicado para el contexto de LatAm"
       />
 
-      <div className="container mx-auto py-6">
+      <ToolFullscreen className="container mx-auto py-6">
         <PeriodicTable />
-      </div>
+      </ToolFullscreen>
     </>
   );
 }

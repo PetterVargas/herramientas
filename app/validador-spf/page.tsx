@@ -1,4 +1,5 @@
 import { ToolPageHeader } from '@/components/tool-page-header';
+import { ToolFullscreen } from '@/components/tool-fullscreen';
 import { ToolJsonLd } from '@/components/tool-json-ld';
 import { buildMetadata } from '@/lib/seo';
 import { SPFValidatorComponent } from './spf-validator-component';
@@ -18,11 +19,11 @@ export default function SpfValidatorPage() {
         subtitle="Verifica y valida los registros SPF de tu dominio para mejorar la seguridad del email"
       />
 
-      <div className="container mx-auto">
+      <ToolFullscreen className="container mx-auto">
         <div className="flex flex-1 flex-col items-center justify-center py-12">
           <SPFValidatorComponent />
         </div>
-      </div>
+      </ToolFullscreen>
     </div>
   );
 }

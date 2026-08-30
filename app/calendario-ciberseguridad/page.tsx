@@ -1,4 +1,5 @@
 import { ToolPageHeader } from '@/components/tool-page-header';
+import { ToolFullscreen } from '@/components/tool-fullscreen';
 import { ToolJsonLd } from '@/components/tool-json-ld';
 import { buildMetadata } from '@/lib/seo';
 import { CybersecurityCalendarComponent } from './cybersecurity-calendar-component';
@@ -18,11 +19,11 @@ export default function CalendarPage() {
         subtitle="Descubre temas de ciberseguridad para cada día del año. Constancia."
       />
 
-      <div className="container mx-auto">
+      <ToolFullscreen className="container mx-auto">
         <div className="flex flex-1 flex-col items-center justify-center py-12">
           <CybersecurityCalendarComponent />
         </div>
-      </div>
+      </ToolFullscreen>
     </div>
   );
 }

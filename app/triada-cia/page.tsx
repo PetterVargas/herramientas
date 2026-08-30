@@ -1,4 +1,5 @@
 import { ToolPageHeader } from '@/components/tool-page-header';
+import { ToolFullscreen } from '@/components/tool-fullscreen';
 import { ToolJsonLd } from '@/components/tool-json-ld';
 import { buildMetadata } from '@/lib/seo';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -22,7 +23,7 @@ export default function TriadaCiaPage() {
         subtitle="Confidencialidad, Integridad y Disponibilidad: los tres pilares de la seguridad de la información."
       />
 
-      <div className="container mx-auto max-w-5xl space-y-8 px-4 py-8">
+      <ToolFullscreen className="container mx-auto max-w-5xl space-y-8 px-4 py-8">
         <Tabs defaultValue="aprender">
           <TabsList>
             <TabsTrigger value="aprender" data-test="tab-aprender">
@@ -41,7 +42,7 @@ export default function TriadaCiaPage() {
             <CiaQuiz />
           </TabsContent>
         </Tabs>
-      </div>
+      </ToolFullscreen>
     </div>
   );
 }

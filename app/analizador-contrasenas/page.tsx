@@ -1,4 +1,5 @@
 import { ToolPageHeader } from '@/components/tool-page-header';
+import { ToolFullscreen } from '@/components/tool-fullscreen';
 import { ToolJsonLd } from '@/components/tool-json-ld';
 import { buildMetadata } from '@/lib/seo';
 import { PasswordAnalyzer } from './_components/password-analyzer';
@@ -19,11 +20,11 @@ export default function AnalizadorContrasenasPage() {
         subtitle="Descubre cuánto tardaría un atacante en descifrar tu contraseña con la tecnología actual."
       />
 
-      <div className="container mx-auto">
+      <ToolFullscreen className="container mx-auto">
         <div className="flex flex-1 flex-col items-center justify-center py-12">
           <PasswordAnalyzer />
         </div>
-      </div>
+      </ToolFullscreen>
     </div>
   );
 }

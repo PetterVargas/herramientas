@@ -1,4 +1,5 @@
 import { ToolPageHeader } from '@/components/tool-page-header';
+import { ToolFullscreen } from '@/components/tool-fullscreen';
 import { ToolJsonLd } from '@/components/tool-json-ld';
 import { buildMetadata } from '@/lib/seo';
 import { PhishingQuiz } from './_components/phishing-quiz';
@@ -19,9 +20,9 @@ export default function DeteccionPhishingPage() {
         subtitle="Analiza cada mensaje y decide si es un intento de phishing o un mensaje legítimo."
       />
 
-      <div className="container mx-auto max-w-2xl px-4 py-8">
+      <ToolFullscreen className="container mx-auto max-w-2xl px-4 py-8">
         <PhishingQuiz />
-      </div>
+      </ToolFullscreen>
     </div>
   );
 }

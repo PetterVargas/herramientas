@@ -1,4 +1,5 @@
 import { ToolPageHeader } from '@/components/tool-page-header';
+import { ToolFullscreen } from '@/components/tool-fullscreen';
 import { ToolJsonLd } from '@/components/tool-json-ld';
 import { buildMetadata } from '@/lib/seo';
 import { MuseumGallery } from './_components/museum-gallery';
@@ -15,9 +16,9 @@ export default function MuseoCibercrimenPage() {
       <ToolJsonLd title={title} description={description} path={path} />
       <ToolPageHeader title={title} subtitle={description} />
 
-      <div className="container mx-auto px-4 py-12">
+      <ToolFullscreen className="container mx-auto px-4 py-12">
         <MuseumGallery />
-      </div>
+      </ToolFullscreen>
     </div>
   );
 }

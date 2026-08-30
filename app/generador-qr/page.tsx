@@ -1,4 +1,5 @@
 import { ToolPageHeader } from '@/components/tool-page-header';
+import { ToolFullscreen } from '@/components/tool-fullscreen';
 import { ToolJsonLd } from '@/components/tool-json-ld';
 import { buildMetadata } from '@/lib/seo';
 import { QRGeneratorComponent } from './qr-generator-component';
@@ -18,11 +19,11 @@ export default function QrGeneratorPage() {
         subtitle="Crea códigos QR personalizados para URLs, Whatsapp, emails y más"
       />
 
-      <div className="container mx-auto">
+      <ToolFullscreen className="container mx-auto">
         <div className="flex flex-1 flex-col items-center justify-center py-12">
           <QRGeneratorComponent />
         </div>
-      </div>
+      </ToolFullscreen>
     </div>
   );
 }
