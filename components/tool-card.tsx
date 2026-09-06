@@ -98,7 +98,14 @@ export function ToolCard({ tool }: { tool: Tool }) {
           <ArrowRight className="h-4 w-4 text-muted-foreground opacity-0 -translate-x-1 transition-all group-hover:opacity-100 group-hover:translate-x-0" />
         )}
       </div>
-      <h2 className="text-sm font-semibold mb-1">{tool.title}</h2>
+      <div className="flex items-center gap-1.5 mb-1">
+        <h2 className="text-sm font-semibold">{tool.title}</h2>
+        {tool.external && (
+          <span className="inline-flex items-center rounded-full bg-muted px-1.5 py-0.5 text-[10px] font-medium leading-none text-muted-foreground">
+            Externo
+          </span>
+        )}
+      </div>
       <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2">
         {tool.description}
       </p>
@@ -106,11 +113,17 @@ export function ToolCard({ tool }: { tool: Tool }) {
   );
 
   return tool.external ? (
-    <a href={tool.href} target="_blank" rel="noopener noreferrer" className={className}>
+    <a
+      href={tool.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      title={tool.title}
+      className={className}
+    >
       {content}
     </a>
   ) : (
-    <Link href={tool.href} className={className}>
+    <Link href={tool.href} title={tool.title} className={className}>
       {content}
     </Link>
   );

@@ -65,7 +65,7 @@ const resourceLinks = [
 
 function Logo() {
   return (
-    <Link href="/" className="flex items-center gap-2 shrink-0">
+    <Link href="/" title="Herramientas de Ciberseguridad - DivisionCero" className="flex items-center gap-2 shrink-0">
       <svg width="24" height="24" viewBox="0 0 790 790" aria-label="Logo">
         <path
           transform="translate(746,1)"
@@ -99,6 +99,7 @@ export function Navbar() {
               href={link.url}
               target="_blank"
               rel="noopener noreferrer"
+              title={link.text}
               className="flex items-center gap-1.5 px-3 py-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
             >
               <link.icon className="h-4 w-4" />
@@ -129,6 +130,7 @@ export function Navbar() {
                       href={link.url}
                       target={link.url.startsWith('http') ? '_blank' : undefined}
                       rel={link.url.startsWith('http') ? 'noopener noreferrer' : undefined}
+                      title={link.text}
                       className="flex items-start gap-3 rounded-md p-2 hover:bg-accent transition-colors"
                     >
                       <link.icon className="h-4 w-4 mt-0.5 text-primary shrink-0" />
@@ -153,6 +155,7 @@ export function Navbar() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub"
+            title="GitHub"
             className="p-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
           >
             <svg role="img" viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
@@ -161,6 +164,7 @@ export function Navbar() {
           </a>
           <a
             href={coCreemosUrl}
+            title="Co-Creemos"
             className="flex items-center gap-1.5 border border-primary text-primary hover:bg-primary/10 rounded-md px-3 py-1.5 text-sm font-bold transition-colors"
           >
             <Users className="h-4 w-4" />
@@ -186,6 +190,7 @@ export function Navbar() {
               href={link.url}
               target={link.url.startsWith('http') ? '_blank' : undefined}
               rel={link.url.startsWith('http') ? 'noopener noreferrer' : undefined}
+              title={link.text}
               className="flex items-center gap-2 px-2 py-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
               onClick={() => setMobileOpen(false)}
             >
@@ -201,12 +206,14 @@ export function Navbar() {
             href="https://github.com/PetterVargas/herramientas"
             target="_blank"
             rel="noopener noreferrer"
+            title="GitHub"
             className="flex items-center gap-2 px-2 py-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
           >
             GitHub
           </a>
           <a
             href={coCreemosUrl}
+            title="Co-Creemos"
             className="flex items-center justify-center gap-2 border border-primary text-primary hover:bg-primary/10 rounded-md px-3 py-2 font-bold transition-colors"
           >
             Co-Creemos

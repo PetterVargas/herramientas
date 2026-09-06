@@ -18,3 +18,18 @@ export type CountryData = {
 export type WorldData = {
   World: CountryData;
 };
+
+export type CyberProfileEntry = {
+  name: string;
+  description?: string;
+  url?: string;
+};
+
+export type CountryCyberProfile = {
+  interestGroups: CyberProfileEntry[];
+  authorities: CyberProfileEntry[];
+  cybersecurityRegulations: CyberProfileEntry[];
+  dataProtectionRegulations: CyberProfileEntry[];
+  /** Empresas y canales de contacto para solicitudes judiciales. Solo poblado donde hay datos verificados. */
+  judicialRequestContacts?: CyberProfileEntry[];
+};

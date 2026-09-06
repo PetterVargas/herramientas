@@ -1,13 +1,15 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
+import gsap from 'gsap';
 import { TransformComponent, TransformWrapper } from 'react-zoom-pan-pinch';
 
 import { ToolFullscreen } from '@/components/tool-fullscreen';
 
 import { CountryDialog } from './_components/country-dialog';
 import { FloatingNavMenu } from './_components/floating-nav-menu';
+import { MapCosmicBackground } from './_components/map-cosmic-background';
 import type { CountryDetails } from './_lib/types';
 import { useCountryData } from './_lib/use-country-data';
 
@@ -18,6 +20,55 @@ export default function CyberMapPage() {
     name: string;
     details?: CountryDetails;
   } | null>(null);
+
+  const svgRef = useRef<SVGSVGElement>(null);
+
+  // Efecto de flotación del mapa + pulso del brillo en los bordes de los
+  // continentes, ambos manejados por gsap. El brillo anima variables CSS
+  // (--edge-glow-*) que .landxx hereda, así un solo tween mueve el filtro
+  // drop-shadow de los ~300 países sin animar cada <path> por separado.
+  useEffect(() => {
+    const svgEl = svgRef.current;
+    if (!svgEl) return;
+
+    // Desplazamiento base hacia abajo: el mapa recortado por el zoom
+    // inicial deja mucho océano vacío del polo sur visible y aprieta el
+    // norte contra el borde superior. Bajar el punto de partida del
+    // flotado corrige el encuadre sin tocar el mapa ni el zoom/pan.
+    const baseY = 48;
+
+    gsap.set(svgEl, { y: baseY, transformOrigin: '50% 50%' });
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    gsap.set(svgEl, {
+      '--edge-glow-blur': '0.6px',
+      '--edge-glow-alpha': 0.45,
+    });
+
+    const floatTween = gsap.to(svgEl, {
+      y: baseY - 14,
+      rotate: 0.5,
+      duration: 4.2,
+      ease: 'sine.inOut',
+      repeat: -1,
+      yoyo: true,
+    });
+
+    const glowTween = gsap.to(svgEl, {
+      '--edge-glow-blur': '2.6px',
+      '--edge-glow-alpha': 0.9,
+      duration: 2.8,
+      ease: 'sine.inOut',
+      repeat: -1,
+      yoyo: true,
+    });
+
+    return () => {
+      floatTween.kill();
+      glowTween.kill();
+    };
+  }, []);
 
   // Usar nuestro hook personalizado para cargar los datos
   const {
@@ -60,6 +111,7 @@ export default function CyberMapPage() {
   return (
     <ToolFullscreen className="bg-background flex h-[calc(100vh-160px)] min-h-[700px] w-full items-center justify-center overflow-hidden">
       <h1 className="sr-only">CyberMap: mapa mundial interactivo de amenazas y ciberataques</h1>
+      <MapCosmicBackground className="pointer-events-none absolute inset-0 z-0" />
       <TransformWrapper
         initialScale={1.15}
         minScale={0.5}
@@ -67,7 +119,7 @@ export default function CyberMapPage() {
         centerOnInit
       >
         <TransformComponent
-          wrapperStyle={{ width: '100%', height: '100%', overflow: 'hidden' }}
+          wrapperStyle={{ width: '100%', height: '100%', overflow: 'hidden', position: 'relative', zIndex: 1 }}
           contentStyle={{
             width: '100%',
             height: '100%',
@@ -77,6 +129,7 @@ export default function CyberMapPage() {
           }}
         >
           <svg
+            ref={svgRef}
             viewBox="0 0 2850 1400"
             width="100%"
             height="100%"
@@ -105,10 +158,22 @@ export default function CyberMapPage() {
                   stroke: #ffffff;
                   stroke-width: 0.5;
                   transition: fill 0.3s ease, stroke 0.3s ease;
+                  filter: drop-shadow(0 0 var(--edge-glow-blur, 0.6px) rgba(77, 174, 132, var(--edge-glow-alpha, 0.45)));
                 }
                 .landxx:hover {
                   fill:rgb(116, 116, 116);
                   cursor: pointer;
+                }
+                .world-map {
+                  filter: drop-shadow(0 24px 48px rgba(0, 0, 0, 0.3)) drop-shadow(0 0 50px rgba(77, 174, 132, 0.15));
+                }
+                :root:not(.dark) .world-map {
+                  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.1)) drop-shadow(0 0 16px rgba(77, 174, 132, 0.12));
+                }
+                @media (prefers-reduced-motion: reduce) {
+                  .landxx {
+                    filter: none;
+                  }
                 }
                 .coastxx
                   {

@@ -10,7 +10,7 @@ const jsonLd = {
   '@graph': [
     {
       '@type': 'WebSite',
-      name: 'Herramientas · DivisionCero',
+      name: 'Herramientas de Ciberseguridad - DivisionCero',
       url: siteUrl,
       description: 'Herramientas gratuitas de Ciberseguridad para el día a día, por DivisionCero.',
       publisher: {
@@ -46,7 +46,7 @@ export default function Home() {
         <div className="text-center mb-14">
           <p className="text-sm font-medium text-primary mb-3">Herramientas · DivisionCero</p>
           <h1 className="text-4xl lg:text-5xl font-bold tracking-tight">
-            Herramientas para el día a día
+            Ciberseguridad para el día a día
           </h1>
         </div>
 

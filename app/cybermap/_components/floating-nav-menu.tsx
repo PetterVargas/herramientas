@@ -67,14 +67,14 @@ export function FloatingNavMenu() {
   };
 
   return (
-    <div className="absolute bottom-4 left-1/2 z-50 w-full max-w-4xl -translate-x-1/2 transform border border-gray-700 bg-black">
+    <div className="border-border bg-background/95 absolute bottom-2 left-1/2 z-50 w-full max-w-md -translate-x-1/2 transform border shadow-lg backdrop-blur-sm">
       <nav className="flex w-full items-center justify-between">
         <button
           onClick={handlePrevious}
           disabled={startIndex === 0}
-          className="flex h-12 w-8 items-center justify-center bg-black text-white transition-colors hover:bg-gray-800 disabled:cursor-not-allowed disabled:opacity-50 md:hidden"
+          className="bg-background text-foreground hover:bg-muted flex h-6 w-5 items-center justify-center transition-colors disabled:cursor-not-allowed disabled:opacity-50 md:hidden"
         >
-          <ChevronLeft size={16} />
+          <ChevronLeft size={10} />
         </button>
 
         <div className="flex flex-1 overflow-hidden">
@@ -85,7 +85,7 @@ export function FloatingNavMenu() {
               target="_blank"
               rel="noopener noreferrer"
               title={item.title}
-              className="flex h-12 flex-1 items-center justify-center border-r border-gray-700 bg-black text-center transition-colors last:border-r-0 hover:bg-gray-900 md:hidden"
+              className="border-border bg-background hover:bg-muted flex h-6 flex-1 items-center justify-center border-r text-center text-[10px] transition-colors last:border-r-0 md:hidden"
               style={{ color: item.color }}
             >
               <span className="font-bold">{item.label}</span>
@@ -99,7 +99,7 @@ export function FloatingNavMenu() {
               target="_blank"
               rel="noopener noreferrer"
               title={item.title}
-              className="hidden h-12 flex-1 items-center justify-center border-r border-gray-700 bg-black text-center transition-colors last:border-r-0 hover:bg-gray-900 md:flex lg:hidden"
+              className="border-border bg-background hover:bg-muted hidden h-6 flex-1 items-center justify-center border-r text-center text-[10px] transition-colors last:border-r-0 md:flex lg:hidden"
               style={{ color: item.color }}
             >
               <span className="font-bold">{item.label}</span>
@@ -113,7 +113,7 @@ export function FloatingNavMenu() {
               target="_blank"
               rel="noopener noreferrer"
               title={item.title}
-              className="hidden h-12 flex-1 items-center justify-center border-r border-gray-700 bg-black text-center transition-colors last:border-r-0 hover:bg-gray-900 lg:flex"
+              className="border-border bg-background hover:bg-muted hidden h-6 flex-1 items-center justify-center border-r text-center text-[10px] transition-colors last:border-r-0 lg:flex"
               style={{ color: item.color }}
             >
               <span className="font-bold">{item.label}</span>
@@ -124,9 +124,9 @@ export function FloatingNavMenu() {
         <button
           onClick={handleNext}
           disabled={startIndex >= navItems.length - 3}
-          className="flex h-12 w-8 items-center justify-center bg-black text-white transition-colors hover:bg-gray-800 disabled:cursor-not-allowed disabled:opacity-50 md:hidden"
+          className="bg-background text-foreground hover:bg-muted flex h-6 w-5 items-center justify-center transition-colors disabled:cursor-not-allowed disabled:opacity-50 md:hidden"
         >
-          <ChevronRight size={16} />
+          <ChevronRight size={10} />
         </button>
       </nav>
     </div>

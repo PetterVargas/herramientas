@@ -39,6 +39,7 @@ function ToolChip({
       href={tool.href}
       target="_blank"
       rel="noopener noreferrer"
+      title={tool.title}
       tabIndex={interactive ? undefined : -1}
       aria-hidden={interactive ? undefined : true}
       className={className}
@@ -48,6 +49,7 @@ function ToolChip({
   ) : (
     <Link
       href={tool.href}
+      title={tool.title}
       tabIndex={interactive ? undefined : -1}
       aria-hidden={interactive ? undefined : true}
       className={className}

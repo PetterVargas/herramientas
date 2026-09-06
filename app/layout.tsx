@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const siteName = "Herramientas · DivisionCero";
+const siteName = "Herramientas de Ciberseguridad - DivisionCero";
 const siteDescription =
   "Herramientas gratuitas de Ciberseguridad para el día a día: generador de contraseñas, hash, QR, UUID, validador SPF, codificadores Base64/URL, cuál es mi IP y más, por DivisionCero.";
 const siteUrl = "https://herramientas.divisioncero.com";
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
     default: siteName,
-    template: "%s · Herramientas · DivisionCero",
+    template: "%s · Herramientas de Ciberseguridad - DivisionCero",
   },
   description: siteDescription,
   keywords: [
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "DivisionCero", url: "https://divisioncero.com" }],
   creator: "DivisionCero",
-  publisher: "DivisionCero",
+  publisher: "divisioncero.com",
   applicationName: siteName,
   manifest: "/site.webmanifest",
   alternates: {

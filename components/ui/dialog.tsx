@@ -29,9 +29,11 @@ const DialogOverlay: React.FC<
 DialogOverlay.displayName = DialogPrimitive.Overlay.displayName;
 
 const DialogContent: React.FC<
-  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content>
-> = ({ className, children, ...props }) => (
-  <DialogPortal>
+  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content> & {
+    container?: React.ComponentPropsWithoutRef<typeof DialogPrimitive.Portal>['container'];
+  }
+> = ({ className, children, container, ...props }) => (
+  <DialogPortal container={container}>
     <DialogOverlay />
     <DialogPrimitive.Content
       className={cn(
