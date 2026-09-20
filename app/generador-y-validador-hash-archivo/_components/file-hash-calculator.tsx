@@ -19,6 +19,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Heading } from '@/components/ui/heading';
 import { toast } from '@/components/ui/sonner';
+import { sha256Hex } from '@/lib/hash';
 import { cn } from '@/lib/utils';
 
 import { ACCEPT_ATTR, ACCEPTED_FORMATS, MAX_FILE_SIZE, validateFile } from '../_lib/file-validation';
@@ -44,6 +45,7 @@ export function FileHashCalculator() {
   const [copied, setCopied] = useState<HashType | null>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [isGeneratingPdf, setIsGeneratingPdf] = useState(false);
+  const [lastReportHash, setLastReportHash] = useState<string | null>(null);
 
   const reset = () => {
     setFile(null);
@@ -51,6 +53,7 @@ export function FileHashCalculator() {
     setError(null);
     setWarning(null);
     setCopied(null);
+    setLastReportHash(null);
     if (inputRef.current) inputRef.current.value = '';
   };
 
@@ -61,6 +64,7 @@ export function FileHashCalculator() {
     setHashes(null);
     setError(null);
     setWarning(null);
+    setLastReportHash(null);
 
     const result = await validateFile(selected);
     if (!result.valid) {
@@ -95,7 +99,7 @@ export function FileHashCalculator() {
     }
   };
 
-  const downloadReport = () => {
+  const downloadReport = async () => {
     if (!file || !hashes) return;
     setIsGeneratingPdf(true);
     try {
@@ -105,16 +109,20 @@ export function FileHashCalculator() {
         fileType: file.type,
         hashes,
       });
+      const reportHash = await sha256Hex(pdfBytes);
+      setLastReportHash(reportHash);
+
+      const filename = `reporte-hash-${file.name.replace(/\.[^.]+$/, '')}-${reportHash}.pdf`;
       const blob = new Blob([pdfBytes], { type: 'application/pdf' });
       const url = URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.href = url;
-      link.download = `reporte-hash-${file.name.replace(/\.[^.]+$/, '')}.pdf`;
+      link.download = filename;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
       URL.revokeObjectURL(url);
-      toast.success('PDF descargado');
+      toast.success('PDF descargado', { description: filename });
     } catch (err) {
       toast.error('Error al generar el PDF', {
         description: err instanceof Error ? err.message : 'Error desconocido',
@@ -128,7 +136,7 @@ export function FileHashCalculator() {
     <div className="w-full max-w-3xl space-y-6">
       <div className="bg-card space-y-6 rounded-lg border p-6">
         <div className="flex items-center justify-between">
-          <Heading level={3}>Hash de Archivo</Heading>
+          <Heading level={3}>Generador y Validador de Hash de Archivo</Heading>
           {file && (
             <Button variant="outline" onClick={reset} data-test="reset-button">
               <RotateCcw className="mr-2 h-4 w-4" />
@@ -244,6 +252,13 @@ export function FileHashCalculator() {
               )}
               Descargar reporte PDF
             </Button>
+
+            {lastReportHash && (
+              <div className="bg-muted rounded-md p-3 text-xs">
+                <p className="mb-1 font-medium">Hash SHA-256 del último PDF descargado:</p>
+                <p className="text-muted-foreground font-mono break-all">{lastReportHash}</p>
+              </div>
+            )}
           </div>
         )}
       </div>

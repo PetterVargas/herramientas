@@ -20,6 +20,7 @@ const TYPE_SIZES: Record<number, number> = {
   10: 8, // SRATIONAL
   11: 4, // FLOAT
   12: 8, // DOUBLE
+  13: 4, // IFD (offset a otro IFD; mismo tamaño que LONG)
 };
 
 function readAscii(bytes: Uint8Array, offset: number, length: number): string {
@@ -66,10 +67,11 @@ function readEntryValue(
       nums.push(type === 3 ? view.getUint16(dataOffset + i * 2, littleEndian) : view.getInt16(dataOffset + i * 2, littleEndian));
     }
     value = count === 1 ? nums[0]! : nums;
-  } else if (type === 4 || type === 9) {
+  } else if (type === 4 || type === 9 || type === 13) {
+    // Tipo 13 (IFD) es un puntero a otro IFD; se lee igual que LONG (tipo 4).
     const nums: number[] = [];
     for (let i = 0; i < count; i++) {
-      nums.push(type === 4 ? view.getUint32(dataOffset + i * 4, littleEndian) : view.getInt32(dataOffset + i * 4, littleEndian));
+      nums.push(type === 9 ? view.getInt32(dataOffset + i * 4, littleEndian) : view.getUint32(dataOffset + i * 4, littleEndian));
     }
     value = count === 1 ? nums[0]! : nums;
   } else if (type === 1 || type === 6 || type === 7) {

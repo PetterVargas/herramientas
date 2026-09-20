@@ -1,5 +1,8 @@
 import { jsPDF } from 'jspdf';
 
+import { formatDateWithUtcOffset } from '@/lib/datetime';
+import { drawGeneratedByDivisionCero } from '@/lib/pdf-report';
+
 import type { FileHashes } from './hashing';
 
 const MARGIN_X = 14;
@@ -45,8 +48,8 @@ export function buildHashReportPdf(input: HashReportInput): ArrayBuffer {
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(9);
   doc.setTextColor(120, 120, 120);
-  doc.text('Generado por Herramientas · DivisionCero', MARGIN_X, 26);
-  doc.text(`Fecha de generación: ${new Date().toLocaleString('es-CO')}`, MARGIN_X, 31);
+  drawGeneratedByDivisionCero(doc, MARGIN_X, 26);
+  doc.text(`Fecha y hora de generación: ${formatDateWithUtcOffset(new Date())}`, MARGIN_X, 31);
 
   let y = 42;
 
@@ -104,8 +107,7 @@ export function buildHashReportPdf(input: HashReportInput): ArrayBuffer {
   doc.setFontSize(8.5);
   doc.setTextColor(120, 120, 120);
   const disclaimer = doc.splitTextToSize(
-    'Este reporte se generó completamente en tu navegador: el archivo analizado nunca se envió a ningún servidor. ' +
-      'herramientas.divisioncero.com',
+    'Este reporte se generó completamente en tu navegador: el archivo analizado nunca se envió a ningún servidor.',
     PAGE_WIDTH - MARGIN_X * 2,
   );
   doc.text(disclaimer, MARGIN_X, y);

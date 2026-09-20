@@ -345,11 +345,11 @@ export const tools: Tool[] = [
     iconName: 'ShieldAlert',
   },
   {
-    slug: 'hash-archivo',
-    title: 'Hash de Archivo',
+    slug: 'generador-y-validador-hash-archivo',
+    title: 'Generador y Validador de Hash de Archivo',
     description:
       'Calcula el MD5, SHA-1, SHA-256 y SHA-512 de un archivo (PDF, ZIP, RAR, imágenes u ofimática) sin subirlo a ningún servidor.',
-    href: '/hash-archivo',
+    href: '/generador-y-validador-hash-archivo',
     categories: ['Utilidades', 'Criptografía'],
     iconName: 'FileDigit',
   },

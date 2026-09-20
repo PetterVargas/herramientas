@@ -10,6 +10,7 @@ import { ToolFullscreen } from '@/components/tool-fullscreen';
 import { CountryDialog } from './_components/country-dialog';
 import { FloatingNavMenu } from './_components/floating-nav-menu';
 import { MapCosmicBackground } from './_components/map-cosmic-background';
+import { RadarSweep } from './_components/radar-sweep';
 import type { CountryDetails } from './_lib/types';
 import { useCountryData } from './_lib/use-country-data';
 
@@ -23,18 +24,18 @@ export default function CyberMapPage() {
 
   const svgRef = useRef<SVGSVGElement>(null);
 
-  // Efecto de flotación del mapa + pulso del brillo en los bordes de los
-  // continentes, ambos manejados por gsap. El brillo anima variables CSS
-  // (--edge-glow-*) que .landxx hereda, así un solo tween mueve el filtro
-  // drop-shadow de los ~300 países sin animar cada <path> por separado.
+  // Pulso del brillo en los bordes de los continentes, manejado por gsap.
+  // Anima variables CSS (--edge-glow-*) que .landxx hereda, así un solo
+  // tween mueve el filtro drop-shadow de los ~300 países sin animar cada
+  // <path> por separado.
   useEffect(() => {
     const svgEl = svgRef.current;
     if (!svgEl) return;
 
     // Desplazamiento base hacia abajo: el mapa recortado por el zoom
     // inicial deja mucho océano vacío del polo sur visible y aprieta el
-    // norte contra el borde superior. Bajar el punto de partida del
-    // flotado corrige el encuadre sin tocar el mapa ni el zoom/pan.
+    // norte contra el borde superior. Bajar el punto de partida corrige
+    // el encuadre sin tocar el mapa ni el zoom/pan.
     const baseY = 48;
 
     gsap.set(svgEl, { y: baseY, transformOrigin: '50% 50%' });
@@ -44,15 +45,6 @@ export default function CyberMapPage() {
     gsap.set(svgEl, {
       '--edge-glow-blur': '0.6px',
       '--edge-glow-alpha': 0.45,
-    });
-
-    const floatTween = gsap.to(svgEl, {
-      y: baseY - 14,
-      rotate: 0.5,
-      duration: 4.2,
-      ease: 'sine.inOut',
-      repeat: -1,
-      yoyo: true,
     });
 
     const glowTween = gsap.to(svgEl, {
@@ -65,7 +57,6 @@ export default function CyberMapPage() {
     });
 
     return () => {
-      floatTween.kill();
       glowTween.kill();
     };
   }, []);
@@ -112,6 +103,7 @@ export default function CyberMapPage() {
     <ToolFullscreen className="bg-background flex h-[calc(100vh-160px)] min-h-[700px] w-full items-center justify-center overflow-hidden">
       <h1 className="sr-only">CyberMap: mapa mundial interactivo de amenazas y ciberataques</h1>
       <MapCosmicBackground className="pointer-events-none absolute inset-0 z-0" />
+      <RadarSweep className="pointer-events-none absolute inset-0 z-[2]" />
       <TransformWrapper
         initialScale={1.15}
         minScale={0.5}

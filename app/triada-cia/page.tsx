@@ -7,7 +7,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { PillarCards } from './_components/pillar-cards';
 import { CiaQuiz } from './_components/cia-quiz';
 
-const title = 'Tríada CIA: Confidencialidad, Integridad y Disponibilidad';
+const title = 'Tríada CIA';
 const description =
   'Aprende e identifica de forma didáctica los tres pilares de la seguridad de la información: Confidencialidad, Integridad y Disponibilidad.';
 const path = '/triada-cia';
