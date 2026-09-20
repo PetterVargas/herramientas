@@ -8,7 +8,7 @@ import { ImpersonationChecklist } from './_components/impersonation-checklist';
 
 const title = '10 ejemplos de suplantación de marcas';
 const description =
-  '10 ejemplos ilustrados de suplantación de marcas en Instagram, Facebook, WhatsApp, sitios web y más: cómo detectarlos y cómo verificar si una cuenta o sitio es oficial.';
+  '10 ejemplos ilustrados de suplantación de marcas en Instagram, Facebook, WhatsApp y sitios web: cómo detectarlos y verificar cuentas oficiales.';
 const path = '/suplantacion-marcas';
 
 export const metadata = buildMetadata({ title, description, path });

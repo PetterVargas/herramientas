@@ -9,49 +9,50 @@ export function FloatingNavMenu() {
     {
       label: 'COR',
       href: `https://kudo.divisioncero.com/framework/cor`,
-      color: '#1d4ed8',
+      // Verde en armonía con el brillo cyber del mapa (rgba(77, 174, 132)).
+      color: '#4dae84',
       title: 'Coherencia Organizacional',
     },
     {
       label: 'CAP',
       href: `https://kudo.divisioncero.com/framework/cap`,
-      color: '#7e22ce',
+      color: '#4dae84',
       title: 'Ciberseguridad en Aplicaciones',
     },
     {
       label: 'CCN',
       href: `https://kudo.divisioncero.com/framework/ccn`,
-      color: '#15803d',
+      color: '#4dae84',
       title: 'Continuidad y Cambios del Negocio',
     },
     {
       label: 'CIF',
       href: `https://kudo.divisioncero.com/framework/cif`,
-      color: '#c2410c',
+      color: '#4dae84',
       title: 'Ciberseguridad en Infrastructura',
     },
     {
       label: 'THP',
       href: `https://kudo.divisioncero.com/framework/thp`,
-      color: '#be185d',
+      color: '#4dae84',
       title: 'Ciberseguridad en Talento Humano y Proveedores',
     },
     {
       label: 'CIP',
       href: `https://kudo.divisioncero.com/framework/cip`,
-      color: '#4338ca',
+      color: '#4dae84',
       title: 'Ciberseguridad en Identidad y Puntos Finales',
     },
     {
       label: 'ADR',
       href: `https://kudo.divisioncero.com/framework/adr`,
-      color: '#b91c1c',
+      color: '#4dae84',
       title: 'Análisis, Detección y Respuesta de Ciberseguridad',
     },
     {
       label: 'DIA',
       href: `https://kudo.divisioncero.com/framework/dia`,
-      color: '#0e7490',
+      color: '#4dae84',
       title: 'Ciberseguridad en Datos e Inteligencia Artificial',
     },
   ];

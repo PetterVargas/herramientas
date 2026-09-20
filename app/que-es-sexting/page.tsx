@@ -10,7 +10,7 @@ import { SextingQuizDynamic } from './_components/sexting-quiz-dynamic';
 
 const title = '¿Qué es el sexting?';
 const description =
-  'Herramienta educativa para que padres, niños, niñas y adolescentes entiendan los riesgos del sexting: pérdida de control, permanencia digital, consecuencias legales y presión, con casos prácticos.';
+  'Herramienta educativa para padres, niños, niñas y adolescentes: entiende los riesgos del sexting y cómo actuar, con casos prácticos.';
 const path = '/que-es-sexting';
 
 export const metadata = buildMetadata({ title, description, path });

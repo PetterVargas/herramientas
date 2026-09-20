@@ -1,5 +1,8 @@
 import { jsPDF } from 'jspdf';
 
+import { formatDateWithUtcOffset } from '@/lib/datetime';
+import { drawGeneratedByDivisionCero } from '@/lib/pdf-report';
+
 import type { BrowserInfo, IpGeoInfo } from './ip-info';
 
 const MARGIN_X = 14;
@@ -47,8 +50,8 @@ export function buildIpReportPdf(ipInfo: IpGeoInfo, browserInfo: BrowserInfo): A
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(9);
   doc.setTextColor(120, 120, 120);
-  doc.text('Generado por Herramientas · DivisionCero', MARGIN_X, 26);
-  doc.text(`Fecha de generación: ${browserInfo.visitedAt.toLocaleString('es-CO')}`, MARGIN_X, 31);
+  drawGeneratedByDivisionCero(doc, MARGIN_X, 26);
+  doc.text(`Fecha y hora de generación: ${formatDateWithUtcOffset(browserInfo.visitedAt)}`, MARGIN_X, 31);
 
   let y = 42;
 
@@ -72,7 +75,7 @@ export function buildIpReportPdf(ipInfo: IpGeoInfo, browserInfo: BrowserInfo): A
 
   y += 6;
   y = addSectionTitle(doc, 'Información del navegador y dispositivo', y);
-  y = addRow(doc, 'Fecha y hora de visita', browserInfo.visitedAt.toString(), y);
+  y = addRow(doc, 'Fecha y hora de visita', formatDateWithUtcOffset(browserInfo.visitedAt), y);
   y = addRow(doc, 'User Agent', browserInfo.userAgent, y);
   y = addRow(doc, 'Idioma preferido', browserInfo.language, y);
   y = addRow(doc, 'Idiomas configurados', browserInfo.languages, y);
@@ -95,18 +98,10 @@ export function buildIpReportPdf(ipInfo: IpGeoInfo, browserInfo: BrowserInfo): A
   doc.setTextColor(120, 120, 120);
   const disclaimer = doc.splitTextToSize(
     'Este reporte se generó completamente en tu navegador, sin enviar datos a ningún servidor propio. ' +
-      'La información de geolocalización proviene de un servicio público de consulta por IP y es aproximada. ' +
-      'herramientas.divisioncero.com',
+      'La información de geolocalización proviene de un servicio público de consulta por IP y es aproximada.',
     PAGE_WIDTH - MARGIN_X * 2,
   );
   doc.text(disclaimer, MARGIN_X, y);
 
   return doc.output('arraybuffer');
-}
-
-export async function sha256Hex(data: ArrayBuffer): Promise<string> {
-  const hashBuffer = await crypto.subtle.digest('SHA-256', data);
-  return Array.from(new Uint8Array(hashBuffer))
-    .map((byte) => byte.toString(16).padStart(2, '0'))
-    .join('');
 }

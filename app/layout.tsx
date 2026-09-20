@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
     default: siteName,
-    template: "%s · Herramientas de Ciberseguridad - DivisionCero",
+    template: "%s · DivisionCero",
   },
   description: siteDescription,
   keywords: [

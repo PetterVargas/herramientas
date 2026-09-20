@@ -4,10 +4,10 @@ import { ToolJsonLd } from '@/components/tool-json-ld';
 import { buildMetadata } from '@/lib/seo';
 import { FileHashCalculator } from './_components/file-hash-calculator';
 
-const title = 'Hash de Archivo (MD5, SHA1, SHA256, SHA512)';
+const title = 'Generador y Validador de Hash de Archivo';
 const description =
-  'Calcula el hash MD5, SHA-1, SHA-256 y SHA-512 de un archivo (PDF, ZIP, RAR, imágenes u ofimática) y descarga el resultado en un reporte PDF, sin subirlo a ningún servidor: todo ocurre en tu navegador.';
-const path = '/hash-archivo';
+  'Calcula el hash MD5, SHA-1, SHA-256 y SHA-512 de un archivo y descarga el resultado en PDF, sin subirlo a ningún servidor: todo ocurre en tu navegador.';
+const path = '/generador-y-validador-hash-archivo';
 
 export const metadata = buildMetadata({ title, description, path });
 
@@ -16,7 +16,7 @@ export default function HashArchivoPage() {
     <div className="flex flex-col space-y-8">
       <ToolJsonLd title={title} description={description} path={path} />
       <ToolPageHeader
-        title="Hash de Archivo"
+        title="Generador y Validador de Hash de Archivo"
         subtitle="Sube un archivo y obtén su MD5, SHA-1, SHA-256 y SHA-512. Todo el cálculo ocurre en tu navegador; el archivo nunca se envía a ningún servidor."
       />
 

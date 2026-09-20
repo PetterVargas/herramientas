@@ -6,7 +6,7 @@ import { MetadataAnalyzer } from './_components/metadata-analyzer';
 
 const title = 'Analizador de Metadatos';
 const description =
-  'Analiza los metadatos ocultos de una imagen (EXIF, GPS), un PDF o un documento de Word/Excel/PowerPoint (autor, fechas, empresa) y descarga un reporte en PDF. Todo ocurre en tu navegador.';
+  'Analiza los metadatos ocultos de una imagen (EXIF, GPS), un PDF o un Word/Excel/PowerPoint y descarga un reporte en PDF. Todo ocurre en tu navegador.';
 const path = '/analizador-metadatos';
 
 export const metadata = buildMetadata({ title, description, path });

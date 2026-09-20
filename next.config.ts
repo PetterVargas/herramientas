@@ -8,6 +8,15 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
+  async redirects() {
+    return [
+      {
+        source: '/hash-archivo',
+        destination: '/generador-y-validador-hash-archivo',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

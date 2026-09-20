@@ -111,15 +111,21 @@ function ToolsMarquee({ tools }: { tools: Tool[] }) {
   );
 }
 
+function normalize(value: string) {
+  return value
+    .normalize('NFD')
+    .replace(/[̀-ͯ]/g, '')
+    .toLowerCase();
+}
+
 export function ToolsSearch({ tools }: { tools: Tool[] }) {
   const [query, setQuery] = useState('');
 
   const filtered = useMemo(() => {
-    const q = query.trim().toLowerCase();
+    const q = normalize(query.trim());
     if (!q) return tools;
     return tools.filter(
-      (tool) =>
-        tool.title.toLowerCase().includes(q) || tool.description.toLowerCase().includes(q),
+      (tool) => normalize(tool.title).includes(q) || normalize(tool.description).includes(q),
     );
   }, [tools, query]);
 

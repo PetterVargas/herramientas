@@ -10,7 +10,7 @@ import { roleComparison, authComparison } from './_lib/comparisons';
 
 const title = 'Flujo de Autenticación, Autorización y Roles';
 const description =
-  'Cómo funcionan la autenticación, la autorización y los roles (fijos o personalizados) en accesos por API y por MCP, explicado paso a paso para negocio y producto.';
+  'Cómo funcionan la autenticación, la autorización y los roles en accesos por API y por MCP, explicado paso a paso para negocio y producto.';
 const path = '/flujo-autenticacion-autorizacion';
 
 export const metadata = buildMetadata({ title, description, path });

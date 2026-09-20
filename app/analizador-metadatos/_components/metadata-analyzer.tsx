@@ -17,6 +17,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Heading } from '@/components/ui/heading';
 import { toast } from '@/components/ui/sonner';
+import { sha256Hex } from '@/lib/hash';
 import { cn } from '@/lib/utils';
 
 import { ACCEPT_ATTR, MAX_FILE_SIZE, validateFile } from '../_lib/file-validation';
@@ -38,12 +39,14 @@ export function MetadataAnalyzer() {
   const [warning, setWarning] = useState<string | null>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [isGeneratingPdf, setIsGeneratingPdf] = useState(false);
+  const [lastHash, setLastHash] = useState<string | null>(null);
 
   const reset = () => {
     setFileMeta(null);
     setResult(null);
     setError(null);
     setWarning(null);
+    setLastHash(null);
     if (inputRef.current) inputRef.current.value = '';
   };
 
@@ -54,6 +57,7 @@ export function MetadataAnalyzer() {
     setResult(null);
     setError(null);
     setWarning(null);
+    setLastHash(null);
 
     const validation = await validateFile(selected);
     if (!validation.valid) {
@@ -80,16 +84,20 @@ export function MetadataAnalyzer() {
     setIsGeneratingPdf(true);
     try {
       const pdfBytes = buildMetadataReportPdf(result);
+      const hash = await sha256Hex(pdfBytes);
+      setLastHash(hash);
+
+      const filename = `reporte-metadatos-${result.fileName.replace(/\.[^.]+$/, '')}-${hash}.pdf`;
       const blob = new Blob([pdfBytes], { type: 'application/pdf' });
       const url = URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.href = url;
-      link.download = `reporte-metadatos-${result.fileName.replace(/\.[^.]+$/, '')}.pdf`;
+      link.download = filename;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
       URL.revokeObjectURL(url);
-      toast.success('PDF descargado');
+      toast.success('PDF descargado', { description: filename });
     } catch (err) {
       toast.error('Error al generar el PDF', {
         description: err instanceof Error ? err.message : 'Error desconocido',
@@ -225,6 +233,13 @@ export function MetadataAnalyzer() {
                 </div>
               ))}
             </div>
+
+            {lastHash && (
+              <div className="bg-muted rounded-md p-3 text-xs">
+                <p className="mb-1 font-medium">Hash SHA-256 del último PDF descargado:</p>
+                <p className="text-muted-foreground font-mono break-all">{lastHash}</p>
+              </div>
+            )}
           </>
         )}
       </div>

@@ -10,7 +10,7 @@ import { GroomingQuizDynamic } from './_components/grooming-quiz-dynamic';
 
 const title = '¿Qué es el grooming?';
 const description =
-  'Herramienta educativa para que padres, niños, niñas y adolescentes aprendan a identificar el grooming en línea: sus fases, señales de alerta y qué hacer si ocurre.';
+  'Herramienta educativa para padres, niños, niñas y adolescentes: identifica el grooming en línea, sus fases, señales de alerta y qué hacer.';
 const path = '/que-es-grooming';
 
 export const metadata = buildMetadata({ title, description, path });

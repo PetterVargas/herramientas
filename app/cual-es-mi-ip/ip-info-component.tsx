@@ -16,8 +16,11 @@ import { Button } from '@/components/ui/button';
 import { Heading } from '@/components/ui/heading';
 import { toast } from '@/components/ui/sonner';
 
+import { formatDateWithUtcOffset } from '@/lib/datetime';
+import { sha256Hex } from '@/lib/hash';
+
 import { collectBrowserInfo, fetchIpGeoInfo, type BrowserInfo, type IpGeoInfo } from './ip-info';
-import { buildIpReportPdf, sha256Hex } from './ip-report-pdf';
+import { buildIpReportPdf } from './ip-report-pdf';
 
 function InfoRow({ label, value }: { label: string; value: ReactNode }) {
   return (
@@ -160,10 +163,7 @@ export function IpInfoComponent() {
               <div className="rounded-lg border divide-y">
                 <InfoRow
                   label="Fecha y hora de visita"
-                  value={browserInfo.visitedAt.toLocaleString('es-CO', {
-                    dateStyle: 'medium',
-                    timeStyle: 'medium',
-                  })}
+                  value={formatDateWithUtcOffset(browserInfo.visitedAt)}
                 />
                 <InfoRow label="Idioma preferido" value={browserInfo.language} />
                 <InfoRow label="Plataforma" value={browserInfo.platform} />
