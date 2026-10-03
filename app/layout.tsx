@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
+import { FooterReveal } from "@/components/footer-reveal";
+import { WhatsAppButton } from "@/components/whatsapp-button";
 import { Toaster } from "@/components/ui/sonner";
 import { GoogleAnalytics } from "@/components/google-analytics";
 import "./globals.css";
@@ -53,7 +55,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    locale: "es_ES",
+    locale: "es_419",
     url: siteUrl,
     siteName,
     title: siteName,
@@ -173,6 +175,8 @@ export default function RootLayout({
           <Navbar />
           <div className="flex flex-1 flex-col">{children}</div>
           <Footer />
+          <FooterReveal />
+          <WhatsAppButton />
         </ThemeProvider>
       </body>
     </html>

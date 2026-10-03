@@ -5,7 +5,8 @@ import { buildMetadata } from '@/lib/seo';
 import { IcebreakerGrid } from './_components/icebreaker-grid';
 
 const title = 'Rompehielos para equipos de Ciberseguridad';
-const description = 'Co-Creando Ciberseguridad, conocernos mejor y divertirnos juntos.';
+const description =
+  'Rompehielos para equipos de ciberseguridad: preguntas y dinámicas para conocerse mejor, divertirse y co-crear una cultura de seguridad en tu organización.';
 const path = '/rompehielos';
 
 export const metadata = buildMetadata({ title, description, path });

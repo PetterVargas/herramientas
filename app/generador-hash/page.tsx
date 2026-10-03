@@ -5,7 +5,8 @@ import { buildMetadata } from '@/lib/seo';
 import { HashGeneratorComponent } from './hash-generator-component';
 
 const title = 'Generador de Hash';
-const description = 'Genera hashes MD5, SHA-1, SHA-256 y SHA-512 para verificación de integridad';
+const description =
+  'Genera hashes MD5, SHA-1, SHA-256 y SHA-512 de cualquier texto online para verificar integridad. Gratis y calculado en tu navegador, sin enviar datos.';
 const path = '/generador-hash';
 
 export const metadata = buildMetadata({ title, description, path });

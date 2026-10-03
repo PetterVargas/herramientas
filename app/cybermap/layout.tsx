@@ -2,7 +2,7 @@ import { ToolJsonLd } from '@/components/tool-json-ld';
 import { buildMetadata } from '@/lib/seo';
 
 const title = 'CyberMap';
-const description = 'Visualiza el panorama de amenazas y ciberataques en tiempo real.';
+const description = 'CyberMap: mapa mundial interactivo de ciberseguridad para visualizar el panorama de amenazas, ciberataques y el perfil de ciberseguridad de cada país.';
 const path = '/cybermap';
 
 export const metadata = buildMetadata({ title, description, path });

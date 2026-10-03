@@ -5,7 +5,8 @@ import { buildMetadata } from '@/lib/seo';
 import { UrlEncoderComponent } from './url-encoder-component';
 
 const title = 'Codificador/Decodificador URL';
-const description = 'Convierte caracteres especiales en URLs de forma segura';
+const description =
+  'Codifica y decodifica URLs online (percent-encoding): convierte espacios, tildes y caracteres especiales en enlaces válidos y seguros, gratis y en tu navegador.';
 const path = '/codificador-url';
 
 export const metadata = buildMetadata({ title, description, path });

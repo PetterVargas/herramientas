@@ -5,7 +5,8 @@ import { buildMetadata } from '@/lib/seo';
 import { UuidGeneratorComponent } from './uuid-generator-component';
 
 const title = 'Generador de UUID';
-const description = 'Genera identificadores únicos universales (UUID v4) aleatorios';
+const description =
+  'Genera UUID v4 (GUID) aleatorios online gratis: identificadores únicos universales listos para copiar en bases de datos, APIs y desarrollo de software.';
 const path = '/generador-uuid';
 
 export const metadata = buildMetadata({ title, description, path });

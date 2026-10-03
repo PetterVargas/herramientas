@@ -38,6 +38,8 @@ import {
   UserRoundSearch,
   MessageCircleWarning,
   BadgeAlert,
+  Clock,
+  AtSign,
   type LucideIcon,
 } from 'lucide-react';
 import type { Tool } from '@/lib/tools';
@@ -79,6 +81,8 @@ export const toolIcons: Record<Tool['iconName'], LucideIcon> = {
   UserRoundSearch,
   MessageCircleWarning,
   BadgeAlert,
+  Clock,
+  AtSign,
 };
 
 export function ToolCard({ tool }: { tool: Tool }) {

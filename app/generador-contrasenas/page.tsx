@@ -5,7 +5,8 @@ import { buildMetadata } from '@/lib/seo';
 import { PasswordGeneratorComponent } from './password-generator-component';
 
 const title = 'Generador de Contraseñas';
-const description = 'Genera contraseñas fuertes y seguras para tus cuentas';
+const description =
+  'Genera contraseñas fuertes, aleatorias y seguras gratis: elige longitud, mayúsculas, números y símbolos. Se crean en tu navegador, sin enviarse a ningún servidor.';
 const path = '/generador-contrasenas';
 
 export const metadata = buildMetadata({ title, description, path });

@@ -5,7 +5,8 @@ import { buildMetadata } from '@/lib/seo';
 import { SPFValidatorComponent } from './spf-validator-component';
 
 const title = 'Validador SPF';
-const description = 'Verifica y valida los registros SPF de tu dominio para mejorar la seguridad del email';
+const description =
+  'Valida el registro SPF de tu dominio gratis: consulta su DNS, revisa sintaxis y mecanismos, y protege tu correo contra la suplantación y el spam.';
 const path = '/validador-spf';
 
 export const metadata = buildMetadata({ title, description, path });

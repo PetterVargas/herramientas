@@ -18,7 +18,7 @@ export const metadata = buildMetadata({ title, description, path });
 export default function CifradoPgpPage() {
   return (
     <div className="flex flex-col space-y-8">
-      <ToolJsonLd title={title} description={description} path={path} />
+      <ToolJsonLd title={title} description={description} path={path} kind="article" />
       <ToolPageHeader
         title="Cifrado PGP Explicado"
         subtitle="Entiende paso a paso cómo Alice y Bob usan PGP para cifrar un mensaje confidencial o para firmarlo digitalmente."

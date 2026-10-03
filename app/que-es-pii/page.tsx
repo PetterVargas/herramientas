@@ -18,7 +18,7 @@ export const metadata = buildMetadata({ title, description, path });
 export default function QueEsPiiPage() {
   return (
     <div className="flex flex-col space-y-8">
-      <ToolJsonLd title={title} description={description} path={path} />
+      <ToolJsonLd title={title} description={description} path={path} kind="article" />
       <ToolPageHeader
         title="¿Qué es un dato PII?"
         subtitle="Información de Identificación Personal: qué la hace PII, qué la hace sensible, y cómo protegerla."

@@ -127,3 +127,64 @@ textarea::placeholder {
     animation: none;
   }
 }
+
+/* Footer reveal (cortina estilo amplitude.com) — ver components/footer-reveal.tsx */
+.footer-reveal {
+  --footer-reveal-height: clamp(8rem, 24vw, 26rem);
+  position: relative;
+  height: var(--footer-reveal-height);
+  clip-path: inset(0);
+  view-timeline-name: --footer-reveal;
+}
+
+.footer-reveal-inner {
+  position: fixed;
+  inset-inline: 0;
+  bottom: 0;
+  height: var(--footer-reveal-height);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: hidden;
+  background: #000;
+  color: #fff;
+}
+
+.footer-reveal-text {
+  display: block;
+  font-size: 15vw;
+  font-weight: 700;
+  line-height: 0.8;
+  letter-spacing: -0.06em;
+  white-space: nowrap;
+  padding-bottom: 3vw;
+  user-select: none;
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .footer-reveal-text {
+      animation: footer-reveal-rise linear both;
+      animation-timeline: --footer-reveal;
+      animation-range: entry 0% entry 100%;
+    }
+  }
+}
+
+@keyframes footer-reveal-rise {
+  from {
+    opacity: 0.2;
+    transform: translateY(35%) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* El footer actúa como cortina: queda por encima y proyecta sombra al levantarse */
+.footer-curtain {
+  position: relative;
+  z-index: 10;
+  box-shadow: 0 24px 48px -12px rgb(0 0 0 / 0.45);
+}
