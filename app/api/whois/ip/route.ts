@@ -2,7 +2,17 @@ import { NextRequest, NextResponse } from 'next/server';
 
 import { z } from 'zod';
 
-import type { WhoisContact, WhoisIpResponse, WhoisIpResult } from '@/app/whois-ip/_lib/whois';
+import type { WhoisIpResponse, WhoisIpResult } from '@/app/whois-ip-y-dominio/_lib/whois';
+
+import {
+  RDAP_REQUEST_HEADERS,
+  RDAP_TIMEOUT_MS,
+  eventDate,
+  flattenContacts,
+  hostOf,
+  remarkTexts,
+  type RdapObject,
+} from '../_lib/rdap';
 
 const IpSchema = z.object({
   ip: z.union([z.ipv4(), z.ipv6()], { error: 'Dirección IP inválida' }),
@@ -19,27 +29,7 @@ const REGISTRIES: Record<string, string> = {
   'rdap.afrinic.net': 'AFRINIC',
 };
 
-type VCardProperty = [string, Record<string, unknown>, string, unknown];
-
-interface RdapEntity {
-  handle?: string;
-  roles?: string[];
-  vcardArray?: [string, VCardProperty[]];
-  entities?: RdapEntity[];
-}
-
-interface RdapEvent {
-  eventAction: string;
-  eventDate: string;
-}
-
-interface RdapRemark {
-  title?: string;
-  description?: string[];
-}
-
-interface RdapIpNetwork {
-  handle?: string;
+interface RdapIpNetwork extends RdapObject {
   name?: string;
   type?: string;
   ipVersion?: string;
@@ -47,80 +37,13 @@ interface RdapIpNetwork {
   endAddress?: string;
   parentHandle?: string;
   country?: string;
-  status?: string[];
-  port43?: string;
-  events?: RdapEvent[];
-  remarks?: RdapRemark[];
-  entities?: RdapEntity[];
   cidr0_cidrs?: { v4prefix?: string; v6prefix?: string; length: number }[];
   arin_originas0_originautnums?: number[];
   lacnic_originAutnum?: string[];
-  errorCode?: number;
-  title?: string;
-  description?: string[];
-}
-
-function vcardValues(entity: RdapEntity, property: string): string[] {
-  const props = entity.vcardArray?.[1] ?? [];
-  return props
-    .filter(([name]) => name === property)
-    .map(([, params, , value]) => {
-      if (property === 'adr') {
-        const label = params?.label;
-        if (typeof label === 'string') return label.replace(/\n+/g, ', ');
-        if (Array.isArray(value)) {
-          return value.flat().filter(Boolean).join(', ');
-        }
-      }
-      return typeof value === 'string' ? value.replace(/^tel:/, '') : '';
-    })
-    .filter(Boolean);
-}
-
-/** Las entidades RDAP pueden venir anidadas (p. ej. el contacto de abuso dentro del titular). */
-function flattenContacts(entities: RdapEntity[] = []): WhoisContact[] {
-  const byHandle = new Map<string, WhoisContact>();
-
-  const visit = (list: RdapEntity[]) => {
-    for (const entity of list) {
-      const handle = entity.handle ?? '';
-      const existing = handle ? byHandle.get(handle) : undefined;
-      const roles = entity.roles ?? [];
-
-      if (existing) {
-        existing.roles = [...new Set([...existing.roles, ...roles])];
-      } else {
-        const contact: WhoisContact = {
-          handle,
-          roles,
-          name: vcardValues(entity, 'fn')[0] ?? '',
-          kind: vcardValues(entity, 'kind')[0] ?? '',
-          emails: [...new Set(vcardValues(entity, 'email'))],
-          phones: vcardValues(entity, 'tel'),
-          address: vcardValues(entity, 'adr')[0] ?? '',
-        };
-        byHandle.set(handle || `sin-handle-${byHandle.size}`, contact);
-      }
-
-      if (entity.entities?.length) visit(entity.entities);
-    }
-  };
-
-  visit(entities);
-  return [...byHandle.values()];
 }
 
 function normalize(query: string, finalUrl: string, data: RdapIpNetwork): WhoisIpResult {
-  const host = (() => {
-    try {
-      return new URL(finalUrl).hostname;
-    } catch {
-      return '';
-    }
-  })();
-
-  const eventDate = (action: string) =>
-    data.events?.find((event) => event.eventAction === action)?.eventDate ?? '';
+  const host = hostOf(finalUrl);
 
   const originAsns = [
     ...(data.arin_originas0_originautnums ?? []).map((asn) => `AS${asn}`),
@@ -148,11 +71,9 @@ function normalize(query: string, finalUrl: string, data: RdapIpNetwork): WhoisI
     country: data.country ?? '',
     status: data.status ?? [],
     originAsns,
-    registrationDate: eventDate('registration'),
-    lastChangedDate: eventDate('last changed'),
-    remarks: (data.remarks ?? [])
-      .map((remark) => (remark.description ?? []).join(' ').trim())
-      .filter(Boolean),
+    registrationDate: eventDate(data, 'registration'),
+    lastChangedDate: eventDate(data, 'last changed'),
+    remarks: remarkTexts(data),
     contacts: flattenContacts(data.entities),
     raw: JSON.stringify(data, null, 2),
   };
@@ -177,17 +98,13 @@ export async function POST(request: NextRequest) {
 
   const { ip } = validation.data;
   const controller = new AbortController();
-  const timeoutId = setTimeout(() => controller.abort(), 15000);
+  const timeoutId = setTimeout(() => controller.abort(), RDAP_TIMEOUT_MS);
 
   try {
     // Sin encodeURIComponent: rdap.org responde 400 si los ":" de IPv6 van codificados.
     // La IP ya está validada por zod, así que no puede alterar la URL.
     const response = await fetch(`${RDAP_BOOTSTRAP_URL}${ip}`, {
-      // rdap.org rechaza (403) las peticiones sin User-Agent.
-      headers: {
-        Accept: 'application/rdap+json, application/json',
-        'User-Agent': 'DivisionCero-Herramientas/1.0 (+https://herramientas.divisioncero.com)',
-      },
+      headers: RDAP_REQUEST_HEADERS,
       redirect: 'follow',
       signal: controller.signal,
     });

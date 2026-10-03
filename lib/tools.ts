@@ -265,10 +265,11 @@ export const tools: Tool[] = [
     iconName: 'Globe',
   },
   {
-    slug: 'whois-ip',
-    title: 'WHOIS de IP',
-    description: 'Consulta el titular, rango, ASN y contacto de abuso de una IP y exporta un PDF.',
-    href: '/whois-ip',
+    slug: 'whois-ip-y-dominio',
+    title: 'WHOIS de IP y Dominio',
+    description:
+      'Consulta el titular, rango y ASN de una IP, o el registrador, fechas y DNS de un dominio, y exporta un PDF.',
+    href: '/whois-ip-y-dominio',
     categories: ['Utilidades', 'Rastreo'],
     iconName: 'Network',
   },

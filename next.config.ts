@@ -15,6 +15,11 @@ const nextConfig: NextConfig = {
         destination: '/generador-y-validador-hash-archivo',
         permanent: true,
       },
+      {
+        source: '/whois-ip',
+        destination: '/whois-ip-y-dominio',
+        permanent: true,
+      },
     ];
   },
 };

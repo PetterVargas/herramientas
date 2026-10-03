@@ -36,6 +36,93 @@ export type WhoisIpResponse =
   | { success: true; data: WhoisIpResult }
   | { success: false; error: string };
 
+export interface WhoisDomainResult {
+  /** Lo que escribió el usuario, ya normalizado (sin protocolo ni ruta). */
+  query: string;
+  /** Dominio que respondió el registro; puede ser el padre si se consultó un subdominio. */
+  domain: string;
+  queriedAt: string;
+  registry: string;
+  rdapUrl: string;
+  port43: string;
+  handle: string;
+  status: string[];
+  registrar: string;
+  registrarIanaId: string;
+  registrationDate: string;
+  expirationDate: string;
+  lastChangedDate: string;
+  nameservers: string[];
+  /** null cuando el registro no informa si el dominio está firmado. */
+  dnssec: boolean | null;
+  remarks: string[];
+  contacts: WhoisContact[];
+  raw: string;
+}
+
+export type WhoisDomainResponse =
+  | { success: true; data: WhoisDomainResult }
+  | { success: false; error: string };
+
+const DOMAIN_LABEL = /^(?!-)[a-z0-9-]{1,63}(?<!-)$/;
+const TOP_LEVEL_DOMAIN = /^(?:[a-z]{2,63}|xn--[a-z0-9-]{1,59})$/;
+
+/**
+ * Acepta un dominio, un subdominio o una URL completa y devuelve el nombre de
+ * host en minúsculas (los dominios con tildes o ñ se convierten a punycode).
+ * Devuelve null si no es un nombre de dominio válido.
+ */
+export function normalizeDomain(input: string): string | null {
+  const trimmed = input.trim().toLowerCase();
+  if (!trimmed) return null;
+
+  let host: string;
+  try {
+    const hasScheme = /^[a-z][a-z0-9+.-]*:\/\//.test(trimmed);
+    host = new URL(hasScheme ? trimmed : `http://${trimmed}`).hostname;
+  } catch {
+    return null;
+  }
+
+  host = host.replace(/\.$/, '');
+  if (!host || host.length > 253) return null;
+
+  const labels = host.split('.');
+  if (labels.length < 2) return null;
+  if (!labels.every((label) => DOMAIN_LABEL.test(label))) return null;
+  if (!TOP_LEVEL_DOMAIN.test(labels[labels.length - 1])) return null;
+  return host;
+}
+
+export const DOMAIN_STATUS_LABELS: Record<string, string> = {
+  active: 'Activo',
+  ok: 'Activo',
+  inactive: 'Inactivo',
+  'client transfer prohibited': 'Transferencia bloqueada (registrador)',
+  'client update prohibited': 'Modificación bloqueada (registrador)',
+  'client delete prohibited': 'Eliminación bloqueada (registrador)',
+  'client renew prohibited': 'Renovación bloqueada (registrador)',
+  'client hold': 'Suspendido (registrador)',
+  'server transfer prohibited': 'Transferencia bloqueada (registro)',
+  'server update prohibited': 'Modificación bloqueada (registro)',
+  'server delete prohibited': 'Eliminación bloqueada (registro)',
+  'server renew prohibited': 'Renovación bloqueada (registro)',
+  'server hold': 'Suspendido (registro)',
+  'pending delete': 'Pendiente de eliminación',
+  'pending transfer': 'Transferencia en curso',
+  'redemption period': 'Periodo de redención',
+  'auto renew period': 'Periodo de renovación automática',
+};
+
+export function formatDomainStatus(status: string[]): string {
+  return status.map((value) => DOMAIN_STATUS_LABELS[value] ?? value).join(', ');
+}
+
+export function formatDnssec(dnssec: boolean | null): string {
+  if (dnssec === null) return 'No disponible';
+  return dnssec ? 'Firmado' : 'No firmado';
+}
+
 /** Proveedor de Internet que opera la IP; puede diferir del titular del bloque en el WHOIS. */
 export interface WhoisIspInfo {
   isp: string;
