@@ -17,7 +17,7 @@ export const metadata = buildMetadata({ title, description, path });
 export default function TriadaCiaPage() {
   return (
     <div className="flex flex-col space-y-8">
-      <ToolJsonLd title={title} description={description} path={path} />
+      <ToolJsonLd title={title} description={description} path={path} kind="article" />
       <ToolPageHeader
         title="Tríada CIA"
         subtitle="Confidencialidad, Integridad y Disponibilidad: los tres pilares de la seguridad de la información."

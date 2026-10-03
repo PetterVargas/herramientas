@@ -5,7 +5,8 @@ import { buildMetadata } from '@/lib/seo';
 import { CybersecurityCalendarComponent } from './cybersecurity-calendar-component';
 
 const title = 'Calendario de Ciberseguridad';
-const description = 'Descubre temas de ciberseguridad para cada día del año. Constancia.';
+const description =
+  'Calendario de ciberseguridad: descubre un tema, consejo o efeméride de seguridad para cada día del año y construye el hábito de aprender con constancia.';
 const path = '/calendario-ciberseguridad';
 
 export const metadata = buildMetadata({ title, description, path });

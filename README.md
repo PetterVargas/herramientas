@@ -21,6 +21,9 @@ Herramientas disponibles en [herramientas.divisioncero.com](https://herramientas
 | Codif/Decod Base64 | Codifica y decodifica texto en Base64. | [/codificador-base64](https://herramientas.divisioncero.com/codificador-base64) |
 | Codif/Decod URL | Codifica y decodifica URLs fácilmente. | [/codificador-url](https://herramientas.divisioncero.com/codificador-url) |
 | Generador de UUID | Genera identificadores únicos universales (UUID). | [/generador-uuid](https://herramientas.divisioncero.com/generador-uuid) |
+| Conversión de Fecha y Hora | Convierte fechas y horas entre zonas horarias (UTC, Bogotá y más). | [/conversion-de-fecha-y-hora](https://herramientas.divisioncero.com/conversion-de-fecha-y-hora) |
+| WHOIS de IP | Consulta el titular, rango, ASN y contacto de abuso de una IP y exporta un PDF. | [/whois-ip](https://herramientas.divisioncero.com/whois-ip) |
+| Identificador de ID en Redes Sociales | Obtén el ID y datos públicos de un perfil de Facebook, Instagram, TikTok o X. | [/identificador-id-red-social](https://herramientas.divisioncero.com/identificador-id-red-social) |
 | Tríada CIA | Aprende e identifica Confidencialidad, Integridad y Disponibilidad. | [/triada-cia](https://herramientas.divisioncero.com/triada-cia) |
 | Analizador de Contraseñas | Calcula cuánto tardaría un atacante en descifrar tu contraseña. | [/analizador-contrasenas](https://herramientas.divisioncero.com/analizador-contrasenas) |
 | Práctica: Detección de Phishing | Practica identificando mensajes de phishing en correos y SMS. | [/deteccion-phishing](https://herramientas.divisioncero.com/deteccion-phishing) |

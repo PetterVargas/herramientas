@@ -6,7 +6,7 @@ import { PhishingQuiz } from './_components/phishing-quiz';
 
 const title = 'Práctica: Detección de Phishing';
 const description =
-  'Practica identificando mensajes de phishing reales vs. legítimos en correos y SMS.';
+  'Practica a detectar phishing: analiza correos y SMS reales y legítimos, decide cuáles son fraude y aprende a reconocer las señales de un ataque de suplantación.';
 const path = '/deteccion-phishing';
 
 export const metadata = buildMetadata({ title, description, path });

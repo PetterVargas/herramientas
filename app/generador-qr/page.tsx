@@ -5,7 +5,8 @@ import { buildMetadata } from '@/lib/seo';
 import { QRGeneratorComponent } from './qr-generator-component';
 
 const title = 'Generador de Códigos QR';
-const description = 'Crea códigos QR personalizados para URLs, Whatsapp, emails y más';
+const description =
+  'Crea códigos QR gratis para URLs, WhatsApp, correos, Wi-Fi y más. Personaliza y descarga tu QR al instante, sin registro y directamente en tu navegador.';
 const path = '/generador-qr';
 
 export const metadata = buildMetadata({ title, description, path });

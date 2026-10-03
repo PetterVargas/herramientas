@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 
-export const siteName = 'Herramientas · DivisionCero';
+export const siteName = 'Herramientas de Ciberseguridad - DivisionCero';
 export const siteUrl = 'https://herramientas.divisioncero.com';
 
 /**
@@ -31,7 +31,7 @@ export function buildMetadata({
       url,
       siteName,
       type: 'website',
-      locale: 'es_ES',
+      locale: 'es_419',
     },
     twitter: {
       card: 'summary_large_image',

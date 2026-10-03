@@ -18,7 +18,7 @@ export const metadata = buildMetadata({ title, description, path });
 export default function QueEsSextingPage() {
   return (
     <div className="flex flex-col space-y-8">
-      <ToolJsonLd title={title} description={description} path={path} />
+      <ToolJsonLd title={title} description={description} path={path} kind="article" />
       <ToolPageHeader
         title="¿Qué es el sexting?"
         subtitle="El envío de mensajes, fotos o videos con contenido sexual, y los riesgos reales que implica compartirlos."

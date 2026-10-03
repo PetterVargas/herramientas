@@ -16,7 +16,7 @@ export const metadata = buildMetadata({ title, description, path });
 export default function SuplantacionMarcasPage() {
   return (
     <div className="flex flex-col space-y-8">
-      <ToolJsonLd title={title} description={description} path={path} />
+      <ToolJsonLd title={title} description={description} path={path} kind="article" />
       <ToolPageHeader
         title="10 ejemplos de suplantación de marcas"
         subtitle="Cómo los estafadores imitan cuentas oficiales en redes sociales, WhatsApp y sitios web, y cómo verificar si algo es realmente de la marca."

@@ -18,7 +18,7 @@ export const metadata = buildMetadata({ title, description, path });
 export default function QueEsSextorsionPage() {
   return (
     <div className="flex flex-col space-y-8">
-      <ToolJsonLd title={title} description={description} path={path} />
+      <ToolJsonLd title={title} description={description} path={path} kind="article" />
       <ToolPageHeader
         title="¿Qué es la sextorsión?"
         subtitle="Cómo alguien amenaza con difundir imágenes íntimas —reales o falsas— para exigir dinero o más contenido, y cómo reaccionar."

@@ -18,7 +18,7 @@ export const metadata = buildMetadata({ title, description, path });
 export default function QueEsGroomingPage() {
   return (
     <div className="flex flex-col space-y-8">
-      <ToolJsonLd title={title} description={description} path={path} />
+      <ToolJsonLd title={title} description={description} path={path} kind="article" />
       <ToolPageHeader
         title="¿Qué es el grooming?"
         subtitle="Cómo un adulto gana la confianza de un niño, niña o adolescente en línea para abusar de él o ella, y cómo detectarlo a tiempo."

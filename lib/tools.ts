@@ -55,7 +55,9 @@ export interface Tool {
     | 'Code2'
     | 'UserRoundSearch'
     | 'MessageCircleWarning'
-    | 'BadgeAlert';
+    | 'BadgeAlert'
+    | 'Clock'
+    | 'AtSign';
 }
 
 export const tools: Tool[] = [
@@ -190,6 +192,14 @@ export const tools: Tool[] = [
     iconName: 'Fingerprint',
   },
   {
+    slug: 'conversion-de-fecha-y-hora',
+    title: 'Conversión de Fecha y Hora',
+    description: 'Convierte fechas y horas entre zonas horarias (UTC, Bogotá y más).',
+    href: '/conversion-de-fecha-y-hora',
+    categories: ['Utilidades'],
+    iconName: 'Clock',
+  },
+  {
     slug: 'triada-cia',
     title: 'Tríada CIA',
     description: 'Aprende e identifica Confidencialidad, Integridad y Disponibilidad.',
@@ -253,6 +263,22 @@ export const tools: Tool[] = [
     href: '/cual-es-mi-ip',
     categories: ['Utilidades', 'Rastreo'],
     iconName: 'Globe',
+  },
+  {
+    slug: 'whois-ip',
+    title: 'WHOIS de IP',
+    description: 'Consulta el titular, rango, ASN y contacto de abuso de una IP y exporta un PDF.',
+    href: '/whois-ip',
+    categories: ['Utilidades', 'Rastreo'],
+    iconName: 'Network',
+  },
+  {
+    slug: 'identificador-id-red-social',
+    title: 'Identificador de ID en Redes Sociales',
+    description: 'Obtén el ID y datos públicos de un perfil de Facebook, Instagram, TikTok o X.',
+    href: '/identificador-id-red-social',
+    categories: ['Rastreo', 'Utilidades'],
+    iconName: 'AtSign',
   },
   {
     slug: 'rompehielos-practicas-ciberseguridad',
@@ -380,15 +406,6 @@ export const tools: Tool[] = [
     external: true,
     categories: ['Utilidades', 'Cumplimiento y Gestión'],
     iconName: 'Calendar',
-  },
-  {
-    slug: 'whois-domaintools',
-    title: 'WHOIS Domain Tools',
-    description: 'Consulta el registro WHOIS de cualquier dominio: propietario, fechas y servidores DNS.',
-    href: 'https://whois.domaintools.com/',
-    external: true,
-    categories: ['Rastreo'],
-    iconName: 'Globe',
   },
   {
     slug: 'shodan',

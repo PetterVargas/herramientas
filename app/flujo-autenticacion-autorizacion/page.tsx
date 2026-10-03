@@ -18,7 +18,7 @@ export const metadata = buildMetadata({ title, description, path });
 export default function FlujoAutenticacionAutorizacionPage() {
   return (
     <div className="flex flex-col space-y-8">
-      <ToolJsonLd title={title} description={description} path={path} />
+      <ToolJsonLd title={title} description={description} path={path} kind="article" />
       <ToolPageHeader
         title="Flujo de Autenticación, Autorización y Roles"
         subtitle="Entiende paso a paso cómo se valida una identidad, se resuelve su rol y se autorizan sus acciones — en accesos por API y por MCP."

@@ -5,7 +5,8 @@ import { buildMetadata } from '@/lib/seo';
 import { Base64EncoderComponent } from './base64-encoder-component';
 
 const title = 'Codificador/Decodificador Base64';
-const description = 'Convierte texto plano a Base64 y viceversa de forma segura';
+const description =
+  'Codifica y decodifica Base64 online gratis: convierte texto plano a Base64 y viceversa directamente en tu navegador, sin enviar tus datos a ningún servidor.';
 const path = '/codificador-base64';
 
 export const metadata = buildMetadata({ title, description, path });
