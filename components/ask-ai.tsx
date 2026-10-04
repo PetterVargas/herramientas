@@ -1,3 +1,5 @@
+import { ExternalLink } from 'lucide-react';
+
 /**
  * Sección "Pregúntale a la IA" del footer: abre ChatGPT, Claude o Google (AI Mode)
  * con una pregunta inicial sobre DivisionCero específica de cada proyecto.
@@ -24,6 +26,7 @@ export function AskAI({ prompt }: { prompt: string }) {
               rel="noopener noreferrer"
             >
               Pregúntale a <b>{name}</b> sobre DivisionCero
+              <ExternalLink className="ml-1 inline-block size-3.5 align-[-0.125em]" aria-hidden="true" />
             </a>
           </li>
         ))}
