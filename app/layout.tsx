@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/navbar";
+import { AnnouncementBanner } from "@/components/announcement-banner";
 import { Footer } from "@/components/footer";
 import { FooterReveal } from "@/components/footer-reveal";
 import { WhatsAppButton } from "@/components/whatsapp-button";
@@ -172,6 +173,7 @@ export default function RootLayout({
         />
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Toaster position="top-center" />
+          <AnnouncementBanner />
           <Navbar />
           <div className="flex flex-1 flex-col">{children}</div>
           <Footer />

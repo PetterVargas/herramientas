@@ -111,6 +111,20 @@ textarea::placeholder {
   animation: marquee-rtl var(--marquee-duration, 45s) linear infinite;
 }
 
+/* Fondo animado del banner superior (components/announcement-banner.tsx). */
+@keyframes moving-banner {
+  from {
+    background-position: 0% 0;
+  }
+  to {
+    background-position: 100% 0;
+  }
+}
+
+.animate-moving-banner {
+  animation: moving-banner 20s linear infinite;
+}
+
 .animate-marquee-ltr {
   animation: marquee-rtl var(--marquee-duration, 45s) linear infinite reverse;
 }
