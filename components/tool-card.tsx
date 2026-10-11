@@ -40,6 +40,7 @@ import {
   BadgeAlert,
   Clock,
   AtSign,
+  TimerReset,
   type LucideIcon,
 } from 'lucide-react';
 import type { Tool } from '@/lib/tools';
@@ -83,6 +84,7 @@ export const toolIcons: Record<Tool['iconName'], LucideIcon> = {
   BadgeAlert,
   Clock,
   AtSign,
+  TimerReset,
 };
 
 export function ToolCard({ tool }: { tool: Tool }) {

@@ -57,7 +57,8 @@ export interface Tool {
     | 'MessageCircleWarning'
     | 'BadgeAlert'
     | 'Clock'
-    | 'AtSign';
+    | 'AtSign'
+    | 'TimerReset';
 }
 
 export const tools: Tool[] = [
@@ -190,6 +191,14 @@ export const tools: Tool[] = [
     href: '/generador-uuid',
     categories: ['Utilidades'],
     iconName: 'Fingerprint',
+  },
+  {
+    slug: 'totp',
+    title: 'Generador de Códigos TOTP',
+    description: 'Genera códigos 2FA (TOTP) a partir de una clave secreta, con QR para apps autenticadoras.',
+    href: '/totp',
+    categories: ['Contraseñas', 'Criptografía'],
+    iconName: 'TimerReset',
   },
   {
     slug: 'conversion-de-fecha-y-hora',
