@@ -73,8 +73,7 @@ export function TotpGeneratorComponent() {
   );
 
   // Carga la configuración desde la URL. Se acepta el fragmento (#key=...),
-  // que no se envía al servidor, y los parámetros de consulta (?key=...) por
-  // compatibilidad con totp.danhersam.com.
+  // que no se envía al servidor, y los parámetros de consulta (?key=...).
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const hashParams = new URLSearchParams(window.location.hash.slice(1));
