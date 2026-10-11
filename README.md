@@ -21,6 +21,7 @@ Herramientas disponibles en [herramientas.divisioncero.com](https://herramientas
 | Codif/Decod Base64 | Codifica y decodifica texto en Base64. | [/codificador-base64](https://herramientas.divisioncero.com/codificador-base64) |
 | Codif/Decod URL | Codifica y decodifica URLs fácilmente. | [/codificador-url](https://herramientas.divisioncero.com/codificador-url) |
 | Generador de UUID | Genera identificadores únicos universales (UUID). | [/generador-uuid](https://herramientas.divisioncero.com/generador-uuid) |
+| Generador de Códigos TOTP | Genera códigos 2FA (TOTP) a partir de una clave secreta, con QR para apps autenticadoras. | [/totp](https://herramientas.divisioncero.com/totp) |
 | Conversión de Fecha y Hora | Convierte fechas y horas entre zonas horarias (UTC, Bogotá y más). | [/conversion-de-fecha-y-hora](https://herramientas.divisioncero.com/conversion-de-fecha-y-hora) |
 | WHOIS de IP y Dominio | Consulta el titular, rango y ASN de una IP, o el registrador, fechas y DNS de un dominio, y exporta un PDF. | [/whois-ip-y-dominio](https://herramientas.divisioncero.com/whois-ip-y-dominio) |
 | Identificador de ID en Redes Sociales | Obtén el ID y datos públicos de un perfil de Facebook, Instagram, TikTok o X. | [/identificador-id-red-social](https://herramientas.divisioncero.com/identificador-id-red-social) |
