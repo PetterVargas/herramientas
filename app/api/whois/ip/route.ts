@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 
 import { z } from 'zod';
 
+import { verifyCaptcha } from '@/lib/turnstile';
+
 import type { WhoisIpResponse, WhoisIpResult } from '@/app/whois-ip-y-dominio/_lib/whois';
 
 import {
@@ -95,6 +97,9 @@ export async function POST(request: NextRequest) {
   if (!validation.success) {
     return errorResponse(validation.error.issues[0]?.message || 'Dirección IP inválida', 400);
   }
+
+  const captchaError = await verifyCaptcha(request);
+  if (captchaError) return errorResponse(captchaError, 403);
 
   const { ip } = validation.data;
   const controller = new AbortController();

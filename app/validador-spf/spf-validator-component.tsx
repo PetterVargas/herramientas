@@ -1,16 +1,19 @@
 'use client';
 
-import { useCallback, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 
 import { AlertTriangle, Check, Copy, Info, Shield, X } from 'lucide-react';
 import { z } from 'zod';
 
+import { TurnstileWidget, type TurnstileHandle } from '@/components/turnstile-widget';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
 import { Heading } from '@/components/ui/heading';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { toast } from '@/components/ui/sonner';
+
+import { CAPTCHA_HEADER } from '@/lib/turnstile';
 
 const DomainSchema = z
   .string()
@@ -44,12 +47,19 @@ export function SPFValidatorComponent() {
   const [isValidating, setIsValidating] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+  const captchaRef = useRef<TurnstileHandle>(null);
 
   const validateSPF = useCallback(async () => {
     setError(null);
 
     if (!domain.trim()) {
       setError('Por favor ingresa un dominio');
+      return;
+    }
+
+    if (!captchaToken) {
+      setError('Completa la verificación anti-bots antes de validar');
       return;
     }
 
@@ -67,17 +77,18 @@ export function SPFValidatorComponent() {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          [CAPTCHA_HEADER]: captchaToken,
         },
         body: JSON.stringify({
           domain: domain.trim(),
         }),
       });
 
-      if (!response.ok) {
+      const apiResult = await response.json().catch(() => null);
+
+      if (!apiResult) {
         throw new Error(`HTTP ${response.status}: ${response.statusText}`);
       }
-
-      const apiResult = await response.json();
 
       if (!apiResult.success) {
         throw new Error(apiResult.error || 'Error en la validación SPF');
@@ -90,8 +101,9 @@ export function SPFValidatorComponent() {
       setResult(null);
     } finally {
       setIsValidating(false);
+      captchaRef.current?.reset();
     }
-  }, [domain]);
+  }, [domain, captchaToken]);
 
   const handleInputChange = (value: string) => {
     setDomain(value);
@@ -165,11 +177,17 @@ export function SPFValidatorComponent() {
                 data-test="domain-input"
                 onKeyDown={(e) => e.key === 'Enter' && validateSPF()}
               />
-              <Button onClick={validateSPF} disabled={isValidating || !domain.trim()} data-test="validate-button">
+              <Button
+                onClick={validateSPF}
+                disabled={isValidating || !domain.trim() || !captchaToken}
+                data-test="validate-button"
+              >
                 {isValidating ? 'Validando...' : 'Validar SPF'}
               </Button>
             </div>
           </div>
+
+          <TurnstileWidget ref={captchaRef} onToken={setCaptchaToken} />
         </div>
 
         {result && (

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, type FormEvent, type ReactNode } from 'react';
+import { useRef, useState, type FormEvent, type ReactNode } from 'react';
 
 import {
   AlertTriangle,
@@ -17,6 +17,7 @@ import {
 } from 'lucide-react';
 import { z } from 'zod';
 
+import { TurnstileWidget, type TurnstileHandle } from '@/components/turnstile-widget';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
 import { Heading } from '@/components/ui/heading';
@@ -25,6 +26,7 @@ import { Label } from '@/components/ui/label';
 import { toast } from '@/components/ui/sonner';
 
 import { sha256Hex } from '@/lib/hash';
+import { CAPTCHA_HEADER } from '@/lib/turnstile';
 
 import { buildWhoisDomainReportPdf, buildWhoisIpReportPdf } from '../_lib/report-pdf';
 import {
@@ -353,6 +355,8 @@ export function WhoisIpComponent() {
   const [lastHash, setLastHash] = useState<string | null>(null);
   const [showRaw, setShowRaw] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+  const captchaRef = useRef<TurnstileHandle>(null);
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
@@ -364,6 +368,10 @@ export function WhoisIpComponent() {
       setError(
         'Introduce una dirección IP (por ejemplo 8.8.8.8) o un dominio válido (por ejemplo divisioncero.com)',
       );
+      return;
+    }
+    if (!captchaToken) {
+      setError('Completa la verificación anti-bots antes de consultar');
       return;
     }
 
@@ -378,7 +386,7 @@ export function WhoisIpComponent() {
         const [response, ispInfo] = await Promise.all([
           fetch('/api/whois/ip', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 'Content-Type': 'application/json', [CAPTCHA_HEADER]: captchaToken },
             body: JSON.stringify({ ip: trimmed }),
           }),
           fetchIspInfo(trimmed),
@@ -392,7 +400,7 @@ export function WhoisIpComponent() {
       } else {
         const response = await fetch('/api/whois/domain', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: { 'Content-Type': 'application/json', [CAPTCHA_HEADER]: captchaToken },
           body: JSON.stringify({ domain }),
         });
         const data: WhoisDomainResponse = await response.json();
@@ -406,6 +414,7 @@ export function WhoisIpComponent() {
       setError('No se pudo conectar con el servicio WHOIS. Intenta de nuevo');
     } finally {
       setIsLoading(false);
+      captchaRef.current?.reset();
     }
   };
 
@@ -485,7 +494,11 @@ export function WhoisIpComponent() {
               maxLength={2048}
               data-test="ip-input"
             />
-            <Button type="submit" disabled={isLoading || !query.trim()} data-test="lookup-button">
+            <Button
+              type="submit"
+              disabled={isLoading || !query.trim() || !captchaToken}
+              data-test="lookup-button"
+            >
               {isLoading ? (
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
               ) : (
@@ -494,6 +507,8 @@ export function WhoisIpComponent() {
               Consultar
             </Button>
           </div>
+
+          <TurnstileWidget ref={captchaRef} onToken={setCaptchaToken} />
         </form>
 
         {error && (

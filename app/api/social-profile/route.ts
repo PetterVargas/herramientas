@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 
 import { z } from 'zod';
 
+import { verifyCaptcha } from '@/lib/turnstile';
+
 import {
   parseProfileUrl,
   platforms,
@@ -35,6 +37,9 @@ export async function POST(request: NextRequest) {
   const { platform, url } = validation.data;
   const target = parseProfileUrl(platform, url);
   if (typeof target === 'string') return errorResponse(target, 400);
+
+  const captchaError = await verifyCaptcha(request);
+  if (captchaError) return errorResponse(captchaError, 403);
 
   try {
     const profile = await profileFetchers[platform](target);

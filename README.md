@@ -8,6 +8,7 @@ Herramientas disponibles en [herramientas.divisioncero.com](https://herramientas
 | --- | --- | --- |
 | Conan Rastreo Informático | Tracking basado en direcciones IP para la detección de amenazas. | [app.divisioncero.com/home/conan](https://app.divisioncero.com/home/conan) |
 | Framework Kudo | Framework de Ciberseguridad open-source para el cumplimiento de tu empresa. | [kudo.divisioncero.com/sgx](https://kudo.divisioncero.com/sgx) |
+| GRC para Compañías | Gestiona la gobernanza, el riesgo y el cumplimiento de ciberseguridad de tu empresa. | [app.divisioncero.com/home/empresas](https://app.divisioncero.com/home/empresas) |
 | CyberMap | Visualiza el panorama de amenazas y ciberataques en tiempo real. | [/cybermap](https://herramientas.divisioncero.com/cybermap) |
 | Tabla Periódica de Ciberseguridad | Explora los elementos clave de la Ciberseguridad de forma visual. | [/tabla-periodica-ciberseguridad](https://herramientas.divisioncero.com/tabla-periodica-ciberseguridad) |
 | Rompehielos de Seguridad | Preguntas para romper el hielo y abrir la conversación sobre seguridad. | [/rompehielos](https://herramientas.divisioncero.com/rompehielos) |

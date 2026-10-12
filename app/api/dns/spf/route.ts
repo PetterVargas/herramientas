@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 
 import { z } from 'zod';
 
+import { verifyCaptcha } from '@/lib/turnstile';
+
 const DomainSchema = z.object({
   domain: z
     .string()
@@ -34,6 +36,11 @@ export async function POST(request: NextRequest) {
         },
         { status: 400 },
       );
+    }
+
+    const captchaError = await verifyCaptcha(request);
+    if (captchaError) {
+      return NextResponse.json({ success: false, error: captchaError }, { status: 403 });
     }
 
     const { domain } = validationResult.data;
