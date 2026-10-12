@@ -41,6 +41,7 @@ import {
   Clock,
   AtSign,
   TimerReset,
+  Building2,
   type LucideIcon,
 } from 'lucide-react';
 import type { Tool } from '@/lib/tools';
@@ -85,6 +86,7 @@ export const toolIcons: Record<Tool['iconName'], LucideIcon> = {
   Clock,
   AtSign,
   TimerReset,
+  Building2,
 };
 
 export function ToolCard({ tool }: { tool: Tool }) {

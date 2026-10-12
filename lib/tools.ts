@@ -58,7 +58,8 @@ export interface Tool {
     | 'BadgeAlert'
     | 'Clock'
     | 'AtSign'
-    | 'TimerReset';
+    | 'TimerReset'
+    | 'Building2';
 }
 
 export const tools: Tool[] = [
@@ -79,6 +80,15 @@ export const tools: Tool[] = [
     external: true,
     categories: ['Cumplimiento y Gestión'],
     iconName: 'BookOpen',
+  },
+  {
+    slug: 'grc-companias',
+    title: 'GRC para Compañías',
+    description: 'Gestiona la gobernanza, el riesgo y el cumplimiento de ciberseguridad de tu empresa.',
+    href: 'https://app.divisioncero.com/home/empresas',
+    external: true,
+    categories: ['Cumplimiento y Gestión'],
+    iconName: 'Building2',
   },
   {
     slug: 'cybermap',

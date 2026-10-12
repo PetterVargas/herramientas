@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 
 import { z } from 'zod';
 
+import { verifyCaptcha } from '@/lib/turnstile';
+
 import {
   normalizeDomain,
   type WhoisDomainResponse,
@@ -115,6 +117,9 @@ export async function POST(request: NextRequest) {
   if (!domain) {
     return errorResponse('Dominio inválido', 400);
   }
+
+  const captchaError = await verifyCaptcha(request);
+  if (captchaError) return errorResponse(captchaError, 403);
 
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), RDAP_TIMEOUT_MS);

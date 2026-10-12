@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, type FormEvent, type ReactNode } from 'react';
+import { useRef, useState, type FormEvent, type ReactNode } from 'react';
 
 import {
   AlertTriangle,
@@ -15,6 +15,7 @@ import {
   Search,
 } from 'lucide-react';
 
+import { TurnstileWidget, type TurnstileHandle } from '@/components/turnstile-widget';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
 import { Heading } from '@/components/ui/heading';
@@ -23,6 +24,7 @@ import { Label } from '@/components/ui/label';
 import { toast } from '@/components/ui/sonner';
 
 import { sha256Hex } from '@/lib/hash';
+import { CAPTCHA_HEADER } from '@/lib/turnstile';
 
 import {
   PLATFORM_INFO,
@@ -60,6 +62,8 @@ export function SocialIdComponent() {
   const [lastHash, setLastHash] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
   const [avatarFailed, setAvatarFailed] = useState(false);
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+  const captchaRef = useRef<TurnstileHandle>(null);
 
   const selectPlatform = (value: Platform) => {
     setPlatform(value);
@@ -74,6 +78,10 @@ export function SocialIdComponent() {
       setError(target);
       return;
     }
+    if (!captchaToken) {
+      setError('Completa la verificación anti-bots antes de consultar');
+      return;
+    }
 
     setIsLoading(true);
     setError(null);
@@ -84,7 +92,7 @@ export function SocialIdComponent() {
     try {
       const response = await fetch('/api/social-profile', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', [CAPTCHA_HEADER]: captchaToken },
         body: JSON.stringify({ platform, url: url.trim() }),
       });
       const data: SocialProfileResponse = await response.json();
@@ -98,6 +106,7 @@ export function SocialIdComponent() {
       setError('No se pudo conectar con el servicio. Intenta de nuevo');
     } finally {
       setIsLoading(false);
+      captchaRef.current?.reset();
     }
   };
 
@@ -193,7 +202,7 @@ export function SocialIdComponent() {
               />
               <Button
                 type="submit"
-                disabled={isLoading || !url.trim()}
+                disabled={isLoading || !url.trim() || !captchaToken}
                 data-test="lookup-button"
               >
                 {isLoading ? (
@@ -205,6 +214,8 @@ export function SocialIdComponent() {
               </Button>
             </div>
           </div>
+
+          <TurnstileWidget ref={captchaRef} onToken={setCaptchaToken} />
         </form>
 
         {error && (
