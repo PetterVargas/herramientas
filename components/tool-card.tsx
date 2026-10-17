@@ -108,7 +108,7 @@ export function ToolCard({ tool }: { tool: Tool }) {
       </div>
       <div className="flex items-center gap-1.5 mb-1">
         <h2 className="text-sm font-semibold">{tool.title}</h2>
-        {tool.external && (
+        {tool.external && !tool.firstParty && (
           <span className="inline-flex items-center rounded-full bg-muted px-1.5 py-0.5 text-[10px] font-medium leading-none text-muted-foreground">
             Externo
           </span>
