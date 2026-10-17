@@ -18,6 +18,8 @@ export interface Tool {
   description: string;
   href: string;
   external?: boolean;
+  /** Herramienta desarrollada por DivisionCero alojada en otro sitio: no muestra la etiqueta "Externo". */
+  firstParty?: boolean;
   categories: Category[];
   iconName:
     | 'Radar'
@@ -87,8 +89,19 @@ export const tools: Tool[] = [
     description: 'Gestiona la gobernanza, el riesgo y el cumplimiento de ciberseguridad de tu empresa.',
     href: 'https://app.divisioncero.com/home/empresas',
     external: true,
+    firstParty: true,
     categories: ['Cumplimiento y Gestión'],
     iconName: 'Building2',
+  },
+  {
+    slug: 'cyberkit',
+    title: 'CyberKit',
+    description: 'Kit de recursos y herramientas de ciberseguridad para fortalecer tu organización.',
+    href: 'https://app.divisioncero.com/home/cyberkit',
+    external: true,
+    firstParty: true,
+    categories: ['Cumplimiento y Gestión'],
+    iconName: 'ShieldCheck',
   },
   {
     slug: 'cybermap',

@@ -35,7 +35,7 @@ export function AnnouncementBanner() {
           filter: 'saturate(2)',
         }}
       />
-      <SubscribeDialog>🚀 Suscríbete a DivisionCero 👀</SubscribeDialog>
+      <SubscribeDialog>🚀 Newsletter de DivisionCero 👀</SubscribeDialog>
     </div>
   );
 }
